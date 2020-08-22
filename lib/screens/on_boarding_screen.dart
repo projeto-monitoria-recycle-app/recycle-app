@@ -8,7 +8,7 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   PageController _pageController;
   int currentPage = 0;
-  final int _numPages = 4;
+  final int _numPages = 3;
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Color(0xFF7B51D3),
+        color: isActive ? Colors.green : Color(0xFF7B51D3),
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -42,7 +42,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.black,
+        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -57,15 +57,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   },
                   children: <Widget>[
                     for (var i = 0; i < 3; i++)
-                      Container(
-                        color: i == 0 ? Colors.blue : Colors.black,
-                        child: Center(
-                          child: Text(
-                            '$i',
-                            style: TextStyle(fontSize: 30, color: Colors.white),
-                          ),
-                        ),
-                      ),
+                      Card(currentPage: i + 1, pageController: _pageController),
                   ],
                 ),
               ),
@@ -80,6 +72,39 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class Card extends StatelessWidget {
+  const Card({this.pageController, this.currentPage});
+
+  final PageController pageController;
+  final int currentPage;
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    return AnimatedBuilder(
+      animation: pageController,
+      builder: (context, child) {
+        double value = 1;
+        if (pageController.position.haveDimensions) {
+          value = pageController.page - currentPage;
+          value = (1 - (value.abs() * 0.6)).clamp(0.0, 1.0);
+          if (currentPage == 1) print('value $value');
+        }
+        return Container(
+          color: currentPage == 0 ? Colors.blue : Colors.white,
+          child: Center(
+            child: Image.asset(
+              'assets/img/onBoardingImg-0$currentPage.png',
+              height: screenHeight * 0.60 * value,
+            ),
+          ),
+        );
+      },
     );
   }
 }
