@@ -30,9 +30,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       duration: Duration(milliseconds: 150),
       margin: EdgeInsets.symmetric(horizontal: 8.0),
       height: 8.0,
-      width: isActive ? 24.0 : 16.0,
+      width: isActive ? 16.0 : 8.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.green : Color(0xFF7B51D3),
+        color: isActive ? Color(0xff009EB2) : Color(0xFF09995C),
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -47,18 +47,41 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 70),
+                child: Text(
+                  'Recycle app',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 24,
+                    color: Color(0xff1E1E1E),
+                  ),
+                ),
+              ),
               Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  onPageChanged: (int page) {
-                    setState(() {
-                      currentPage = page;
-                    });
+                // It will disable the glowing scroll effect
+                child: NotificationListener<OverscrollIndicatorNotification>(
+                  onNotification: (OverscrollIndicatorNotification overScroll) {
+                    overScroll.disallowGlow();
+                    return false;
                   },
-                  children: <Widget>[
-                    for (var i = 0; i < 3; i++)
-                      Card(currentPage: i + 1, pageController: _pageController),
-                  ],
+                  child: PageView(
+                    controller: _pageController,
+                    onPageChanged: (int page) {
+                      setState(() {
+                        currentPage = page;
+                      });
+                    },
+                    children: <Widget>[
+                      for (var i = 0; i < 3; i++)
+                        Card(
+                          currentPage: i + 1,
+                          pageController: _pageController,
+                          lastPage: _numPages,
+                        ),
+                    ],
+                  ),
                 ),
               ),
               Padding(
@@ -77,34 +100,98 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 }
 
 class Card extends StatelessWidget {
-  const Card({this.pageController, this.currentPage});
+  const Card({this.pageController, this.currentPage, this.lastPage});
 
   final PageController pageController;
   final int currentPage;
+  final int lastPage;
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return AnimatedBuilder(
-      animation: pageController,
-      builder: (context, child) {
-        double value = 1;
-        if (pageController.position.haveDimensions) {
-          value = pageController.page - currentPage;
-          value = (1 - (value.abs() * 0.6)).clamp(0.0, 1.0);
-          if (currentPage == 1) print('value $value');
-        }
-        return Container(
-          color: currentPage == 0 ? Colors.blue : Colors.white,
-          child: Center(
-            child: Image.asset(
-              'assets/img/onBoardingImg-0$currentPage.png',
-              height: screenHeight * 0.60 * value,
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: AnimatedBuilder(
+            animation: pageController,
+            builder: (context, child) {
+              double value = 1;
+              if (pageController.position.haveDimensions) {
+                value = pageController.page - currentPage;
+                value = ((value.abs() * 0.6)).clamp(0.0, 1.0);
+              }
+              return Container(
+                color: currentPage == 0 ? Colors.blue : Colors.white,
+                child: Center(
+                  child: Image.asset(
+                    'assets/img/onBoardingImg-0$currentPage.png',
+                    height: screenHeight * 0.8 * value,
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        AnimatedBuilder(
+          animation: pageController,
+          builder: (context, child) {
+            double value = 1;
+            double opacity = 1;
+            if (pageController.position.haveDimensions) {
+              value = pageController.page - currentPage;
+              opacity = (1 + (value + 1));
+              if (opacity > 1) {
+                opacity = (1 - (value + 1));
+              }
+              print('opacity $opacity');
+
+              return Text(
+                'Aprenda a separar resíduos da forma correta',
+                style: TextStyle(
+                  color: Color(0xffD9333333).withOpacity(opacity),
+                  fontSize: 18,
+                ),
+                textAlign: TextAlign.center,
+              );
+            }
+          },
+        ),
+        currentPage == lastPage
+            ? buildRaisedButton(currentPage, lastPage)
+            : Container()
+      ],
+    );
+  }
+
+  RaisedButton buildRaisedButton(currentPage, lastPage) {
+    if (currentPage == lastPage) {
+      return RaisedButton(
+        padding: EdgeInsets.all(0),
+        onPressed: () {
+          print('cliquei');
+        },
+        child: Container(
+          width: 328,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: <Color>[
+                Color(0xFF09995C),
+                Color(0xFF09995C),
+                Color(0xFF38ef7d),
+              ],
             ),
           ),
-        );
-      },
-    );
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Vamos começar!',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
