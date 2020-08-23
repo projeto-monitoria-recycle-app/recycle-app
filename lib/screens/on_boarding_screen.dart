@@ -95,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ),
               currentPage == cardsList.length - 1
-                  ? AnimatedBouncingButton(text: 'teste')
+                  ? AnimatedBouncingButton(text: 'Vamos começar!')
                   : Container()
             ],
           ),
