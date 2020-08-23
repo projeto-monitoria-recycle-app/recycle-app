@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recicle_app/models/onboardingcard.dart';
+import 'package:recicle_app/widgets/animated_bouncing_btn.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -8,7 +10,7 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   PageController _pageController;
   int currentPage = 0;
-  final int _numPages = 3;
+  final int _numPages = cardsList.length;
 
   @override
   void initState() {
@@ -32,7 +34,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       height: 8.0,
       width: isActive ? 16.0 : 8.0,
       decoration: BoxDecoration(
-        color: isActive ? Color(0xff009EB2) : Color(0xFF09995C),
+        // color: isActive ? Color(0xFF09995C) : Color(0xFF09995C),
+        color: Color(0xFF09995C),
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -74,12 +77,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       });
                     },
                     children: <Widget>[
-                      for (var i = 0; i < 3; i++)
+                      for (var i = 0; i < cardsList.length; i++)
                         Card(
-                          currentPage: i + 1,
-                          pageController: _pageController,
-                          lastPage: _numPages,
-                        ),
+                            currentPage: i + 1,
+                            pageController: _pageController,
+                            lastPage: _numPages,
+                            text: cardsList[i].text),
                     ],
                   ),
                 ),
@@ -91,6 +94,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   children: _buildPageIndicator(),
                 ),
               ),
+              currentPage == cardsList.length - 1
+                  ? AnimatedBouncingButton(text: 'teste')
+                  : Container()
             ],
           ),
         ),
@@ -100,8 +106,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 }
 
 class Card extends StatelessWidget {
-  const Card({this.pageController, this.currentPage, this.lastPage});
+  const Card({this.pageController, this.currentPage, this.lastPage, this.text});
 
+  final String text;
   final PageController pageController;
   final int currentPage;
   final int lastPage;
@@ -147,51 +154,17 @@ class Card extends StatelessWidget {
               print('opacity $opacity');
 
               return Text(
-                'Aprenda a separar resíduos da forma correta',
+                text,
                 style: TextStyle(
                   color: Color(0xffD9333333).withOpacity(opacity),
-                  fontSize: 18,
+                  fontSize: 12,
                 ),
                 textAlign: TextAlign.center,
               );
             }
           },
         ),
-        currentPage == lastPage
-            ? buildRaisedButton(currentPage, lastPage)
-            : Container()
       ],
     );
-  }
-
-  RaisedButton buildRaisedButton(currentPage, lastPage) {
-    if (currentPage == lastPage) {
-      return RaisedButton(
-        padding: EdgeInsets.all(0),
-        onPressed: () {
-          print('cliquei');
-        },
-        child: Container(
-          width: 328,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: <Color>[
-                Color(0xFF09995C),
-                Color(0xFF09995C),
-                Color(0xFF38ef7d),
-              ],
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Vamos começar!',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
-    }
   }
 }
