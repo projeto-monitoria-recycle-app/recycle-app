@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AnimatedBouncingButton extends StatefulWidget {
-  const AnimatedBouncingButton({Key key, this.text}) : super(key: key);
+  const AnimatedBouncingButton({Key key, this.text, this.onTapFunction})
+      : super(key: key);
 
   final text;
+  final onTapFunction;
 
   @override
   _AnimatedBouncingButtonState createState() =>
-      _AnimatedBouncingButtonState(text);
+      _AnimatedBouncingButtonState(text, onTapFunction);
 }
 
 class _AnimatedBouncingButtonState extends State<AnimatedBouncingButton>
@@ -15,9 +17,11 @@ class _AnimatedBouncingButtonState extends State<AnimatedBouncingButton>
   double _scale;
   AnimationController _controller;
 
-  _AnimatedBouncingButtonState(this.textContent);
+  _AnimatedBouncingButtonState(this.textContent, this.onTapFunction);
 
   final String textContent;
+
+  final Function onTapFunction;
 
   @override
   void initState() {
@@ -46,6 +50,7 @@ class _AnimatedBouncingButtonState extends State<AnimatedBouncingButton>
     return GestureDetector(
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
+      onTap: onTapFunction,
       child: Transform.scale(
         scale: _scale,
         child: _animatedButtonUI,

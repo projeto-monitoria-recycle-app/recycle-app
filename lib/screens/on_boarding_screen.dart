@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recicle_app/models/onboardingcard.dart';
 import 'package:recicle_app/widgets/animated_bouncing_btn.dart';
 
@@ -95,7 +96,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ),
               currentPage == cardsList.length - 1
-                  ? AnimatedBouncingButton(text: 'Vamos começar!')
+                  ? AnimatedBouncingButton(
+                      text: 'Vamos começar!',
+                      onTapFunction: () {
+                        Navigator.pushReplacementNamed(context, '/home');
+                      },
+                    )
                   : Container()
             ],
           ),
