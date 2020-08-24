@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recicle_app/models/onboardingcard.dart';
 import 'package:recicle_app/widgets/animated_bouncing_btn.dart';
 

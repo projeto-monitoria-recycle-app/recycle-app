@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recicle_app/screens/recyclePage.dart';
+import 'package:recicle_app/screens/wastePage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,9 +9,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedMenu = 0;
-  static const List<Widget> _widgetList = <Widget>[
-    Text('HomePage'),
-    Text('Page 2'),
+  static List<Widget> _widgetList = <Widget>[
+    WastePage(),
+    RecyclePage(),
     Text('Page 3'),
     Text('Page 4')
   ];
@@ -59,32 +61,57 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Center(
+      body: Container(
         child: _widgetList.elementAt(_selectedMenu),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: ImageIcon(
+              AssetImage('assets/icons/icons8-casa-50.png'),
+            ),
             title: Text('HomePage'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sync),
+            icon: ImageIcon(
+              AssetImage('assets/icons/icons8-sinal-de-reciclagem-50.png'),
+            ),
             title: Text('Reciclar'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.priority_high),
+            icon: ImageIcon(
+              AssetImage('assets/icons/icons8-vaso-de-planta-50.png'),
+            ),
             title: Text('Impacto'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: ImageIcon(
+              AssetImage('assets/icons/icons8-usuário-50.png'),
+            ),
             title: Text('Minha Conta'),
           ),
         ],
         currentIndex: _selectedMenu,
         onTap: _onMenuTapped,
-        unselectedItemColor: Colors.grey,
+        selectedIconTheme: IconThemeData(
+          size: 35,
+          color: Theme.of(context).accentColor,
+        ),
+        selectedLabelStyle: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
         selectedItemColor: Theme.of(context).accentColor,
+        showUnselectedLabels: true,
+        unselectedIconTheme: IconThemeData(
+          size: 25,
+          color: Colors.grey[900],
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+        ),
+        unselectedItemColor: Colors.grey[900],
       ),
     );
   }

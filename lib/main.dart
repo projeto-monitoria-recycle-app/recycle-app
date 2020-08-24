@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         appBarTheme: AppBarTheme(elevation: 0),
       ),
-      home: OnBoardingScreen(),
+      home: HomePage(),
       routes: {
         '/home': (context) => HomePage(),
       },
