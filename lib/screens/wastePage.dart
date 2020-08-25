@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/screens/recyclePage.dart';
+import 'package:recicle_app/widgets/wasteGridWidget.dart';
 
 class WastePage extends StatelessWidget {
   @override
@@ -83,7 +83,7 @@ class WastePage extends StatelessWidget {
                   Positioned(
                     top: -10,
                     right: 10,
-                    height: 80,
+                    height: 60,
                     child: Image.asset(
                       'assets/img/Trash.png',
                     ),
@@ -94,8 +94,7 @@ class WastePage extends StatelessWidget {
             ],
           ),
         ),
-
-        // RecyclePage(),
+        WasteGrid()
       ],
     );
   }

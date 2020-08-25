@@ -3,6 +3,7 @@ import 'package:recicle_app/screens/recyclePage.dart';
 import 'package:recicle_app/screens/wastePage.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = '/homepage';
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -68,25 +69,25 @@ class _HomePageState extends State<HomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/icons8-casa-50.png'),
+              AssetImage('assets/icons/home.png'),
             ),
             title: Text('HomePage'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/icons8-sinal-de-reciclagem-50.png'),
+              AssetImage('assets/icons/recycle.png'),
             ),
             title: Text('Reciclar'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/icons8-vaso-de-planta-50.png'),
+              AssetImage('assets/icons/impact.png'),
             ),
             title: Text('Impacto'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/icons8-usuário-50.png'),
+              AssetImage('assets/icons/user.png'),
             ),
             title: Text('Minha Conta'),
           ),

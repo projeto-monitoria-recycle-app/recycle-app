@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:recicle_app/screens/homePage.dart';
+import 'package:recicle_app/screens/materialPage.dart';
 import 'package:recicle_app/screens/on_boarding_screen.dart';
 
 void main() => runApp(MyApp());
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       ),
       home: HomePage(),
       routes: {
-        '/home': (context) => HomePage(),
+        HomePage.routeName: (context) => HomePage(),
+        WasteMaterialPage.routeName: (context) => WasteMaterialPage(),
       },
     );
   }
