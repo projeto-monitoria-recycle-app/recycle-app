@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recicle_app/screens/homePage.dart';
+import 'package:recicle_app/screens/mainPage.dart';
 import 'package:recicle_app/screens/materialPage.dart';
 import 'package:recicle_app/screens/on_boarding_screen.dart';
 
@@ -17,13 +17,14 @@ class MyApp extends StatelessWidget {
       title: 'Recicle App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        // primarySwatch: Colors.green,
+        accentColor: Color(0xFF09995C),
         appBarTheme: AppBarTheme(elevation: 0),
       ),
-      home: HomePage(),
+      home: MainPage(),
       routes: {
-        HomePage.routeName: (context) => HomePage(),
-        WasteMaterialPage.routeName: (context) => WasteMaterialPage(),
+        MainPage.routeName: (context) => MainPage(),
+        MaterialWastePage.routeName: (context) => MaterialWastePage(),
       },
     );
   }

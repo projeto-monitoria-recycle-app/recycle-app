@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/models/wasteModel.dart';
+import 'package:recicle_app/models/materialModel.dart';
 
 class WasteGrid extends StatelessWidget {
   @override
@@ -19,6 +19,14 @@ class WasteGrid extends StatelessWidget {
             decoration: BoxDecoration(
               color: wasteList[index].color,
               borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

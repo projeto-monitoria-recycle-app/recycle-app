@@ -1,119 +1,101 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/screens/recyclePage.dart';
-import 'package:recicle_app/screens/wastePage.dart';
+import 'package:recicle_app/widgets/wasteGridWidget.dart';
 
-class HomePage extends StatefulWidget {
-  static const routeName = '/homepage';
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _selectedMenu = 0;
-  static List<Widget> _widgetList = <Widget>[
-    WastePage(),
-    RecyclePage(),
-    Text('Page 3'),
-    Text('Page 4')
-  ];
-
-  void _onMenuTapped(int index) {
-    setState(() {
-      _selectedMenu = index;
-    });
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Recycle App'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Theme.of(context).accentColor),
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Dúvidas Frequentes',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                  ],
+    final size = MediaQuery.of(context).size;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          height: 0.3 * size.height,
+          decoration: BoxDecoration(
+            color: Theme.of(context).accentColor,
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40)),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Spacer(),
+                  Text(
+                    'Olá Kadu!',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  Spacer(
+                    flex: 5,
+                  ),
+                  CircleAvatar(
+                    child: Image.asset('assets/img/avatar.png'),
+                    backgroundColor: Colors.white,
+                  ),
+                  Spacer(),
+                ],
+              ),
+              Text(
+                'O que você que descartar hoje?',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+              ),
+              Container(
+                alignment: Alignment.center,
+                height: 45,
+                width: 300,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white,
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Caderno',
+                      hintStyle: TextStyle(
+                        color: Theme.of(context).accentColor.withOpacity(0.5),
+                      ),
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: Theme.of(context).accentColor,
+                      )),
                 ),
               ),
-            ),
-            ListTile(
-              title: Text('Option 1'),
-            ),
-            ListTile(
-              title: Text('Option 2'),
-            ),
-            ListTile(
-              title: Text('Option 3'),
-            ),
-          ],
-        ),
-      ),
-      body: Container(
-        child: _widgetList.elementAt(_selectedMenu),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/icons/home.png'),
-            ),
-            title: Text('HomePage'),
+              Text(
+                'Aprenda aqui a separar cada tipo de material!',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+              ),
+              Stack(
+                children: [
+                  Container(),
+                  Positioned(
+                    top: -10,
+                    right: 10,
+                    height: 60,
+                    child: Image.asset(
+                      'assets/img/Trash.png',
+                    ),
+                  ),
+                ],
+                overflow: Overflow.visible,
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/icons/recycle.png'),
-            ),
-            title: Text('Reciclar'),
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/icons/impact.png'),
-            ),
-            title: Text('Impacto'),
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/icons/user.png'),
-            ),
-            title: Text('Minha Conta'),
-          ),
-        ],
-        currentIndex: _selectedMenu,
-        onTap: _onMenuTapped,
-        selectedIconTheme: IconThemeData(
-          size: 35,
-          color: Theme.of(context).accentColor,
         ),
-        selectedLabelStyle: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
-        selectedItemColor: Theme.of(context).accentColor,
-        showUnselectedLabels: true,
-        unselectedIconTheme: IconThemeData(
-          size: 25,
-          color: Colors.grey[900],
-        ),
-        unselectedLabelStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-        ),
-        unselectedItemColor: Colors.grey[900],
-      ),
+        WasteGrid()
+      ],
     );
   }
 }
