@@ -98,7 +98,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ? AnimatedBouncingButton(
                       text: 'Vamos começar!',
                       onTapFunction: () {
-                        Navigator.pushReplacementNamed(context, '/home');
+                        Navigator.pushReplacementNamed(context, '/homepage');
                       },
                     )
                   : Container()
@@ -156,7 +156,7 @@ class Card extends StatelessWidget {
               if (opacity > 1) {
                 opacity = (1 - (value + 1));
               }
-              print('opacity $opacity');
+              // print('opacity $opacity');
 
               return Text(
                 text,

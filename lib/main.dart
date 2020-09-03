@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         accentColor: Color(0xFF09995C),
         appBarTheme: AppBarTheme(elevation: 0),
       ),
-      home: MainPage(),
+      home: OnBoardingScreen(),
       routes: {
         MainPage.routeName: (context) => MainPage(),
         MaterialWastePage.routeName: (context) => MaterialWastePage(),
