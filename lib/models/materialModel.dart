@@ -1,20 +1,34 @@
 import 'package:flutter/material.dart';
 
 class Waste {
-  final String material;
+  final String name;
   final Color color;
   final dynamic icon;
   final String title;
   final List<String> content;
   final List<String> images;
+  final String discart;
+  final List<String> process;
+  final String destination;
+  final String economicalImpact;
+  final String finacialImpact;
+  final String environmentalImpact;
+  final List<String> itens;
 
   Waste(
-    this.material, {
+    this.name, {
     this.color,
     this.icon,
     this.title,
     this.content,
     this.images,
+    this.discart,
+    this.process,
+    this.destination,
+    this.economicalImpact,
+    this.finacialImpact,
+    this.environmentalImpact,
+    this.itens,
   });
 }
 
@@ -87,12 +101,12 @@ List wasteList = [
     content: [''],
     images: ['assets/img/onBoardingImg-04.svg'],
   ),
-  Waste(
-    'Eletrônicos',
-    color: Colors.green[900],
-    icon: AssetImage('assets/icons/eletronic.png'),
-    title: '',
-    content: [''],
-    images: ['assets/img/onBoardingImg-04.svg'],
-  )
+  // Waste(
+  //   'Eletrônicos',
+  //   color: Colors.green[900],
+  //   icon: AssetImage('assets/icons/eletronic.png'),
+  //   title: '',
+  //   content: [''],
+  //   images: ['assets/img/onBoardingImg-04.svg'],
+  // )
 ];

@@ -166,6 +166,8 @@ class Card extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               );
+            } else {
+              return Container();
             }
           },
         ),

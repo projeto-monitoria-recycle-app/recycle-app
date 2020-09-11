@@ -12,9 +12,9 @@ class HomePage extends StatelessWidget {
           height: 0.3 * size.height,
           decoration: BoxDecoration(
             color: Theme.of(context).accentColor,
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40),
-                bottomRight: Radius.circular(40)),
+            // borderRadius: BorderRadius.only(
+            //     bottomLeft: Radius.circular(40),
+            //     bottomRight: Radius.circular(40)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

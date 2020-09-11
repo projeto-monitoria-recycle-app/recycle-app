@@ -12,7 +12,7 @@ class MaterialWastePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: waste.color,
-        title: Text(waste.material),
+        title: Text(waste.name),
         actions: [
           ImageIcon(
             waste.icon,

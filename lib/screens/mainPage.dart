@@ -38,28 +38,110 @@ class _MainPageState extends State<MainPage> {
               decoration: BoxDecoration(color: Theme.of(context).accentColor),
               child: Container(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Row(),
                     Text(
-                      'Dúvidas Frequentes',
+                      'Recicla Terê',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
+                    ),
+                    Text(
+                      "MENU",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               ),
             ),
             ListTile(
-              title: Text('Option 1'),
+              leading: ImageIcon(
+                AssetImage('assets/icons/balao.png'),
+              ),
+              title: Text('O QUE É COLETA SELETIVA'),
+              onTap: () {},
             ),
             ListTile(
-              title: Text('Option 2'),
+              leading: ImageIcon(
+                AssetImage('assets/icons/balao.png'),
+              ),
+              title: Text('QUAL Ë A SUA IMPORTÂNCIA?'),
+              onTap: () {},
             ),
             ListTile(
-              title: Text('Option 3'),
+              leading: ImageIcon(
+                AssetImage('assets/icons/balao.png'),
+              ),
+              title: Text('PORQUE É IMPORTANTE RECICLAR?'),
+              onTap: () {},
             ),
+            ListTile(
+              leading: ImageIcon(
+                AssetImage('assets/icons/balao.png'),
+              ),
+              title: Text('COMO VOCÊ PODE CONTRIBUIR?'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: ImageIcon(
+                AssetImage('assets/icons/balao.png'),
+              ),
+              title: Text('QUEM SOMOS?'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text(
+                "NOSSOS PARCEIROS",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                // padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
