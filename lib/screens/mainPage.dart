@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recicle_app/screens/impactPage.dart';
 import 'package:recicle_app/screens/recyclePage.dart';
 import 'package:recicle_app/screens/homePage.dart';
 
@@ -13,7 +14,7 @@ class _MainPageState extends State<MainPage> {
   static List<Widget> _widgetList = <Widget>[
     HomePage(),
     RecyclePage(),
-    Text('Page 3'),
+    ImpactPage(),
     Text('Page 4')
   ];
 
@@ -60,13 +61,17 @@ class _MainPageState extends State<MainPage> {
             ListTile(
               leading: ImageIcon(
                 AssetImage('assets/icons/balao.png'),
+                color: Colors.black,
               ),
-              title: Text('O QUE É COLETA SELETIVA'),
+              title: Text('O QUE É COLETA SELETIVA?'),
               onTap: () {},
             ),
             ListTile(
               leading: ImageIcon(
-                AssetImage('assets/icons/balao.png'),
+                AssetImage(
+                  'assets/icons/balao.png',
+                ),
+                color: Colors.black,
               ),
               title: Text('QUAL Ë A SUA IMPORTÂNCIA?'),
               onTap: () {},
@@ -74,6 +79,7 @@ class _MainPageState extends State<MainPage> {
             ListTile(
               leading: ImageIcon(
                 AssetImage('assets/icons/balao.png'),
+                color: Colors.black,
               ),
               title: Text('PORQUE É IMPORTANTE RECICLAR?'),
               onTap: () {},
@@ -81,6 +87,7 @@ class _MainPageState extends State<MainPage> {
             ListTile(
               leading: ImageIcon(
                 AssetImage('assets/icons/balao.png'),
+                color: Colors.black,
               ),
               title: Text('COMO VOCÊ PODE CONTRIBUIR?'),
               onTap: () {},
@@ -88,6 +95,7 @@ class _MainPageState extends State<MainPage> {
             ListTile(
               leading: ImageIcon(
                 AssetImage('assets/icons/balao.png'),
+                color: Colors.black,
               ),
               title: Text('QUEM SOMOS?'),
               onTap: () {},

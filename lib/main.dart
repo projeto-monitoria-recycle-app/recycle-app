@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:recicle_app/screens/impactPage.dart';
 import 'package:recicle_app/screens/mainPage.dart';
 import 'package:recicle_app/screens/materialPage.dart';
 import 'package:recicle_app/screens/on_boarding_screen.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         MainPage.routeName: (context) => MainPage(),
         MaterialWastePage.routeName: (context) => MaterialWastePage(),
+        ImpactPage.routeName: (context) => ImpactPage(),
       },
     );
   }

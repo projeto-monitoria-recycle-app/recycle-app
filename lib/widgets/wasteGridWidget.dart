@@ -7,8 +7,8 @@ class WasteGrid extends StatelessWidget {
     return Expanded(
       child: GridView.count(
         padding: EdgeInsets.all(30),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
         crossAxisCount: 2,
         children: List.generate(
           wasteList.length,
@@ -40,7 +40,6 @@ class WasteGrid extends StatelessWidget {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       '$material',
@@ -50,13 +49,11 @@ class WasteGrid extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    IconButton(
-                        icon: ImageIcon(
-                          icon,
-                          color: Colors.white,
-                          size: 60,
-                        ),
-                        onPressed: () {})
+                    ImageIcon(
+                      icon,
+                      color: Colors.white,
+                      size: 70,
+                    )
                   ],
                 ),
               ),

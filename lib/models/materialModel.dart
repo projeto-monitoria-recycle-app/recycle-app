@@ -55,7 +55,7 @@ List wasteList = [
   ),
   Waste(
     'Metal',
-    color: Colors.yellow,
+    color: Colors.yellow[700],
     icon: AssetImage('assets/icons/metal.png'),
     title: '',
     content: [''],
