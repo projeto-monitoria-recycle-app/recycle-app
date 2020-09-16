@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          height: 0.3 * size.height,
+          height: 0.25 * size.height,
           decoration: BoxDecoration(
             color: Theme.of(context).accentColor,
             // borderRadius: BorderRadius.only(
@@ -19,27 +19,27 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Spacer(),
-                  Text(
-                    'Olá Kadu!',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  Spacer(
-                    flex: 5,
-                  ),
-                  CircleAvatar(
-                    child: Image.asset('assets/img/avatar.png'),
-                    backgroundColor: Colors.white,
-                  ),
-                  Spacer(),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Spacer(),
+              //     Text(
+              //       'Olá Kadu!',
+              //       style: TextStyle(
+              //           color: Colors.white,
+              //           fontSize: 18,
+              //           fontWeight: FontWeight.w500),
+              //     ),
+              //     Spacer(
+              //       flex: 5,
+              //     ),
+              //     CircleAvatar(
+              //       child: Image.asset('assets/img/avatar.png'),
+              //       backgroundColor: Colors.white,
+              //     ),
+              //     Spacer(),
+              //   ],
+              // ),
               Text(
                 'O que você que descartar hoje?',
                 style: TextStyle(
