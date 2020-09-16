@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/screens/impactPage.dart';
-import 'package:recicle_app/screens/recyclePage.dart';
-import 'package:recicle_app/screens/homePage.dart';
+import 'package:recicle_app/models/questionAnswerModel.dart';
+import 'package:recicle_app/screens/impactScreen.dart';
+import 'package:recicle_app/screens/recycleScreen.dart';
+import 'package:recicle_app/screens/homeScreen.dart';
 
-class MainPage extends StatefulWidget {
+class MainScreen extends StatefulWidget {
   static const routeName = '/homepage';
   @override
-  _MainPageState createState() => _MainPageState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainScreenState extends State<MainScreen> {
   int _selectedMenu = 0;
+
   static List<Widget> _widgetList = <Widget>[
-    HomePage(),
-    RecyclePage(),
-    ImpactPage(),
+    HomeScreen(),
+    RecycleScreen(),
+    ImpactScreen(),
     Text('Page 4')
   ];
 
@@ -64,7 +66,10 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.black,
               ),
               title: Text('O QUE É COLETA SELETIVA?'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/question',
+                    arguments: questionsList[0]);
+              },
             ),
             ListTile(
               leading: ImageIcon(
@@ -73,8 +78,11 @@ class _MainPageState extends State<MainPage> {
                 ),
                 color: Colors.black,
               ),
-              title: Text('QUAL Ë A SUA IMPORTÂNCIA?'),
-              onTap: () {},
+              title: Text('QUAL É A SUA IMPORTÂNCIA?'),
+              onTap: () {
+                Navigator.pushNamed(context, '/question',
+                    arguments: questionsList[1]);
+              },
             ),
             ListTile(
               leading: ImageIcon(
@@ -82,7 +90,10 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.black,
               ),
               title: Text('PORQUE É IMPORTANTE RECICLAR?'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/question',
+                    arguments: questionsList[4]);
+              },
             ),
             ListTile(
               leading: ImageIcon(
@@ -90,7 +101,10 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.black,
               ),
               title: Text('COMO VOCÊ PODE CONTRIBUIR?'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/question',
+                    arguments: questionsList[2]);
+              },
             ),
             ListTile(
               leading: ImageIcon(
@@ -98,7 +112,10 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.black,
               ),
               title: Text('QUEM SOMOS?'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/question',
+                    arguments: questionsList[3]);
+              },
             ),
             ListTile(
               title: Text(
@@ -119,7 +136,7 @@ class _MainPageState extends State<MainPage> {
                         height: 100,
                         width: 150,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color: Colors.red[300],
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                       ),

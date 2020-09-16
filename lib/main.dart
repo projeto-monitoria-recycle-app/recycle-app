@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recicle_app/screens/impactPage.dart';
-import 'package:recicle_app/screens/mainPage.dart';
-import 'package:recicle_app/screens/materialPage.dart';
-import 'package:recicle_app/screens/on_boarding_screen.dart';
+import 'package:recicle_app/screens/QuestionAnswerScreen.dart';
+import 'package:recicle_app/screens/impactScreen.dart';
+import 'package:recicle_app/screens/mainScreen.dart';
+import 'package:recicle_app/screens/materialScreen.dart';
+import 'package:recicle_app/screens/onBoardingScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,9 +25,10 @@ class MyApp extends StatelessWidget {
       ),
       home: OnBoardingScreen(),
       routes: {
-        MainPage.routeName: (context) => MainPage(),
-        MaterialWastePage.routeName: (context) => MaterialWastePage(),
-        ImpactPage.routeName: (context) => ImpactPage(),
+        MainScreen.routeName: (context) => MainScreen(),
+        MaterialWasteScreen.routeName: (context) => MaterialWasteScreen(),
+        ImpactScreen.routeName: (context) => ImpactScreen(),
+        QuestionAnswerScreen.routeName: (context) => QuestionAnswerScreen(),
       },
     );
   }

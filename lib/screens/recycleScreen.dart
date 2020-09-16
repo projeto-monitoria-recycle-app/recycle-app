@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RecyclePage extends StatelessWidget {
+class RecycleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // THIS IS ONLY A TEST----------------------------------------------------

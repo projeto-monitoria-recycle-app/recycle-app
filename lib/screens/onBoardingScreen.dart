@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recicle_app/models/onboardingcard.dart';
-import 'package:recicle_app/widgets/animated_bouncing_btn.dart';
+import 'package:recicle_app/widgets/animatedButtomWidget.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ImpactPage extends StatelessWidget {
+class ImpactScreen extends StatelessWidget {
   static const routeName = '/impact';
 
   @override

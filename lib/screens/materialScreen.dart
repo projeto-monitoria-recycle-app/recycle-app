@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recicle_app/models/materialModel.dart';
 
-class MaterialWastePage extends StatelessWidget {
+class MaterialWasteScreen extends StatelessWidget {
   static const routeName = '/material';
 
   @override

@@ -11,7 +11,6 @@ class Waste {
   final List<String> process;
   final String destination;
   final String economicalImpact;
-  final String finacialImpact;
   final String environmentalImpact;
   final List<String> itens;
 
@@ -26,7 +25,6 @@ class Waste {
     this.process,
     this.destination,
     this.economicalImpact,
-    this.finacialImpact,
     this.environmentalImpact,
     this.itens,
   });

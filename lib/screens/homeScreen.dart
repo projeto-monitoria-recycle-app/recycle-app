@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recicle_app/widgets/wasteGridWidget.dart';
 
-class HomePage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
