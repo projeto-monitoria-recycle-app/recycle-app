@@ -3,6 +3,7 @@ import 'package:recicle_app/models/questionAnswerModel.dart';
 import 'package:recicle_app/screens/impactScreen.dart';
 import 'package:recicle_app/screens/recycleScreen.dart';
 import 'package:recicle_app/screens/homeScreen.dart';
+import 'package:recicle_app/widgets/drawerWidget.dart';
 
 class MainScreen extends StatefulWidget {
   static const routeName = '/homepage';
@@ -34,142 +35,7 @@ class _MainScreenState extends State<MainScreen> {
         title: Text('Recycle App'),
         backgroundColor: Theme.of(context).accentColor,
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Theme.of(context).accentColor),
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(),
-                    Text(
-                      'Recicla Terê',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                    Text(
-                      "MENU",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ListTile(
-              leading: ImageIcon(
-                AssetImage('assets/icons/balao.png'),
-                color: Colors.black,
-              ),
-              title: Text('O QUE É COLETA SELETIVA?'),
-              onTap: () {
-                Navigator.pushNamed(context, '/question',
-                    arguments: questionsList[0]);
-              },
-            ),
-            ListTile(
-              leading: ImageIcon(
-                AssetImage(
-                  'assets/icons/balao.png',
-                ),
-                color: Colors.black,
-              ),
-              title: Text('QUAL É A SUA IMPORTÂNCIA?'),
-              onTap: () {
-                Navigator.pushNamed(context, '/question',
-                    arguments: questionsList[1]);
-              },
-            ),
-            ListTile(
-              leading: ImageIcon(
-                AssetImage('assets/icons/balao.png'),
-                color: Colors.black,
-              ),
-              title: Text('PORQUE É IMPORTANTE RECICLAR?'),
-              onTap: () {
-                Navigator.pushNamed(context, '/question',
-                    arguments: questionsList[4]);
-              },
-            ),
-            ListTile(
-              leading: ImageIcon(
-                AssetImage('assets/icons/balao.png'),
-                color: Colors.black,
-              ),
-              title: Text('COMO VOCÊ PODE CONTRIBUIR?'),
-              onTap: () {
-                Navigator.pushNamed(context, '/question',
-                    arguments: questionsList[2]);
-              },
-            ),
-            ListTile(
-              leading: ImageIcon(
-                AssetImage('assets/icons/balao.png'),
-                color: Colors.black,
-              ),
-              title: Text('QUEM SOMOS?'),
-              onTap: () {
-                Navigator.pushNamed(context, '/question',
-                    arguments: questionsList[3]);
-              },
-            ),
-            ListTile(
-              title: Text(
-                "NOSSOS PARCEIROS",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                // padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Container(
-                        height: 100,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.red[300],
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Container(
-                        height: 100,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Container(
-                        height: 100,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+      drawer: DrawerConfig(),
       body: Container(
         child: _widgetList.elementAt(_selectedMenu),
       ),
