@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/models/questionAnswerModel.dart';
 import 'package:recicle_app/screens/impactScreen.dart';
 import 'package:recicle_app/screens/recycleScreen.dart';
 import 'package:recicle_app/screens/homeScreen.dart';
 import 'package:recicle_app/widgets/drawerWidget.dart';
 
 class MainScreen extends StatefulWidget {
-  static const routeName = '/homepage';
+  static const routeName = '/mainpage';
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -17,8 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> _widgetList = <Widget>[
     HomeScreen(),
     RecycleScreen(),
-    ImpactScreen(),
-    Text('Page 4')
+    ImpactScreen()
   ];
 
   void _onMenuTapped(int index) {
@@ -45,25 +43,19 @@ class _MainScreenState extends State<MainScreen> {
             icon: ImageIcon(
               AssetImage('assets/icons/home.png'),
             ),
-            title: Text('HomePage'),
+            title: Text('Resíduos'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/recycle.png'),
             ),
-            title: Text('Reciclar'),
+            title: Text('Coleta'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/impact.png'),
             ),
             title: Text('Impacto'),
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/icons/user.png'),
-            ),
-            title: Text('Minha Conta'),
           ),
         ],
         currentIndex: _selectedMenu,

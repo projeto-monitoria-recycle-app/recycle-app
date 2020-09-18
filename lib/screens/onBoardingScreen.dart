@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/models/onboardingcard.dart';
+import 'package:recicle_app/models/onBoardingCardModel.dart';
 import 'package:recicle_app/widgets/animatedButtomWidget.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -98,7 +98,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ? AnimatedBouncingButton(
                       text: 'Vamos começar!',
                       onTapFunction: () {
-                        Navigator.pushReplacementNamed(context, '/homepage');
+                        Navigator.pushReplacementNamed(context, '/mainpage');
                       },
                     )
                   : Container()

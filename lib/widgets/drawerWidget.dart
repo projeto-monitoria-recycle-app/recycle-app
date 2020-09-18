@@ -59,17 +59,6 @@ class DrawerConfig extends StatelessWidget {
               AssetImage('assets/icons/balao.png'),
               color: Colors.black,
             ),
-            title: Text('PORQUE É IMPORTANTE RECICLAR?'),
-            onTap: () {
-              Navigator.pushNamed(context, '/question',
-                  arguments: questionsList[4]);
-            },
-          ),
-          ListTile(
-            leading: ImageIcon(
-              AssetImage('assets/icons/balao.png'),
-              color: Colors.black,
-            ),
             title: Text('COMO VOCÊ PODE CONTRIBUIR?'),
             onTap: () {
               Navigator.pushNamed(context, '/question',
@@ -93,50 +82,48 @@ class DrawerConfig extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              // padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      height: 100,
-                      width: 150,
-                      child: Image.asset("assets/img/logo-associacao.png"),
-                      decoration: BoxDecoration(
-                        // color: Colors.grey[300],
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            // padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    height: 100,
+                    width: 150,
+                    child: Image.asset("assets/img/logo-associacao.png"),
+                    decoration: BoxDecoration(
+                      // color: Colors.grey[300],
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      height: 100,
-                      width: 150,
-                      child: Image.asset('assets/img/logo-prefeitura.png'),
-                      decoration: BoxDecoration(
-                        // color: Colors.grey[300],
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    height: 100,
+                    width: 150,
+                    child: Image.asset('assets/img/logo-prefeitura.png'),
+                    decoration: BoxDecoration(
+                      // color: Colors.grey[300],
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      height: 100,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    height: 100,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           )
         ],
