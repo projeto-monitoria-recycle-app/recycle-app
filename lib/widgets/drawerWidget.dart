@@ -105,7 +105,7 @@ class DrawerConfig extends StatelessWidget {
                   child: Container(
                     height: 100,
                     width: 150,
-                    child: Image.asset('assets/img/logo-prefeitura.png'),
+                    child: Image.asset('assets/img/logo-unifeso.png'),
                     decoration: BoxDecoration(
                       // color: Colors.grey[300],
                       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -117,7 +117,7 @@ class DrawerConfig extends StatelessWidget {
                   child: Container(
                     height: 100,
                     width: 150,
-                    child: Image.asset('assets/img/logo-unifeso.png'),
+                    child: Image.asset('assets/img/logo-prefeitura.png'),
                     decoration: BoxDecoration(
                       // color: Colors.grey[300],
                       borderRadius: BorderRadius.all(Radius.circular(10)),
