@@ -14,28 +14,63 @@ class CollectPoint {
 
 List<CollectPoint> collectPointList = [
   CollectPoint(
-    "PONTO COLETA 01",
+    "SEC. DE EDUCAÇÃO",
     adreess: 'Rua 01',
-    district: 'Alto',
-  ),
-  CollectPoint(
-    "PONTO COLETA 02",
-    adreess: 'Rua 02',
     district: 'Agriões',
   ),
   CollectPoint(
-    "PONTO COLETA 03",
+    "SHOPPING VALLE",
+    adreess: 'Rua 02',
+    district: 'Albuquerque',
+  ),
+  CollectPoint(
+    "UNIFESO (SEDE)",
     adreess: 'Rua 03',
-    district: 'Barra do Imbuí',
+    district: 'Alto',
   ),
   CollectPoint(
-    "PONTO COLETA 04",
+    "BOMBEIROS",
     adreess: 'Rua 04',
-    district: 'Panorama',
+    district: 'Bonsucesso',
   ),
   CollectPoint(
-    "PONTO COLETA 05",
+    "ANTIGO FÓRUM",
     adreess: 'Rua 05',
-    district: 'Pimenteiras',
+    district: 'Várzea',
+  ),
+  CollectPoint(
+    "SHOPPING DO ALTO",
+    adreess: 'Rua 05',
+    district: 'Alto',
+  ),
+  CollectPoint(
+    "HOTEL SESC ALPINA",
+    adreess: 'Rua 05',
+    district: 'Golfe',
+  ),
+  CollectPoint(
+    "POSTO DE SAÚDE",
+    adreess: 'Rua 05',
+    district: 'Pessegueiros',
+  ),
+  CollectPoint(
+    "PREFEITURA",
+    adreess: 'Rua 05',
+    district: 'Centro',
+  ),
+  CollectPoint(
+    "ESCOLA FAZ.ALPINA",
+    adreess: 'Rua 05',
+    district: 'Santa Rita',
+  ),
+  CollectPoint(
+    "UNIFESO (QUINTA)",
+    adreess: 'Rua 05',
+    district: 'Vale do Paraíso',
+  ),
+  CollectPoint(
+    "LOJA RÚSTIKA",
+    adreess: 'Rua 05',
+    district: 'Vargem Grande',
   ),
 ];

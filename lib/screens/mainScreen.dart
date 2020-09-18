@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: ImageIcon(
               AssetImage('assets/icons/recycle.png'),
             ),
-            title: Text('Coleta'),
+            title: Text('Coleta Seletiva'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
