@@ -68,8 +68,8 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Container(),
                       Positioned(
-                        top: -10,
-                        right: 10,
+                        top: -97,
+                        right: 20,
                         height: 60,
                         child: Image.asset(
                           'assets/img/Trash.png',
