@@ -1,9 +1,11 @@
 import 'dart:collection';
+
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:recicle_app/screens/mainScreen.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key, this.recycleRouteAddress}) : super(key: key);
@@ -109,14 +111,19 @@ class _GMapState extends State<GMap> {
     );
   }
 
-  void _onMapCreated(GoogleMapController controller) {
-    _mapController = controller;
+  List<List> coordinates = [
+    [-22.4187176, -42.9577971],
+    [-22.4197177, -42.956518],
+    [-22.4186318, -42.9567849]
+  ];
 
-    setState(() {
+  void _populateMapMakers(oordinates) {
+    void addMarkes(arg, arg2) {
+      String id = (arg + arg2).toString();
       _markers.add(
         Marker(
-          markerId: MarkerId("0"),
-          position: LatLng(-22.422185623993627, -42.97626432547046),
+          markerId: MarkerId(id),
+          position: LatLng(arg, arg2),
           infoWindow: InfoWindow(
             title: "Lugar qualquer",
             snippet: "An Interesting city",
@@ -124,6 +131,27 @@ class _GMapState extends State<GMap> {
           // icon: _markerIcon
         ),
       );
+    }
+
+    coordinates
+        .forEach((coordinate) => {addMarkes(coordinate[0], coordinate[1])});
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    _mapController = controller;
+    setState(() {
+      _markers.add(
+        Marker(
+          markerId: MarkerId("0"),
+          position: LatLng(-22.418480, -42.957099),
+          infoWindow: InfoWindow(
+            title: "Lugar qualquer",
+            snippet: "An Interesting city",
+          ),
+          // icon: _markerIcon
+        ),
+      );
+      _populateMapMakers(coordinates);
     });
   }
 
@@ -137,11 +165,6 @@ class _GMapState extends State<GMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.close),
-        backgroundColor: Colors.blue,
-        automaticallyImplyLeading: true,
-      ),
       body: Stack(
         children: <Widget>[
           GoogleMap(
@@ -157,10 +180,25 @@ class _GMapState extends State<GMap> {
             zoomGesturesEnabled: true,
             zoomControlsEnabled: false,
           ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
-            child: Text("EU QUERO CAFE"),
+          SafeArea(
+            child: Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.fromLTRB(10.0, 10.0, 0, 80),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  size: 20,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainScreen(),
+                      ));
+                },
+              ),
+            ),
           ),
           SafeArea(
             child: Align(
@@ -172,9 +210,9 @@ class _GMapState extends State<GMap> {
                   children: [
                     ClipOval(
                       child: Material(
-                        color: Colors.orange[100], // button color
+                        // color: Colors.orange[100], // button color
                         child: InkWell(
-                          splashColor: Colors.orange, // inkwell color
+                          splashColor: Colors.blue, // inkwell color
                           child: SizedBox(
                             width: 56,
                             height: 56,
@@ -201,7 +239,7 @@ class _GMapState extends State<GMap> {
                     ),
                     ClipOval(
                       child: Material(
-                        color: Colors.orange[100], // button color
+                        // color: Colors.orange[100], // button color
                         child: InkWell(
                           splashColor: Colors.orange, // inkwell color
                           child: SizedBox(
@@ -236,17 +274,10 @@ class _GMapState extends State<GMap> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Increment',
-        child: Icon(Icons.map),
-        onPressed: () {
-          setState(() {
-            _showMapStyle = !_showMapStyle;
-          });
-
-          _toggleMapStyle();
-        },
-      ),
     );
   }
 }
+
+class Double {}
+
+class Dynamic {}
