@@ -36,14 +36,14 @@ class _GMapScreenState extends State<GMapScreen> {
         print('CURRENT POS: $_currentPosition');
 
         // For moving the camera to current location
-        _mapController.animateCamera(
-          CameraUpdate.newCameraPosition(
-            CameraPosition(
-              target: LatLng(position.latitude, position.longitude),
-              zoom: 15.0,
-            ),
-          ),
-        );
+        // _mapController.animateCamera(
+        //   CameraUpdate.newCameraPosition(
+        //     CameraPosition(
+        //       target: LatLng(position.latitude, position.longitude),
+        //       zoom: 15.0,
+        //     ),
+        //   ),
+        // );
       });
     }).catchError((e) {
       print(e);

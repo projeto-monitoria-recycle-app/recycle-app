@@ -18,6 +18,11 @@ class CollectRoute {
   });
 }
 
+List<String> districtList =
+    new List<String>.from(collectRouteList.map((element) {
+  return element.district;
+}));
+
 List<CollectRoute> collectRouteList = [
   CollectRoute(
     "Rua Roberto Rosa",
