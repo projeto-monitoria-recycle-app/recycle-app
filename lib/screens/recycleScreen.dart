@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
 import 'package:recicle_app/models/collectRouteModel.dart';
-import 'package:recicle_app/screens/mapPage.dart';
 
 class RecycleScreen extends StatelessWidget {
   @override
@@ -100,10 +99,16 @@ class RecycleScreen extends StatelessWidget {
                                 FlatButton(
                                   padding: EdgeInsets.all(0),
                                   onPressed: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => GMap()));
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/map',
+                                      arguments: collectPointList[index],
+                                    );
+
+                                    // Navigator.pushReplacement(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => GMap()));
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAlias,

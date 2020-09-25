@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:recicle_app/screens/MapScreen.dart';
 import 'package:recicle_app/screens/QuestionAnswerScreen.dart';
 import 'package:recicle_app/screens/mainScreen.dart';
 import 'package:recicle_app/screens/materialScreen.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         MainScreen.routeName: (context) => MainScreen(),
         MaterialWasteScreen.routeName: (context) => MaterialWasteScreen(),
         QuestionAnswerScreen.routeName: (context) => QuestionAnswerScreen(),
+        GMapScreen.routeName: (context) => GMapScreen(),
       },
     );
   }

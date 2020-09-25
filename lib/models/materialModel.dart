@@ -11,6 +11,7 @@ class Waste {
   final List<String> process;
   final String destination;
   final String economicalImpact;
+  final String socialImpact;
   final String environmentalImpact;
   final List<String> itens;
 
@@ -25,6 +26,7 @@ class Waste {
     this.process,
     this.destination,
     this.economicalImpact,
+    this.socialImpact,
     this.environmentalImpact,
     this.itens,
   });
@@ -50,7 +52,7 @@ List wasteList = [
     title: 'Como descartar plástico corretamente?',
     content: [
       'O plástico é um dos produtos mais utilizados na sociedade atual. O material plástico sintético demora um grande tempo para se decompor, em torno de 500 a 1000 anos, acumulando cada vez mais lixo.',
-      ' A reciclagem do plástico é de extrema importância para o meio ambiente. Não podemos esquecer também, que a reciclagem de plástico gera renda para milhares de pessoas no Brasil que atuam, principalmente, em empresas e cooperativas de catadores e recicladores de materiais reciclados.',
+      'A reciclagem do plástico é de extrema importância para o meio ambiente. Não podemos esquecer também, que a reciclagem de plástico gera renda para milhares de pessoas no Brasil que atuam, principalmente, em empresas e cooperativas de catadores e recicladores de materiais reciclados.',
       'O que separar para a coleta seletiva: embalagens e utensílios como garrafas e potes, sacos e sacolas, baldes, canetas, brinquedos, canos, tubos e conexão de PVC, mesas e cadeiras de plástico e radiografias. ',
       'O que não separar: embalagens metalizadas, adesivos, cabos de panela, espuma de colchão, esponja de cozinha, embalagens de produtos tóxicos, isopor. '
     ],
@@ -78,7 +80,7 @@ List wasteList = [
     content: [
       'O vidro é um material que possui um tempo indeterminado para desaparecer do meio ambiente. Embalagens de vidro podem ser totalmente reaproveitadas no ciclo produtivo da reciclagem do, sem nenhuma perda de material.',
       'A reutilização do vidro para a produção de novas embalagens consome menor quantidade de energia e emite resíduos menos particulados de CO2, contribuindo para a preservação do meio ambiente.',
-      ' Outro aspecto é o menor descarte de lixo, reduzindo os custos de coleta urbana, e aumentando a vida útil dos aterros sanitários. ',
+      'Outro aspecto é o menor descarte de lixo, reduzindo os custos de coleta urbana, e aumentando a vida útil dos aterros sanitários. ',
       'O que separar para a coleta seletiva: embalagens como garrafas e potes de qualquer cor vazias e limpas, copos e taças. ',
       'O que não separar: espelhos, vidros planos, temperados e resfriados, cristais, utensílios de porcelanas e cerâmica, pirex e similares, lâmpadas. '
     ],
@@ -103,7 +105,7 @@ List wasteList = [
     title: 'Como descartar óleo vegetal corretamente?',
     content: [
       'Muitos bares, restaurantes, hotéis e residências ainda jogam o óleo utilizado na cozinha direto na rede de esgoto, desconhecendo os prejuízos dessa ação. Quando retido no encanamento, o óleo causa entupimento das tubulações e faz com que seja necessária a aplicação de diversos produtos químicos para a sua remoção.',
-      ' Entretanto, todos esses métodos de descarte do óleo de cozinha usados são meios de contaminação do meio ambiente, podendo poluir as águas, o solo e até mesmo a atmosfera. ',
+      'Entretanto, todos esses métodos de descarte do óleo de cozinha usados são meios de contaminação do meio ambiente, podendo poluir as águas, o solo e até mesmo a atmosfera. ',
       'Como separar o seu óleo vegetal: armazenar o óleo de cozinha em uma garrafa pet ou embalagem de sabão liquido.',
       'O que não realizar com o óleo: não descartar o óleo na pia, ralos, bueiros ou no meio ambiente.'
     ],
@@ -114,7 +116,15 @@ List wasteList = [
     color: Colors.grey,
     icon: AssetImage('assets/icons/no-recycle.png'),
     title: 'Como descartar não recicláveis corretamente?',
-    content: [],
+    content: [
+      'Alguns resíduos não são adequados para o processo da coleta seletiva. Estes materiais após passarem por processos industriais, não podem ser reutilizados e tem como destino o lixo comum.',
+      'Abaixo, daremos dicas de quais materiais não são adequados para a separação do processo da coleta seletiva. Ao praticar está ação, você estará ajudando o meio ambiente de Teresópolis e também contribuindo com a equipe de catadores durante o processo de separação dos resíduos.',
+      'Quais resíduos não são adequados? ',
+      'Papéis não recicláveis: adesivos, etiquetas, fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados.',
+      'Metais não recicláveis: clipes, grampos, esponjas de aço, latas de tintas, latas de combustível e pilhas.',
+      'Plásticos não recicláveis: cabos de panela, tomadas, isopor, adesivos, espuma, teclados de computador, acrílicos.',
+      'Vidros não recicláveis: espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planos',
+    ],
     images: ['assets/img/onBoardingImg-04.svg'],
   ),
   Waste(
