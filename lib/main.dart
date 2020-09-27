@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:recicle_app/screens/MapScreen.dart';
 import 'package:recicle_app/screens/QuestionAnswerScreen.dart';
 import 'package:recicle_app/screens/mainScreen.dart';
-import 'package:recicle_app/screens/materialScreen.dart';
+import 'package:recicle_app/screens/materialDescriptionScreen.dart';
 import 'package:recicle_app/screens/onBoardingScreen.dart';
 
 void main() => runApp(MyApp());

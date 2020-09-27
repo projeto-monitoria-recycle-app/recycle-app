@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recicle_app/screens/impactScreen.dart';
-import 'package:recicle_app/screens/recycleScreen.dart';
-import 'package:recicle_app/screens/homeScreen.dart';
+import 'package:recicle_app/screens/collectScreen.dart';
+import 'package:recicle_app/screens/materialScreen.dart';
 import 'package:recicle_app/widgets/drawerWidget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: ImageIcon(
               AssetImage('assets/icons/home.png'),
             ),
-            title: Text('Resíduos'),
+            title: Text('Recicláveis'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(

@@ -83,15 +83,15 @@ class DrawerConfig extends StatelessWidget {
             ),
           ),
           SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
+            // scrollDirection: Axis.horizontal,
             // padding: EdgeInsets.all(10),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Container(
-                    height: 100,
+                    height: 75,
                     width: 150,
                     child: Image.asset("assets/img/logo-associacao.png"),
                     decoration: BoxDecoration(
