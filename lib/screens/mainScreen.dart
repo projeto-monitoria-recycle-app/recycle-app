@@ -28,11 +28,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Text('Recycle App'),
-      //   backgroundColor: Theme.of(context).accentColor,
-      // ),
       drawer: DrawerConfig(),
       body: Container(
         child: _widgetList.elementAt(_selectedMenu),

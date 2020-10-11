@@ -23,32 +23,69 @@ class MaterialWasteScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            Text(
-              waste.title,
-              style: TextStyle(
-                  color: waste.color,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            for (String item in waste.content)
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                child: Text(
-                  item,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      body: SingleChildScrollView(
+        child: Container(
+          height: 1000,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Text(
+                  waste.title,
+                  style: TextStyle(
+                      color: waste.color,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22),
                 ),
-              ),
-            Expanded(
-              child: SvgPicture.asset(waste.images[0]),
+                SizedBox(
+                  height: 20,
+                ),
+                for (String item in waste.content)
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text(
+                      item,
+                      textAlign: TextAlign.justify,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                Text(
+                  "O que separar para a coleta seletiva: ",
+                  style: TextStyle(
+                      color: waste.color,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  child: Text(
+                    waste.recyclable,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Text(
+                  "O que não separar: ",
+                  style: TextStyle(
+                      color: waste.color,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  child: Text(
+                    waste.notRecyclable,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Expanded(
+                  child: SvgPicture.asset(waste.images[0]),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

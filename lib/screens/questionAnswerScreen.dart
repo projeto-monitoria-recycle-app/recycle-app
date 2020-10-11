@@ -11,7 +11,7 @@ class QuestionAnswerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).accentColor,
-        title: Text('Recycle App'),
+        title: Text('Recicle Terê'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

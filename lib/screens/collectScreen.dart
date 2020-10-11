@@ -64,25 +64,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
           floating: true,
           snap: true,
           title: Text('Coleta Seletiva'),
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.access_alarm,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                setState(() {
-                  districtList.add("Friburgo");
-                  // collectPointList.forEach((element) {
-                  //   filteredCollectPointList.add(element);
-                  // });
-                  print(filteredCollectPointList.length);
-                  print(collectPointList.length);
-                });
-              },
-            ),
-          ],
-          expandedHeight: 180,
+          expandedHeight: 170,
           backgroundColor: Theme.of(context).accentColor,
           flexibleSpace: FlexibleSpaceBar(
             background: Column(
@@ -109,7 +91,12 @@ class _RecycleScreenState extends State<RecycleScreen> {
                   ),
                   child: DropdownButton<String>(
                     style: TextStyle(color: Colors.grey[700]),
-                    hint: Text('Selecione o Bairro'),
+                    hint: Text(
+                      'Selecione o Bairro',
+                      style: TextStyle(
+                        color: Theme.of(context).accentColor.withOpacity(0.5),
+                      ),
+                    ),
                     value: selectedDistrict,
                     onChanged: (String newValue) {
                       setState(() {
@@ -140,14 +127,12 @@ class _RecycleScreenState extends State<RecycleScreen> {
             ),
           ),
         ),
-        SliverFillRemaining(
-          hasScrollBody: false,
+        SliverToBoxAdapter(
           child: Column(
             children: [
               Container(
                 margin: EdgeInsets.all(15),
                 height: 270,
-                // color: Colors.red[100],
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -164,20 +149,28 @@ class _RecycleScreenState extends State<RecycleScreen> {
                         Text('ver todos')
                       ],
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          filteredCollectPointList.length,
-                          (index) {
+                    Text("Clique no card para ver o ponto no mapa."),
+                    Container(
+                      height: 180,
+                      child: ListView.builder(
+                          addAutomaticKeepAlives: false,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: filteredCollectPointList.length,
+                          itemBuilder: (context, index) {
                             var name = filteredCollectPointList[index].name;
                             var address =
                                 filteredCollectPointList[index].adreess;
                             var district =
                                 filteredCollectPointList[index].district;
-
                             return Column(
                               children: [
+                                Text(
+                                  district,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context).accentColor),
+                                ),
                                 FlatButton(
                                   padding: EdgeInsets.all(0),
                                   onPressed: () {
@@ -194,12 +187,12 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                       children: [
                                         Container(
                                           width: 150,
-                                          height: 200,
+                                          height: 150,
                                           child: Column(
                                             children: [
                                               Container(
                                                 color: Colors.grey[200],
-                                                height: 150,
+                                                // height: 140,
                                                 child: Image.asset(
                                                     'assets/img/ecopontos.jpg',
                                                     fit: BoxFit.cover),
@@ -215,9 +208,9 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                                       style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
+                                                        fontSize: 12,
                                                       ),
                                                     ),
-                                                    Text(address),
                                                   ],
                                                 ),
                                               )
@@ -228,117 +221,54 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  district,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Theme.of(context).accentColor),
-                                ),
                               ],
                             );
-                          },
-                        ),
-                      ),
+                          }),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'ROTAS DE COLETA SELETIVA',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[800]),
                     ),
                   ],
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(15),
-                height: 270,
-                // color: Colors.red[100],
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'ROTAS DE COLETA SELETIVA',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey[800]),
-                        ),
-                      ],
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          filteredCollectRouteList.length,
-                          (index) {
-                            var dayOfWeek =
-                                filteredCollectRouteList[index].dayOfWeek;
-                            var hour =
-                                filteredCollectRouteList[index].hour.hour;
-                            var minute =
-                                filteredCollectRouteList[index].hour.minute;
-                            var location =
-                                filteredCollectRouteList[index].location;
-                            var district =
-                                filteredCollectRouteList[index].district;
+                height: 250,
+                child: ListView.builder(
+                  addAutomaticKeepAlives: false,
+                  itemCount: filteredCollectRouteList.length,
+                  itemBuilder: (context, index) {
+                    var dayOfWeek = filteredCollectRouteList[index].dayOfWeek;
+                    var hour = filteredCollectRouteList[index].hour.hour;
+                    var minute = filteredCollectRouteList[index].hour.minute;
+                    var location = filteredCollectRouteList[index].location;
+                    var district = filteredCollectRouteList[index].district;
 
-                            return Column(
-                              children: [
-                                Card(
-                                  clipBehavior: Clip.antiAlias,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: 150,
-                                        height: 200,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              color: Colors.grey[200],
-                                              height: 150,
-                                              child: Image.asset(
-                                                'assets/img/caminhao-coleta.jpg',
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Spacer(),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "$dayOfWeek-$hour:$minute",
-                                                    overflow: TextOverflow.fade,
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    location,
-                                                    overflow: TextOverflow.fade,
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  district,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Theme.of(context).accentColor),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
+                    return Card(
+                      child: ListTile(
+                        title: Text(location),
+                        subtitle: Text(
+                            "Bairro: $district - $dayOfWeek - $hour:$minute "),
                       ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
             ],

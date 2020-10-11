@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   filterGrid(search) {
     filteredWasteList.clear();
     for (var material in wasteList) {
-      String itemList = material.itens.join().toLowerCase();
+      String itemList = material.searchItens.join().toLowerCase();
       if (itemList.contains(search)) {
         setState(() {
           filteredWasteList.add(material);
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 75,
                   ),
                   Text(
-                    'O que você que descartar hoje?',
+                    'O que você gostaria de descartar hoje?',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -68,7 +68,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           () {
                             searchedItem = value.toLowerCase();
                             filterGrid(searchedItem);
-                            // print(searchedItem);
                           },
                         );
                       },
