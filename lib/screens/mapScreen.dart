@@ -92,10 +92,6 @@ class _GMapScreenState extends State<GMapScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("EcoPontos"),
-        backgroundColor: Theme.of(context).accentColor,
-      ),
       body: Stack(
         children: [
           Container(
@@ -148,6 +144,21 @@ class _GMapScreenState extends State<GMapScreen> {
                     ),
                   ),
                 ),
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.fromLTRB(10.0, 10.0, 0, 80),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  size: 20,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
             ),
           ),
