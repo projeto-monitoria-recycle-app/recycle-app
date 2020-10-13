@@ -5,6 +5,7 @@ import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
 
 class GMapScreen extends StatefulWidget {
@@ -71,6 +72,7 @@ class _GMapScreenState extends State<GMapScreen> {
           Marker(
             markerId: MarkerId(collectPoint.name),
             position: LatLng(collectPoint.latitude, collectPoint.longitude),
+            consumeTapEvents: false,
             infoWindow: InfoWindow(
               title: collectPoint.name,
               snippet: collectPoint.adreess,
@@ -100,7 +102,7 @@ class _GMapScreenState extends State<GMapScreen> {
             child: GoogleMap(
               markers: _markers,
               onMapCreated: _onMapCreated,
-              myLocationEnabled: true,
+              mapToolbarEnabled: false,
               myLocationButtonEnabled: false,
               zoomGesturesEnabled: true,
               zoomControlsEnabled: false,
@@ -124,22 +126,26 @@ class _GMapScreenState extends State<GMapScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 1,
-                        offset: Offset(0, 1),
+                        offset: Offset(2, 3),
                       ),
                     ],
                   ),
-                  height: 100,
-                  width: 300,
-                  child: Column(
-                    children: [
-                      Text(
-                        "texto 1",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                  // height: 100,
+                  // width: 300,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          collectPoint.name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text('Texto 2'),
-                    ],
+                        Text(collectPoint.adreess),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -149,7 +155,7 @@ class _GMapScreenState extends State<GMapScreen> {
             child: Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: const EdgeInsets.only(right: 10.0, bottom: 60.0),
+                padding: const EdgeInsets.only(right: 10.0, bottom: 20.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -204,6 +210,25 @@ class _GMapScreenState extends State<GMapScreen> {
                                 ),
                               ),
                             );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    ClipOval(
+                      child: Material(
+                        child: InkWell(
+                          splashColor: Theme.of(context).accentColor,
+                          child: SizedBox(
+                            width: 56,
+                            height: 56,
+                            child: Icon(Icons.directions),
+                          ),
+                          onTap: () {
+                            MapsLauncher.launchCoordinates(
+                                collectPoint.latitude, collectPoint.longitude);
                           },
                         ),
                       ),
