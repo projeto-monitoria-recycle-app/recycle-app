@@ -135,152 +135,164 @@ class _RecycleScreenState extends State<RecycleScreen> {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                Container(
-                  margin: EdgeInsets.all(15),
-                  height: 270,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'ECOPONTOS',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey[800]),
-                          ),
-                          Text('ver todos')
-                        ],
-                      ),
-                      Text("Clique no card para ver o ponto no mapa."),
-                      Container(
-                        height: 180,
-                        child: ListView.builder(
-                            addAutomaticKeepAlives: false,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: filteredCollectPointList.length,
-                            itemBuilder: (context, index) {
-                              var name = filteredCollectPointList[index].name;
-                              var address =
-                                  filteredCollectPointList[index].adreess;
-                              var district =
-                                  filteredCollectPointList[index].district;
-                              return Column(
-                                children: [
-                                  Text(
-                                    district,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Theme.of(context).accentColor),
-                                  ),
-                                  FlatButton(
-                                    padding: EdgeInsets.all(0),
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                        context,
-                                        '/map',
-                                        arguments:
-                                            filteredCollectPointList[index],
-                                      );
-                                    },
-                                    child: Card(
-                                      clipBehavior: Clip.antiAlias,
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            width: 150,
-                                            height: 150,
-                                            child: Column(
-                                              children: [
-                                                Container(
-                                                  color: Colors.grey[200],
-                                                  // height: 140,
-                                                  child: Image.asset(
-                                                      'assets/img/ecopontos.jpg',
-                                                      fit: BoxFit.cover),
-                                                ),
-                                                Spacer(),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        name,
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 12,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.all(15),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15, 20, 15, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'ROTAS DE COLETA SELETIVA',
+                        'ECOPONTOS',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey[800]),
                       ),
+                      // Text('ver todos')
                     ],
                   ),
                 ),
+                // Text("Clique no card para ver o ponto no mapa."),
                 Container(
-                  height: 250,
-                  child: ListView.builder(
-                    addAutomaticKeepAlives: false,
-                    itemCount: filteredCollectRouteList.length,
-                    itemBuilder: (context, index) {
-                      var dayOfWeek = filteredCollectRouteList[index].dayOfWeek;
-                      var hour = filteredCollectRouteList[index].hour.hour;
-                      var minute = filteredCollectRouteList[index].hour.minute;
-                      var location = filteredCollectRouteList[index].location;
-                      var district = filteredCollectRouteList[index].district;
-
-                      return Card(
-                        child: ListTile(
-                          title: Text(location),
-                          subtitle: Text(
-                              "Bairro: $district - $dayOfWeek - $hour:$minute "),
+                  height: 180,
+                  child: filteredCollectPointList.isEmpty
+                      ? Card(
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            width: 120,
+                            height: 120,
+                            child: Column(
+                              children: [
+                                Text("Sem Ecopontos no Bairro."),
+                              ],
+                            ),
+                          ),
+                        )
+                      : ListView.builder(
+                          addAutomaticKeepAlives: false,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: filteredCollectPointList.length,
+                          itemBuilder: (context, index) {
+                            var name = filteredCollectPointList[index].name;
+                            var district =
+                                filteredCollectPointList[index].district;
+                            var image = filteredCollectPointList[index].image;
+                            return Column(
+                              children: [
+                                FlatButton(
+                                  padding: EdgeInsets.all(0),
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/map',
+                                      arguments:
+                                          filteredCollectPointList[index],
+                                    );
+                                  },
+                                  child: Card(
+                                    clipBehavior: Clip.antiAlias,
+                                    child: Column(
+                                      children: [
+                                        Stack(
+                                          children: [
+                                            Container(
+                                              width: 120,
+                                              height: 120,
+                                              child: Image.asset(image,
+                                                  fit: BoxFit.cover),
+                                            ),
+                                            Positioned(
+                                                bottom: 10,
+                                                right: 10,
+                                                child: Icon(
+                                                  Icons.location_on,
+                                                  color: Colors.white,
+                                                ))
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        district,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color:
+                                                Theme.of(context).accentColor),
+                                      ),
+                                      Text(
+                                        name,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.grey[600],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
                 ),
               ],
             ),
           ),
+          SliverPersistentHeader(
+            // pinned: true,
+            // floating: false,
+            delegate: CollectRouterHeader(),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+                List.generate(filteredCollectRouteList.length, (index) {
+              var dayOfWeek = filteredCollectRouteList[index].dayOfWeek;
+              var dayPart = filteredCollectRouteList[index].dayPart;
+              var location = filteredCollectRouteList[index].location;
+              var district = filteredCollectRouteList[index].district;
+
+              return Card(
+                child: ListTile(
+                  title: Text(location),
+                  subtitle: Text("Bairro: $district - $dayOfWeek - $dayPart "),
+                ),
+              );
+            })),
+          ),
         ],
       ),
     );
+  }
+}
+
+class CollectRouterHeader extends SliverPersistentHeaderDelegate {
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: Text(
+        'ROTAS DE COLETA SELETIVA',
+        style: TextStyle(
+            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey[800]),
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => 40;
+
+  @override
+  double get minExtent => 30;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
   }
 }

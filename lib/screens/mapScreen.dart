@@ -64,23 +64,24 @@ class _GMapScreenState extends State<GMapScreen> {
     final CollectPoint collectPoint = ModalRoute.of(context).settings.arguments;
 
 //CREATING INITIAL EXECUTION ON GOOGLE MAP -------------------------------------
-
     void _onMapCreated(GoogleMapController controller) {
       _mapController = controller;
-      setState(() {
-        _markers.add(
-          Marker(
-            markerId: MarkerId(collectPoint.name),
-            position: LatLng(collectPoint.latitude, collectPoint.longitude),
-            consumeTapEvents: false,
-            infoWindow: InfoWindow(
-              title: collectPoint.name,
-              snippet: collectPoint.adreess,
+      setState(
+        () {
+          _markers.add(
+            Marker(
+              markerId: MarkerId(collectPoint.name),
+              position: LatLng(collectPoint.latitude, collectPoint.longitude),
+              consumeTapEvents: false,
+              infoWindow: InfoWindow(
+                title: collectPoint.name,
+                snippet: collectPoint.adreess,
+              ),
+              icon: BitmapDescriptor.defaultMarker,
             ),
-            icon: BitmapDescriptor.defaultMarker,
-          ),
-        );
-      });
+          );
+        },
+      );
     }
 
 //FLARE ANIMATIONS CONTROL -----------------------------------------------------
@@ -110,9 +111,9 @@ class _GMapScreenState extends State<GMapScreen> {
           ),
           SafeArea(
             child: Align(
-              alignment: Alignment.topCenter,
+              alignment: Alignment.bottomLeft,
               child: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(25.0),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -122,26 +123,36 @@ class _GMapScreenState extends State<GMapScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 1,
-                        offset: Offset(2, 3),
+                        offset: Offset(0, 2),
                       ),
                     ],
                   ),
-                  // height: 100,
-                  // width: 300,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          collectPoint.name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                  height: 100,
+                  width: 300,
+                  child: Row(
+                    children: [
+                      Container(
+                        // color: Colors.red,
+                        height: 100,
+                        width: 100,
+                        child: Image.asset(collectPoint.image),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              collectPoint.name,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(collectPoint.adreess),
+                          ],
                         ),
-                        Text(collectPoint.adreess),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
