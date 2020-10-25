@@ -97,56 +97,50 @@ class DrawerConfig extends StatelessWidget {
                     arguments: questionsList[3]);
               },
             ),
-            Spacer(),
+            SizedBox(
+              height: 50,
+            ),
             ListTile(
               title: Text(
                 "NOSSOS PARCEIROS",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
-            SingleChildScrollView(
-              // scrollDirection: Axis.horizontal,
-              // padding: EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      height: 100,
-                      width: 150,
-                      child: Image.asset("assets/img/logo-associacao.png"),
-                      decoration: BoxDecoration(
-                        // color: Colors.grey[300],
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: SingleChildScrollView(
+                child: Container(
+                  height: 280,
+                  width: 150,
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 150,
+                        child: Image.asset("assets/img/logo-associacao.png"),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      height: 80,
-                      width: 150,
-                      child: Image.asset('assets/img/logo-unifeso.png'),
-                      decoration: BoxDecoration(
-                        // color: Colors.grey[300],
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      Container(
+                        height: 80,
+                        width: 150,
+                        child: Image.asset('assets/img/logo-unifeso.png'),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      height: 80,
-                      width: 170,
-                      child: Image.asset('assets/img/logo-prefeitura.png'),
-                      decoration: BoxDecoration(
-                        // color: Colors.grey[300],
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      Container(
+                        height: 80,
+                        width: 170,
+                        child: Image.asset('assets/img/logo-prefeitura.png'),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             )
           ],
