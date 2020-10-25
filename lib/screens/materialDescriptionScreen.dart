@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recicle_app/models/materialModel.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MaterialWasteScreen extends StatelessWidget {
   static const routeName = '/material';
@@ -13,6 +14,13 @@ class MaterialWasteScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: waste.color,
         title: Text(waste.name),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
+        toolbarHeight: 75,
         actions: [
           ImageIcon(
             waste.icon,
@@ -56,6 +64,30 @@ class MaterialWasteScreen extends StatelessWidget {
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
                     ),
+                  waste.links.isEmpty
+                      ? Container()
+                      : Container(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                          child: InkWell(
+                            onTap: () async {
+                              String url = waste.links[0][1];
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Não foi possivel acesse o link: $url.';
+                              }
+                            },
+                            child: Text(
+                              waste.links[0][0],
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.blue),
+                            ),
+                          ),
+                        ),
                   Text(
                     "O que separar para a coleta seletiva: ",
                     style: TextStyle(

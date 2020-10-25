@@ -12,26 +12,42 @@ class DrawerConfig extends StatelessWidget {
         },
         child: ListView(
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Theme.of(context).accentColor),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // Row(children: [],),
-                    Text(
-                      'Recicla Terê',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24),
-                    ),
-                    // Text(
-                    //   "MENU",
-                    //   style: TextStyle(
-                    //       color: Colors.white, fontWeight: FontWeight.bold),
-                    // ),
-                  ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  image: new DecorationImage(
+                    image: new ExactAssetImage('assets/icons/recycle.png'),
+                    alignment: Alignment(1, 1),
+                    scale: 0.5,
+                    colorFilter: ColorFilter.mode(
+                        Theme.of(context).accentColor.withOpacity(0.93),
+                        BlendMode.difference),
+                  ),
+                ),
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // Row(children: [],),
+                      Text(
+                        'Recicla Terê',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24),
+                      ),
+                      // Text(
+                      //   "MENU",
+                      //   style: TextStyle(
+                      //       color: Colors.white, fontWeight: FontWeight.bold),
+                      // ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -81,6 +97,7 @@ class DrawerConfig extends StatelessWidget {
                     arguments: questionsList[3]);
               },
             ),
+            Spacer(),
             ListTile(
               title: Text(
                 "NOSSOS PARCEIROS",
@@ -96,7 +113,7 @@ class DrawerConfig extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Container(
-                      height: 75,
+                      height: 100,
                       width: 150,
                       child: Image.asset("assets/img/logo-associacao.png"),
                       decoration: BoxDecoration(
@@ -108,7 +125,7 @@ class DrawerConfig extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Container(
-                      height: 100,
+                      height: 80,
                       width: 150,
                       child: Image.asset('assets/img/logo-unifeso.png'),
                       decoration: BoxDecoration(
@@ -120,8 +137,8 @@ class DrawerConfig extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Container(
-                      height: 100,
-                      width: 150,
+                      height: 80,
+                      width: 170,
                       child: Image.asset('assets/img/logo-prefeitura.png'),
                       decoration: BoxDecoration(
                         // color: Colors.grey[300],

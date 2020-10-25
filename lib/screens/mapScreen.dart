@@ -18,7 +18,7 @@ class _GMapScreenState extends State<GMapScreen> {
   _GMapScreenState();
   Set<Marker> _markers = HashSet<Marker>();
 
-  // IMPLEMENTING GPS LOCATION ---------------------------------------------------
+  // IMPLEMENTING GPS LOCATION -------------------------------------------------
   final Geolocator _geolocator = Geolocator();
 
   GoogleMapController _mapController;
@@ -70,19 +70,20 @@ class _GMapScreenState extends State<GMapScreen> {
         () {
           _markers.add(
             Marker(
-              markerId: MarkerId(collectPoint.name),
-              position: LatLng(collectPoint.latitude, collectPoint.longitude),
-              consumeTapEvents: false,
-              infoWindow: InfoWindow(
-                title: collectPoint.name,
-                snippet: collectPoint.adreess,
-              ),
-              icon: BitmapDescriptor.defaultMarker,
-            ),
+                markerId: MarkerId(collectPoint.name),
+                position: LatLng(collectPoint.latitude, collectPoint.longitude),
+                consumeTapEvents: false,
+                infoWindow: InfoWindow(
+                  title: collectPoint.name,
+                  snippet: collectPoint.adreess,
+                ),
+                icon: BitmapDescriptor.defaultMarker),
           );
         },
       );
     }
+
+// DEFINING MAP MARKER ---------------------------------------------------------
 
 //FLARE ANIMATIONS CONTROL -----------------------------------------------------
     final FlareControls controls = FlareControls();
@@ -109,155 +110,211 @@ class _GMapScreenState extends State<GMapScreen> {
               ),
             ),
           ),
-          SafeArea(
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Container(
+          Positioned(
+            top: 50,
+            left: 20,
+            child: InkWell(
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).accentColor,
+                ),
+                child: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          Positioned(
+            right: 20,
+            top: 50,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    ),
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 0,
-                        blurRadius: 1,
-                        offset: Offset(0, 2),
+                  ),
+                  height: 40,
+                  width: 210,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        collectPoint.name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      Text(collectPoint.adreess),
                     ],
                   ),
-                  height: 100,
-                  width: 300,
+                ),
+                InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(5),
+                        bottomLeft: Radius.circular(5),
+                        bottomRight: Radius.circular(5),
+                      ),
+                      color: Colors.grey,
+                    ),
+                    width: 100,
+                    height: 100,
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.asset(
+                      collectPoint.image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, "/photo",
+                        arguments: collectPoint.image);
+                  },
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  clipBehavior: Clip.antiAlias,
                   child: Row(
                     children: [
                       Container(
-                        // color: Colors.red,
-                        height: 100,
-                        width: 100,
-                        child: Image.asset(collectPoint.image),
+                        height: 20,
+                        width: 80,
+                        color: Colors.white,
+                        child: Center(child: Text("Ecoponto")),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              collectPoint.name,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                      Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context).accentColor,
+                        ),
+                        child: ClipOval(
+                          child: InkWell(
+                            child: Icon(
+                              Icons.location_on,
+                              color: Colors.white,
                             ),
-                            Text(collectPoint.adreess),
-                          ],
+                            onTap: () {
+                              _playSuccessAnimation();
+                              _mapController.animateCamera(
+                                CameraUpdate.newCameraPosition(
+                                  CameraPosition(
+                                    target: LatLng(collectPoint.latitude,
+                                        collectPoint.longitude),
+                                    zoom: 16.0,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.fromLTRB(10.0, 10.0, 0, 80),
-              child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back,
-                  size: 20,
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 30,
+                        width: 80,
+                        color: Colors.white,
+                        child: Center(child: Text("Ver Rota")),
+                      ),
+                      Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context).accentColor,
+                        ),
+                        child: ClipOval(
+                          child: InkWell(
+                            child: Icon(Icons.directions, color: Colors.white),
+                            onTap: () {
+                              MapsLauncher.launchCoordinates(
+                                  collectPoint.latitude,
+                                  collectPoint.longitude);
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10.0, bottom: 20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ClipOval(
-                      child: Material(
-                        child: InkWell(
-                          splashColor: Theme.of(context).accentColor,
-                          child: SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: Icon(Icons.my_location),
-                          ),
-                          onTap: () {
-                            _mapController.animateCamera(
-                              CameraUpdate.newCameraPosition(
-                                CameraPosition(
-                                  target: LatLng(_currentPosition.latitude,
-                                      _currentPosition.longitude),
-                                  zoom: 16.0,
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 30,
+                        width: 130,
+                        color: Colors.white,
+                        child: Center(child: Text("Minha Localização")),
+                      ),
+                      Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context).accentColor,
+                        ),
+                        child: ClipOval(
+                          child: InkWell(
+                            child: Icon(
+                              Icons.my_location,
+                              color: Colors.white,
+                            ),
+                            onTap: () {
+                              _mapController.animateCamera(
+                                CameraUpdate.newCameraPosition(
+                                  CameraPosition(
+                                    target: LatLng(_currentPosition.latitude,
+                                        _currentPosition.longitude),
+                                    zoom: 16.0,
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    ClipOval(
-                      child: Material(
-                        child: InkWell(
-                          splashColor:
-                              Theme.of(context).accentColor, // inkwell color
-                          child: SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: FlareActor("assets/location buton.flr",
-                                alignment: Alignment.center,
-                                fit: BoxFit.contain,
-                                animation: "idle",
-                                controller: controls),
+                              );
+                            },
                           ),
-                          onTap: () {
-                            _playSuccessAnimation();
-                            _mapController.animateCamera(
-                              CameraUpdate.newCameraPosition(
-                                CameraPosition(
-                                  target: LatLng(collectPoint.latitude,
-                                      collectPoint.longitude),
-                                  zoom: 16.0,
-                                ),
-                              ),
-                            );
-                          },
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    ClipOval(
-                      child: Material(
-                        child: InkWell(
-                          splashColor: Theme.of(context).accentColor,
-                          child: SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: Icon(Icons.directions),
-                          ),
-                          onTap: () {
-                            MapsLauncher.launchCoordinates(
-                                collectPoint.latitude, collectPoint.longitude);
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         ],

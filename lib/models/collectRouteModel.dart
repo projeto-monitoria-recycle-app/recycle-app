@@ -101,7 +101,7 @@ List<CollectRoute> collectRouteList = [
     "Albuquerque",
   ),
   CollectRoute(
-    "Loja Rústika ",
+    "Loja Rústica ",
     "Manhã",
     "Quarta-Feira",
     "Vargem Grande",

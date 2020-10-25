@@ -8,11 +8,19 @@ class QuestionAnswerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final QuestionAnswer question = ModalRoute.of(context).settings.arguments;
+    var size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).accentColor,
         title: Text('Recicle Terê'),
+        toolbarHeight: 60,
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -30,9 +38,37 @@ class QuestionAnswerScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 child: Text(
                   sentence,
+                  textAlign: TextAlign.justify,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
               ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(
+                  question.images.length,
+                  (index) {
+                    return InkWell(
+                      child: Card(
+                        child: Container(
+                          width: size.width * 0.4,
+                          height: 100,
+                          color: Colors.grey,
+                          child: Image.asset(
+                            question.images[index],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, "/photo",
+                            arguments: question.images[index]);
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),

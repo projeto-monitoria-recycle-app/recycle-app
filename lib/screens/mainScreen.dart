@@ -6,12 +6,17 @@ import 'package:recicle_app/widgets/drawerWidget.dart';
 
 class MainScreen extends StatefulWidget {
   static const routeName = '/mainpage';
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedMenu = 0;
+  PageController _controller = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
 
   static List<Widget> _widgetList = <Widget>[
     HomeScreen(),
@@ -20,8 +25,25 @@ class _MainScreenState extends State<MainScreen> {
   ];
 
   void _onMenuTapped(int index) {
+    setState(
+      () {
+        _controller.jumpToPage(index);
+
+        _selectedMenu = index;
+      },
+    );
+  }
+
+  void _onPageViewChange(int page) {
+    print("Current Page: " + page.toString());
+    int previousPage = page.floor();
+    if (page != 0)
+      previousPage--;
+    else
+      previousPage = 2;
+    print("Previous page: $previousPage");
     setState(() {
-      _selectedMenu = index;
+      _selectedMenu = page.toInt();
     });
   }
 
@@ -29,8 +51,16 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerConfig(),
-      body: Container(
-        child: _widgetList.elementAt(_selectedMenu),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (OverscrollIndicatorNotification overScroll) {
+          overScroll.disallowGlow();
+          return false;
+        },
+        child: PageView(
+          controller: _controller,
+          children: _widgetList,
+          onPageChanged: _onPageViewChange,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
