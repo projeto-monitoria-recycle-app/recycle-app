@@ -41,6 +41,9 @@ class ImpactScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Container(
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
@@ -59,6 +62,9 @@ class ImpactScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 15,
                     ),
                     Container(
                       padding: EdgeInsets.all(10),
@@ -79,6 +85,9 @@ class ImpactScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Container(
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
@@ -97,6 +106,9 @@ class ImpactScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 15,
                     ),
                     Container(
                       padding: EdgeInsets.all(10),
@@ -117,6 +129,9 @@ class ImpactScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Text(
                       'Parabéns!',
                       style: TextStyle(
@@ -125,10 +140,10 @@ class ImpactScreen extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.2,
+                      height: MediaQuery.of(context).size.width * 0.8,
                       child: Image(
                         image: AssetImage(
-                          'assets/img/onBoardingImg-03.png',
+                          'assets/img/World-bro.png',
                         ),
                       ),
                     )

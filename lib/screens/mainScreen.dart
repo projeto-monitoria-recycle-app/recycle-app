@@ -66,19 +66,19 @@ class _MainScreenState extends State<MainScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/home.png'),
+              AssetImage('assets/icons/waste.png'),
             ),
             title: Text('Recicláveis'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/recycle.png'),
+              AssetImage('assets/icons/truck.png'),
             ),
             title: Text('Coleta Seletiva'),
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/impact.png'),
+              AssetImage('assets/icons/earth-care.png'),
             ),
             title: Text('Impacto'),
           ),

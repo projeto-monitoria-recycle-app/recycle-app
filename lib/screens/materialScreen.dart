@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ImageIcon(
                               icon,
                               color: Colors.white,
-                              size: 70,
+                              size: 60,
                             )
                           ],
                         ),

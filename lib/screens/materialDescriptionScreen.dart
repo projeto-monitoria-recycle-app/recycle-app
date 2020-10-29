@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recicle_app/models/materialModel.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -37,8 +36,7 @@ class MaterialWasteScreen extends StatelessWidget {
           return false;
         },
         child: SingleChildScrollView(
-          child: Container(
-            height: 1000,
+          child: IntrinsicHeight(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
@@ -88,13 +86,15 @@ class MaterialWasteScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                  Text(
-                    "O que separar para a coleta seletiva: ",
-                    style: TextStyle(
-                        color: waste.color,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
+                  waste.recyclable.isEmpty
+                      ? Container()
+                      : Text(
+                          "O que separar para a coleta seletiva: ",
+                          style: TextStyle(
+                              color: waste.color,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     child: Text(
@@ -104,13 +104,15 @@ class MaterialWasteScreen extends StatelessWidget {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ),
-                  Text(
-                    "O que não separar: ",
-                    style: TextStyle(
-                        color: waste.color,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
+                  waste.notRecyclable.isEmpty
+                      ? Container()
+                      : Text(
+                          "O que não jogar nos Ecopontos: ",
+                          style: TextStyle(
+                              color: waste.color,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     child: Text(
@@ -121,7 +123,7 @@ class MaterialWasteScreen extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: SvgPicture.asset(waste.images[0]),
+                    child: Image.asset(waste.images[0]),
                   ),
                 ],
               ),

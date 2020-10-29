@@ -30,23 +30,13 @@ class DrawerConfig extends StatelessWidget {
                   ),
                 ),
                 child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // Row(children: [],),
-                      Text(
-                        'Recicla Terê',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24),
-                      ),
-                      // Text(
-                      //   "MENU",
-                      //   style: TextStyle(
-                      //       color: Colors.white, fontWeight: FontWeight.bold),
-                      // ),
-                    ],
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Recicla Terê',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24),
                   ),
                 ),
               ),
@@ -98,7 +88,25 @@ class DrawerConfig extends StatelessWidget {
               },
             ),
             SizedBox(
-              height: 50,
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              child: Text(
+                'Para mais informações a respeito da coleta seletiva ou materiais recicláveis, ligue para Secretária Municipal de Meio Ambiente: 2742-7763.',
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              height: 100,
+              width: 150,
+              child: Image.asset("assets/img/logo-associacao.png"),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
             ),
             ListTile(
               title: Text(
@@ -110,18 +118,10 @@ class DrawerConfig extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: SingleChildScrollView(
                 child: Container(
-                  height: 280,
+                  height: 180,
                   width: 150,
                   child: Column(
                     children: [
-                      Container(
-                        height: 100,
-                        width: 150,
-                        child: Image.asset("assets/img/logo-associacao.png"),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                      ),
                       Container(
                         height: 80,
                         width: 150,

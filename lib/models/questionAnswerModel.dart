@@ -36,6 +36,7 @@ List<QuestionAnswer> questionsList = [
     'Como você pode contribuir?',
     [
       'Separando o seu material e descartando corretamente na coleta seletiva e em caso de ainda não possuir rota de coleta em sua rua, deposite o seu resíduo em um dos nossos eco pontos espalhados pela cidade.',
+      'O resíduo a ser separado (papel, metal, plástico ou vidro) pode estar em um saco plástico ou caixa de papelão e depositado em um de nossos ecopontos posicionados pela cidade.',
       'Outra forma de contribuição é a divulgação do nosso programa de coleta seletiva, para os seus parentes, vizinhos e também em suas redes sociais, como também divulgando o nosso Instragram (@associacaocatadores) e este aplicativo.'
     ],
     [],

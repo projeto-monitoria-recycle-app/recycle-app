@@ -22,54 +22,56 @@ class QuestionAnswerScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            Text(
-              question.question,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            for (String sentence in question.answer)
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                child: Text(
-                  sentence,
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Text(
+                question.question,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                  question.images.length,
-                  (index) {
-                    return InkWell(
-                      child: Card(
-                        child: Container(
-                          width: size.width * 0.4,
-                          height: 100,
-                          color: Colors.grey,
-                          child: Image.asset(
-                            question.images[index],
-                            fit: BoxFit.cover,
+              SizedBox(
+                height: 20,
+              ),
+              for (String sentence in question.answer)
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  child: Text(
+                    sentence,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                    question.images.length,
+                    (index) {
+                      return InkWell(
+                        child: Card(
+                          child: Container(
+                            width: size.width * 0.4,
+                            height: 100,
+                            color: Colors.grey,
+                            child: Image.asset(
+                              question.images[index],
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, "/photo",
-                            arguments: question.images[index]);
-                      },
-                    );
-                  },
+                        onTap: () {
+                          Navigator.pushNamed(context, "/photo",
+                              arguments: question.images[index]);
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
