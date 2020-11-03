@@ -93,7 +93,7 @@ class DrawerConfig extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Text(
-                'Para mais informações a respeito da coleta seletiva ou materiais recicláveis, ligue para Secretária Municipal de Meio Ambiente: 2742-7763.',
+                'Para mais informações a respeito da coleta seletiva ou materiais recicláveis, ligue para Secretaria Municipal de Meio Ambiente: 2742-7763.',
                 textAlign: TextAlign.justify,
               ),
             ),

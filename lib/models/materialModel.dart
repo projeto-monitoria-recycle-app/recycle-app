@@ -89,7 +89,7 @@ List<Waste> wasteList = [
       links: [],
       hints: [],
       searchItens: [
-        'metal, metais latas limpas de bebidas e alimentos, panelas, parafusos e pregos, grampos e clipes, os objetos de ferro ou lata de aerossóis, garfo, faca, ferramenta, colher'
+        'metal, metais latas limpas de bebidas e alimentos, panelas, parafusos e pregos, grampos e clipes, os objetos de ferro ou lata de aerossóis, garfo, faca, ferramenta, colher, fios , cabos'
             "Ferragens, arames, fio de cobre, latas de alumínio de refrigerantes, cerveja, chás entre outras, folhas de alumínio, embalagem marmitex limpas, panelas, prateleiras e estantes de ferro, fogão, geladeira, freezer"
       ]),
   Waste('Vidro',
@@ -166,17 +166,17 @@ List<Waste> wasteList = [
     recyclable:
         'A coleta seletiva não faz a coleta de materiais não recicláveis. Eles devem ser jogados nas lixeiras tradicionais.',
     notRecyclable:
-        "Papéis não recicláveis: adesivos, etiquetas, fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados.\n\nMetais não recicláveis: clipes, grampos, esponjas de aço, latas de tintas, latas de combustível e pilhas.\n\nPlásticos não recicláveis: cabos de panela, tomadas, isopor, adesivos, espuma, teclados de computador, acrílicos.\n\nVidros não recicláveis: espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planos",
+        "Papéis não recicláveis: adesivos, etiquetas, fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados.\n\nMetais não recicláveis: clipes, grampos, esponjas de aço, latas de tintas, latas de combustível e pilhas.\n\nPlásticos não recicláveis: cabos de panela, tomadas, isopor, adesivos, espuma, acrílicos.\n\nVidros não recicláveis: espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planos",
     images: ['assets/img/recycling-grey.png'],
     links: [],
     hints: [],
     searchItens: [
       'Papel carbono, celofane, amanteigado, parafinado, papeis amanteigados ou sujos, adesivos, fotografias, toalhas, lenços e guardanapos',
-      ' espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planoscabos de panela, tomadas, isopor, adesivos',
-      ' espuma, teclados de computador, acrílicos clipes, grampos, esponjas de aço, latas de tintas, latas de combustível e pilhasadesivos, etiquetas',
+      ' espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados cabos de panela, tomadas, isopor, adesivos',
+      ' espuma, acrílicos clipes, grampos, esponjas de aço, latas de tintas, latas de combustível, adesivos, etiquetas',
       ' fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados',
       'Papel higiênico, absorventes, fraudas, fita crepe, guardanapos, fotografias, filtro de cigarros, copos de papel, caixa de pizza engordurada',
-      'Papéis enxarcados, Papel vegetal, Frutas, Legumes, Lata de desodorante, Lata de tinta, Lata de verniz, Alimentos, arroz, feijão,',
+      'Papéis enxarcados, Papel vegetal,  Lata de desodorante, Lata de tinta, Lata de verniz,,',
       'osso de frango, carne, Vidros de janela, Cristal, Espelho, Madeira'
     ],
   ),
@@ -200,5 +200,26 @@ List<Waste> wasteList = [
       ]
     ],
     searchItens: ['pilhas e baterias'],
+  ),
+  Waste(
+    'Resíduo Eletrônico',
+    color: Colors.green[900],
+    icon: AssetImage('assets/icons/eletronic.png'),
+    title: 'Como descartar eletrônicos corretamente?',
+    content: [
+      'Resíduo eletrônico, ou lixo eletrônico, são os equipamentos eletrônicos descartados ou obsoletos.',
+      'Se descartados de forma inadequada, podem causar sérios riscos para o meio ambiente, pois possuem em sua composição metais pesados altamente tóxicos, como mercúrio, cádmio, berílio e chumbo, além de outros compostos químicos. Em contato com o solo, podem contaminam o lençol freático, e, se queimados, podem liberar toxinas perigosas ao meio ambiente.',
+      'Portanto, a manipulação e processamento desses resíduos, de forma incorreta e desprotegida, podem contaminar os seres humanos que executam estas tarefas e o meio ambiente à sua volta.',
+      'A coleta seletiva realiza o tratamento correto desses equipamentos, portanto eles podem ser descartados nos ecopontos.'
+    ],
+    recyclable:
+        'Computadores, tablets, monitores, LEDs, teclados, impressoras, câmeras fotográficas, aparelhos de som, televisores, micro-ondas, rádios, telefones, celulares e carregadores',
+    notRecyclable: 'Baterias e pilhas.',
+    images: ['assets/img/recycling-green.png'],
+    links: [],
+    hints: [],
+    searchItens: [
+      'eletronicos , eletrônicos, Computadores, tablets, monitores, LEDs, Teclados, impressoras, câmeras fotográficas, aparelhos de som, televisores, tv, micro-ondas, microondas, rádios, radios, telefones, celulares e carregadores'
+    ],
   ),
 ];
