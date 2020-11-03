@@ -9,6 +9,7 @@ class Waste {
   final List<String> images;
   final String discart;
   final List<List<String>> links;
+  final List<List<String>> hints;
   final List<String> searchItens;
   final String recyclable;
   final String notRecyclable;
@@ -22,6 +23,7 @@ class Waste {
     this.images,
     this.discart,
     this.links,
+    this.hints,
     this.searchItens,
     this.recyclable,
     this.notRecyclable,
@@ -44,6 +46,7 @@ List<Waste> wasteList = [
         "Papel carbono, celofane, amanteigado, parafinado, papeis amanteigados ou sujos, fitas e etiquetas adesivas, fotografias, toalhas, lenços e guardanapos usados.",
     images: ['assets/img/recycling-blue.png'],
     links: [],
+    hints: [],
     searchItens: [
       '',
       "Livro Jornal, jornais, Revista ,Caderno, Envelopes, Listas Telefônica, Cartolina, Cartões, Cartazes, Aparas de papel, Formulários",
@@ -63,6 +66,7 @@ List<Waste> wasteList = [
           "Embalagens metalizadas, adesivos, cabos de panela, espuma de colchão, esponja de cozinha, embalagens de produtos tóxicos, isopor.",
       images: ['assets/img/recycling-red.png'],
       links: [],
+      hints: [],
       searchItens: [
         'plastico plástico garrafas e potes, sacos e sacolas, baldes, canetas, brinquedos, canos, tubos e conexão de PVC, mesas e cadeiras de plástico e radiografias',
         "Potes de creme, xampu e condicionador lavados, embalagens plásticas de alimentos tipo de leite e iogurte, bolsa plástica, garrafas pet, embalagens de produto de limpeza e higiene, como detergente, sabão liquido, amaciante, água sanitária, sabonete liquido, álcool,",
@@ -83,6 +87,7 @@ List<Waste> wasteList = [
           'Latas com tintas, vernizes e outros, restos de materiais tóxicos, esponja de aço, pilhas e baterias.',
       images: ['assets/img/recycling-yellow.png'],
       links: [],
+      hints: [],
       searchItens: [
         'metal, metais latas limpas de bebidas e alimentos, panelas, parafusos e pregos, grampos e clipes, os objetos de ferro ou lata de aerossóis, garfo, faca, ferramenta, colher'
             "Ferragens, arames, fio de cobre, latas de alumínio de refrigerantes, cerveja, chás entre outras, folhas de alumínio, embalagem marmitex limpas, panelas, prateleiras e estantes de ferro, fogão, geladeira, freezer"
@@ -102,6 +107,7 @@ List<Waste> wasteList = [
           'Espelhos, vidros planos, temperados e resfriados, cristais, utensílios de porcelanas e cerâmica, pirex e similares, lâmpadas.',
       images: ['assets/img/recycling-green.png'],
       links: [],
+      hints: [],
       searchItens: [
         'vidro, garrafas, potes , copos e taças, prato',
         'Frascos, garrafas de cerveja, vinho, bebidas destiladas'
@@ -113,7 +119,7 @@ List<Waste> wasteList = [
     title: 'Como descartar orgânicos corretamente?',
     content: [
       'A prática de reciclagem de lixo orgânico está sendo cada vez mais utilizada. Uma possibilidade é a compostagem. Este processo transforma o lixo orgânico em adubo o que é favorável tanto ao meio ambiente, uma vez que esse material não será despejado em aterros sanitários, quanto ao solo que será amparado por um material bastante nutritivo. O mais legal é que esse método pode ser feito em casa. ',
-      'A coleta seletiva não faz a coleta do lixo orgânico. Acesse o link para mais informações sobre compotagem: ',
+      'A coleta seletiva não faz a coleta do lixo orgânico. Acesse o link para mais informações sobre compostagem: ',
     ],
     links: [
       [
@@ -122,6 +128,7 @@ List<Waste> wasteList = [
       ]
     ],
     images: ['assets/img/recycling-brown.png'],
+    hints: [],
     recyclable: '',
     notRecyclable: '',
     searchItens: [
@@ -139,11 +146,11 @@ List<Waste> wasteList = [
       'Como separar o seu óleo vegetal: armazenar o óleo de cozinha em uma garrafa pet ou embalagem de sabão liquido.',
       'O que não realizar com o óleo: não descartar o óleo na pia, ralos, bueiros ou no meio ambiente.'
     ],
-    recyclable:
-        "Óleos de cozinha( de soja, milho, girassol, de coco, entre outros).",
+    recyclable: "",
     notRecyclable: "Óleos minerais e sinteticos (de máquinas e veiculos)",
     images: ['assets/img/recycling-orangel.png'],
     links: [],
+    hints: [],
     searchItens: [' oleo óleo, gordura'],
   ),
   Waste(
@@ -162,6 +169,7 @@ List<Waste> wasteList = [
         "Papéis não recicláveis: adesivos, etiquetas, fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados.\n\nMetais não recicláveis: clipes, grampos, esponjas de aço, latas de tintas, latas de combustível e pilhas.\n\nPlásticos não recicláveis: cabos de panela, tomadas, isopor, adesivos, espuma, teclados de computador, acrílicos.\n\nVidros não recicláveis: espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planos",
     images: ['assets/img/recycling-grey.png'],
     links: [],
+    hints: [],
     searchItens: [
       'Papel carbono, celofane, amanteigado, parafinado, papeis amanteigados ou sujos, adesivos, fotografias, toalhas, lenços e guardanapos',
       ' espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planoscabos de panela, tomadas, isopor, adesivos',
@@ -179,13 +187,18 @@ List<Waste> wasteList = [
     title: 'Como descartar pilhas e baterias corretamente?',
     content: [
       'A contaminação do solo e lençóis freáticos são algumas consequências do descarte incorreto de pilhas e baterias usadas. Algumas dessas, compostas de metais pesados, como o chumbo, mercúrio, níquel e cádmio; são capazes de causar doenças renais, cânceres e problemas relacionados no sistema nervoso central. ',
-      'A coleta seletiva não faz a coleta de pilhas e baterias.',
-      'Dica: Você pode separar suas pilhas e baterias em um recipiente e levar em supermercados que realizam a coleta destes objetos. '
+      'A coleta seletiva recolhe o lixo eletrônico como, computadores, eletrodomésticos e demais produtos eletrônicos, porém coleta seletiva não faz a coleta de pilhas e baterias.',
     ],
     recyclable: '',
     notRecyclable: '',
     images: ['assets/img/recycling-orange.png'],
     links: [],
+    hints: [
+      [
+        'Dica: Você pode separar suas pilhas e baterias em um recipiente e levar em supermercados que realizam a coleta destes objetos. ',
+        "assets/img/coletor-baterias.jpg"
+      ]
+    ],
     searchItens: ['pilhas e baterias'],
   ),
 ];

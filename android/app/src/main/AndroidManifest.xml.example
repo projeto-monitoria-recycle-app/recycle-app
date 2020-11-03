@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.recicle_app">
+    package="com.example.appName">
 
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -13,7 +13,7 @@
         android:label="Recicla Terê"
         android:icon="@mipmap/ic_launcher">
          <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyC_K1D8Z1mpGOJ_hqxnFgi_F5jfxBLdPvU"/>
+               android:value="YOUR-KEY-HERE"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -106,7 +106,7 @@ List<CollectPoint> collectPointList = [
     "GUARITA DA POLICIA MILITAR",
     adreess: 'RJ 130-Est. Tere-Fri',
     district: 'Vargem Grande',
-    image: "assets/img/ecopontos.jpg",
+    image: "assets/img/ecoponto-vargem-grande.jpg",
     latitude: -22.37093,
     longitude: -42.87199,
   ),
