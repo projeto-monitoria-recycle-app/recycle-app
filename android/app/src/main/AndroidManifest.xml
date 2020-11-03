@@ -13,7 +13,7 @@
         android:label="Recicla Terê"
         android:icon="@mipmap/ic_launcher">
          <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyC_K1D8Z1mpGOJ_hqxnFgi_F5jfxBLdPvU"/>
+               android:value="GEO_API_KEY"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
