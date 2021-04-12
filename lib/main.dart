@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recicle_app/screens/MapScreen.dart';
-import 'package:recicle_app/screens/QuestionAnswerScreen.dart';
+import 'package:recicle_app/screens/mapScreen.dart';
+import 'package:recicle_app/screens/questionAnswerScreen.dart';
 import 'package:recicle_app/screens/mainScreen.dart';
 import 'package:recicle_app/screens/materialDescriptionScreen.dart';
 import 'package:recicle_app/screens/photoView.dart';

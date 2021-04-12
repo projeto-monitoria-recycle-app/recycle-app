@@ -295,18 +295,13 @@ class _RecycleScreenState extends State<RecycleScreen> {
             SliverList(
               delegate: SliverChildListDelegate(
                   List.generate(filteredCollectRouteList.length, (index) {
-                var dayOfWeek = filteredCollectRouteList[index].dayOfWeek;
-                var dayPart = filteredCollectRouteList[index].dayPart;
-                var location = filteredCollectRouteList[index].location;
-                var district = filteredCollectRouteList[index].district;
+                var collectRoute = filteredCollectRouteList[index];
+                var dayOfWeek = collectRoute.dayOfWeek;
+                var dayPart = collectRoute.dayPart;
+                var location = collectRoute.location;
+                var district = collectRoute.district;
 
-                return Card(
-                  child: ListTile(
-                    title: Text(location),
-                    subtitle:
-                        Text("Bairro: $district - $dayOfWeek - $dayPart "),
-                  ),
-                );
+                return CollectRouteListItem(collectRoute);
               })),
             ),
           ],
@@ -315,6 +310,56 @@ class _RecycleScreenState extends State<RecycleScreen> {
     );
   }
 }
+
+
+class CollectRouteListItem extends StatefulWidget {
+
+  final CollectRoute _collectRoute;
+
+  CollectRouteListItem(this._collectRoute);
+
+  @override
+  _CollectRouteListItemState createState() => _CollectRouteListItemState(this._collectRoute);
+}
+
+class _CollectRouteListItemState extends State<CollectRouteListItem> {
+
+  final CollectRoute _collectRoute;
+  bool _notificationActive = false;
+
+  _CollectRouteListItemState(this._collectRoute);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(this._collectRoute.location),
+        subtitle:
+        Text("Bairro: ${this._collectRoute.district} - ${this._collectRoute.dayOfWeek} - ${this._collectRoute.dayPart} "),
+        trailing: IconButton(
+          icon: _buildNotificationIcon(),
+          onPressed: () {
+            debugPrint("Notification button pressed on ${_collectRoute.location}");
+            setState(() {
+              this._notificationActive = !_notificationActive;
+            });
+          },
+        ),
+      ),
+    );
+  }
+
+  Icon _buildNotificationIcon(){
+
+    if(this._notificationActive){
+      return Icon(Icons.notifications_active, color: Theme.of(context).primaryColor,);
+    } 
+    
+    return Icon(Icons.notifications_none_outlined,);
+
+  }
+}
+
 
 class CollectRouterHeader extends SliverPersistentHeaderDelegate {
   @override
