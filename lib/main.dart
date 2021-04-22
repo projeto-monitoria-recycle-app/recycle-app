@@ -5,6 +5,7 @@ import 'package:recicle_app/screens/QuestionAnswerScreen.dart';
 import 'package:recicle_app/screens/mainScreen.dart';
 import 'package:recicle_app/screens/materialDescriptionScreen.dart';
 import 'package:recicle_app/screens/photoView.dart';
+import 'package:recicle_app/screens/resultsScreen.dart';
 // import 'package:recicle_app/screens/onBoardingScreen.dart';
 
 void main() => runApp(MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
     return MaterialApp(
       title: 'Recicle App',
       debugShowCheckedModeBanner: false,
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
         QuestionAnswerScreen.routeName: (context) => QuestionAnswerScreen(),
         GMapScreen.routeName: (context) => GMapScreen(),
         PhotoView.routeName: (context) => PhotoView(),
+        ResultsScreen.routeName: (context) => ResultsScreen(),
       },
     );
   }

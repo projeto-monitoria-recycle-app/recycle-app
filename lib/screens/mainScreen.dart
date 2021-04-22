@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recicle_app/screens/collectScreen.dart';
 import 'package:recicle_app/screens/impactScreen.dart';
 import 'package:recicle_app/screens/materialScreen.dart';
+import 'package:recicle_app/screens/resultsScreen.dart';
 import 'package:recicle_app/widgets/drawerWidget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -21,7 +22,8 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> _widgetList = <Widget>[
     HomeScreen(),
     RecycleScreen(),
-    ImpactScreen()
+    ImpactScreen(),
+    ResultsScreen()
   ];
 
   void _onMenuTapped(int index) {
@@ -81,6 +83,12 @@ class _MainScreenState extends State<MainScreen> {
               AssetImage('assets/icons/earth-care.png'),
             ),
             title: Text('Impacto'),
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/graphic.png'),
+            ),
+            title: Text('Resultados'),
           ),
         ],
         currentIndex: _selectedMenu,
