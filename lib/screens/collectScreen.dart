@@ -1,6 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recicle_app/daos/collectDayNotificationDao.dart';
+import 'package:recicle_app/models/CollectDayNotification.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
 import 'package:recicle_app/models/collectRouteModel.dart';
+import 'package:recicle_app/models/daysOfWeek.dart';
+import 'package:recicle_app/services/collectDayNotificationService.dart';
+import 'package:recicle_app/services/notificationService.dart';
+import 'package:recicle_app/widgets/notificationDialogWidget.dart';
+import 'package:recicle_app/widgets/toggleButtonWidget.dart';
 
 class RecycleScreen extends StatefulWidget {
   @override
@@ -39,6 +47,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
         }
       },
     );
+    debugPrint("filtered collect route list ${filteredCollectRouteList.map((e) => e.id).toString()}");
   }
 
   @override
@@ -57,6 +66,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var collectRouteIds = CollectDayNotificationDao().getCollectRouteIds();
     return NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (OverscrollIndicatorNotification overScroll) {
         overScroll.disallowGlow();
@@ -296,11 +306,6 @@ class _RecycleScreenState extends State<RecycleScreen> {
               delegate: SliverChildListDelegate(
                   List.generate(filteredCollectRouteList.length, (index) {
                 var collectRoute = filteredCollectRouteList[index];
-                var dayOfWeek = collectRoute.dayOfWeek;
-                var dayPart = collectRoute.dayPart;
-                var location = collectRoute.location;
-                var district = collectRoute.district;
-
                 return CollectRouteListItem(collectRoute);
               })),
             ),
@@ -311,55 +316,91 @@ class _RecycleScreenState extends State<RecycleScreen> {
   }
 }
 
-
-class CollectRouteListItem extends StatefulWidget {
-
+class CollectRouteListItem extends StatelessWidget {
   final CollectRoute _collectRoute;
+  final bool initialNotificationState;
 
-  CollectRouteListItem(this._collectRoute);
-
-  @override
-  _CollectRouteListItemState createState() => _CollectRouteListItemState(this._collectRoute);
-}
-
-class _CollectRouteListItemState extends State<CollectRouteListItem> {
-
-  final CollectRoute _collectRoute;
-  bool _notificationActive = false;
-
-  _CollectRouteListItemState(this._collectRoute);
+  CollectRouteListItem(this._collectRoute, {this.initialNotificationState});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         title: Text(this._collectRoute.location),
-        subtitle:
-        Text("Bairro: ${this._collectRoute.district} - ${this._collectRoute.dayOfWeek} - ${this._collectRoute.dayPart} "),
-        trailing: IconButton(
-          icon: _buildNotificationIcon(),
-          onPressed: () {
-            debugPrint("Notification button pressed on ${_collectRoute.location}");
-            setState(() {
-              this._notificationActive = !_notificationActive;
-            });
+        subtitle: Text(
+            "Bairro: ${this._collectRoute.district} - ${this._collectRoute.dayOfWeek.ptBrValue} - ${this._collectRoute.dayPart} "),
+        trailing: FutureBuilder(
+          future: CollectDayNotificationService()
+              .isNotificationActiveForRoute(_collectRoute),
+          builder: (context, snapshot) {
+            if(snapshot.hasData){
+              return ToggleNotificationButton(_collectRoute, initialButtonState: snapshot.data,);
+            } else {
+              return CircularProgressIndicator();
+            }
           },
         ),
       ),
     );
   }
-
-  Icon _buildNotificationIcon(){
-
-    if(this._notificationActive){
-      return Icon(Icons.notifications_active, color: Theme.of(context).primaryColor,);
-    } 
-    
-    return Icon(Icons.notifications_none_outlined,);
-
-  }
 }
 
+class ToggleNotificationButton extends StatelessWidget {
+  final CollectRoute _collectRoute;
+  final bool initialButtonState;
+
+  const ToggleNotificationButton(this._collectRoute,
+      {Key key, this.initialButtonState})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ToggleButton(
+      initialButtonState:
+          this.initialButtonState == null ? false : this.initialButtonState,
+      iconOn: Icon(
+        Icons.notifications_active,
+        color: Theme.of(context).primaryColor,
+      ),
+      iconOff: Icon(
+        Icons.notifications_none,
+      ),
+      onTurnOn: () async {
+        bool confirmation = await _showConfirmationDialog(context, true);
+        if (confirmation) {
+          return CollectDayNotificationService()
+              .scheduleNotification(this._collectRoute)
+              .then((value) => true)
+              .catchError((e, stackTrace) {
+            debugPrint(e.toString());
+            debugPrintStack(stackTrace: stackTrace);
+            return false;
+          });
+        }
+        return confirmation;
+      },
+      onTurnOff: () {
+        return _showConfirmationDialog(context, false).then((confirmation) {
+          debugPrint("confirmation: $confirmation");
+          return confirmation;
+        });
+      },
+    );
+  }
+
+  Future<bool> _showConfirmationDialog(
+      BuildContext context, bool activation) async {
+    return showDialog<bool>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return activation
+            ? NotificationActivationDialog()
+            : NotificationDeactivationDialog();
+      },
+    );
+  }
+}
 
 class CollectRouterHeader extends SliverPersistentHeaderDelegate {
   @override
