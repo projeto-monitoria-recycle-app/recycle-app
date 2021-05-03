@@ -18,6 +18,11 @@ class CollectRoute {
     this.latitude,
     this.longitude,
   });
+
+  @override
+  String toString() {
+    return 'CollectRoute{id: $id, location: $location, dayPart: $dayPart, dayOfWeek: $dayOfWeek, district: $district, latitude: $latitude, longitude: $longitude}';
+  }
 }
 
 List<String> districtList =

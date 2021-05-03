@@ -11,7 +11,9 @@ class ToggleButton extends StatefulWidget {
   ToggleButton({Key key, this.iconOn, this.iconOff, this.onTurnOn, this.onTurnOff, this.initialButtonState}) : super(key: key);
 
   @override
-  _ToggleButtonState createState() => _ToggleButtonState(initialButtonState: initialButtonState);
+  _ToggleButtonState createState() {
+    return _ToggleButtonState(initialButtonState: initialButtonState);
+  }
 }
 
 class _ToggleButtonState extends State<ToggleButton> {
@@ -21,6 +23,11 @@ class _ToggleButtonState extends State<ToggleButton> {
     if(initialButtonState != null){
       _on = initialButtonState;
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
