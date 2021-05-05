@@ -8,8 +8,7 @@ class MaterialWasteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Waste waste = ModalRoute.of(context).settings.arguments;
-    final double screenHeight = MediaQuery.of(context).size.height;
-
+    // final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -29,7 +28,7 @@ class MaterialWasteScreen extends StatelessWidget {
             size: 40,
           ),
           Container(
-            width: 40,
+            width: 20,
           )
         ],
       ),
@@ -58,7 +57,7 @@ class MaterialWasteScreen extends StatelessWidget {
                   for (String item in waste.content)
                     Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                          EdgeInsets.symmetric(vertical:5, horizontal: 10),
                       child: Text(
                         item,
                         textAlign: TextAlign.justify,

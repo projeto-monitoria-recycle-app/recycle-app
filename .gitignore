@@ -44,3 +44,4 @@ app.*.map.json
 
 # Manifest with API KEYS
 *AndroidManifest.xml
+*secrets.dart

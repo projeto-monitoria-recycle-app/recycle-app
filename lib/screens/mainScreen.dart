@@ -68,19 +68,20 @@ class _MainScreenState extends State<MainScreen> {
             icon: ImageIcon(
               AssetImage('assets/icons/waste.png'),
             ),
-            title: Text('Recicláveis'),
+            label: 'Recicláveis',
+            
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/truck.png'),
             ),
-            title: Text('Coleta Seletiva'),
+            label: 'Coleta Seletiva',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/earth-care.png'),
             ),
-            title: Text('Impacto'),
+            label: 'Impacto',
           ),
         ],
         currentIndex: _selectedMenu,

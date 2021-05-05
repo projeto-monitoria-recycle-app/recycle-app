@@ -211,8 +211,9 @@ class _RecycleScreenState extends State<RecycleScreen> {
                               var image = filteredCollectPointList[index].image;
                               return Column(
                                 children: [
-                                  FlatButton(
-                                    padding: EdgeInsets.all(0),
+                                  TextButton(
+
+                                    // padding: EdgeInsets.all(0),
                                     onPressed: () {
                                       Navigator.pushNamed(
                                         context,

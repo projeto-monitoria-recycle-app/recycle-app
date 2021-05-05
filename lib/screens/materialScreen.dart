@@ -100,19 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
                       ),
-                      Stack(
-                        children: [
-                          Container(),
-                          Positioned(
-                            top: 10,
-                            left: 10,
-                            child: Image.asset(
-                              'assets/img/Trash.png',
-                            ),
-                          ),
-                        ],
-                        overflow: Overflow.visible,
-                      ),
+                    
                     ],
                   ),
                 ),
@@ -135,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          "/material",
+                          "/newmaterial",
                           arguments: filteredWasteList[index],
                         );
                       },

@@ -49,7 +49,7 @@ List<Waste> wasteList = [
     hints: [],
     searchItens: [
       '',
-      "Livro Jornal, jornais, Revista ,Caderno, Envelopes, Listas Telefônica, Cartolina, Cartões, Cartazes, Aparas de papel, Formulários",
+      "Livro, Jornal, jornais, Revista ,Caderno, Envelopes, Listas Telefônica, Cartolina, Cartões, Cartazes, Aparas de papel, Formulários",
       "Sacos de papel, Panfletos, Caixa de leite, Caixa de suco, Papeis de presente, papel de seda, Papelão, Apostilas"
     ],
   ),
