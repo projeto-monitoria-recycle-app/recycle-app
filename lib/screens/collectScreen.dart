@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:recicle_app/daos/collectDayNotificationDao.dart';
-import 'package:recicle_app/models/CollectDayNotification.dart';
+import 'package:provider/provider.dart';
+import 'package:recicle_app/controllers/collectDayNotificationController.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
 import 'package:recicle_app/models/collectRouteModel.dart';
-import 'package:recicle_app/models/daysOfWeek.dart';
 import 'package:recicle_app/services/collectDayNotificationService.dart';
-import 'package:recicle_app/services/notificationService.dart';
-import 'package:recicle_app/widgets/notificationDialogWidget.dart';
-import 'package:recicle_app/widgets/toggleButtonWidget.dart';
+import 'package:recicle_app/widgets/activeNotificationsBottomSheet.dart';
+import 'package:recicle_app/widgets/collectRouteListItem.dart';
+import 'package:recicle_app/widgets/notificationCounter.dart';
 
 class RecycleScreen extends StatefulWidget {
   final CollectDayNotificationService collectDayNotificationService =
@@ -135,7 +134,6 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                 collectRouteList.forEach((element) {
                                   filteredCollectRouteList.add(element);
                                 });
-                              }
                               }
                             });
                           },
@@ -302,32 +300,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
               // floating: false,
               delegate: CollectRouterHeader(),
             ),
-            FutureBuilder<Set<int>>(
-              future: Future.delayed(
-                  Duration(seconds: 0),
-                  () => widget.collectDayNotificationService
-                      .getCollectRouteIds()),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return CollectRouteSliverList(
-                      filteredCollectRouteList, snapshot.data);
-                } else {
-                  return SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: LinearProgressIndicator(),
-                    ),
-                  );
-                }
-              },
-            ),
-            // SliverList(
-            //   delegate: SliverChildListDelegate(
-            //       List.generate(filteredCollectRouteList.length, (index) {
-            //     var collectRoute = filteredCollectRouteList[index];
-            //     return CollectRouteListItem(collectRoute);
-            //   })),
-            // ),
+            CollectRouteSliverList(filteredCollectRouteList),
           ],
         ),
       ),
@@ -337,125 +310,74 @@ class _RecycleScreenState extends State<RecycleScreen> {
 
 class CollectRouteSliverList extends StatelessWidget {
   final List<CollectRoute> filteredCollectRouteList;
-  final Set<int> collectRoutesWithNotificationActive;
+  final Set<int> ids = Set();
 
   CollectRouteSliverList(
-    this.filteredCollectRouteList,
-    this.collectRoutesWithNotificationActive, {
+    this.filteredCollectRouteList, {
     Key key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildListDelegate(
-          List.generate(filteredCollectRouteList.length, (index) {
-        var collectRoute = filteredCollectRouteList[index];
-        bool initialState =
-            collectRoutesWithNotificationActive.contains(collectRoute.id);
-        return CollectRouteListItem(
-          collectRoute,
-          collectRoutesWithNotificationActive: this.collectRoutesWithNotificationActive,
-        );
-      })),
-    );
-  }
-}
-
-class CollectRouteListItem extends StatelessWidget {
-  final CollectRoute _collectRoute;
-  final Set<int> collectRoutesWithNotificationActive;
-
-  CollectRouteListItem(this._collectRoute, {this.collectRoutesWithNotificationActive});
-
-  @override
-  Widget build(BuildContext context) {
-    bool initialButtonState = this.collectRoutesWithNotificationActive.contains(_collectRoute.id);
-    return Card(
-      child: ListTile(
-          title: Text(this._collectRoute.location),
-          subtitle: Text(
-              "Bairro: ${this._collectRoute.district} - ${this._collectRoute.dayOfWeek.ptBrValue} - ${this._collectRoute.dayPart} "),
-          trailing: ToggleNotificationButton(
-            _collectRoute,
-            initialButtonState: initialButtonState,
-            collectRoutesWithNotificationActive: this.collectRoutesWithNotificationActive,
-
-          )),
-    );
-  }
-}
-
-class ToggleNotificationButton extends StatelessWidget {
-  final CollectRoute _collectRoute;
-  final bool initialButtonState;
-  final Set<int> collectRoutesWithNotificationActive;
-
-  ToggleNotificationButton(this._collectRoute,
-      {Key key, this.initialButtonState, this.collectRoutesWithNotificationActive, })
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    bool initialButtonState =  this.initialButtonState == null ? false : this.initialButtonState;
-    return ToggleButton(key: UniqueKey(),
-      initialButtonState: initialButtonState,
-      iconOn: Icon(
-        Icons.notifications_active,
-        color: Theme.of(context).primaryColor,
-      ),
-      iconOff: Icon(
-        Icons.notifications_none,
-      ),
-      onTurnOn: () async {
-        bool confirmation = await _showConfirmationDialog(context, true);
-        if (confirmation) {
-          return CollectDayNotificationService()
-              .scheduleNotification(this._collectRoute)
-              .then((value) {
-            if(this.collectRoutesWithNotificationActive != null){
-              this.collectRoutesWithNotificationActive.add(this._collectRoute.id);
-            }
-            return true;
-          })
-              .catchError((e, stackTrace) {
-            return false;
-          });
-        }
-        return confirmation;
-      },
-      onTurnOff: () {
-        return _showConfirmationDialog(context, false).then((confirmation) {
-          return confirmation;
-        });
-      },
-    );
-  }
-
-  Future<bool> _showConfirmationDialog(
-      BuildContext context, bool activation) async {
-    return showDialog<bool>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return activation
-            ? NotificationActivationDialog()
-            : NotificationDeactivationDialog();
-      },
-    );
-  }
+  Widget build(BuildContext context) =>
+      Consumer<CollectDayNotificationController>(
+        builder: (context, controller, widget) {
+          return FutureBuilder<Set<int>>(
+            future: controller.getActiveCollectRouteNotificationsIds(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                Set<int> ids = snapshot.data;
+                return SliverList(
+                  delegate: SliverChildListDelegate(
+                      List.generate(filteredCollectRouteList.length, (index) {
+                    var collectRoute = filteredCollectRouteList[index];
+                    return CollectRouteListItem(
+                      collectRoute,
+                      initialButtonState:
+                          ids.contains(collectRoute.id),
+                    );
+                  })),
+                );
+              } else {
+                return SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: LinearProgressIndicator(),
+                  ),
+                );
+              }
+            },
+          );
+        },
+      );
 }
 
 class CollectRouterHeader extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
+    NotificationCounter notificationCounter = NotificationCounter(
+      onTap: () {
+        showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return ActiveNotificationsBottomSheet();
+            });
+      },
+    );
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      child: Text(
-        'ROTAS DE COLETA SELETIVA',
-        style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey[800]),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'ROTAS DE COLETA SELETIVA',
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[800]),
+          ),
+          notificationCounter
+        ],
       ),
     );
   }
@@ -471,3 +393,4 @@ class CollectRouterHeader extends SliverPersistentHeaderDelegate {
     return true;
   }
 }
+

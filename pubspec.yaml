@@ -39,6 +39,7 @@ dependencies:
   sqflite: ^2.0.0+3
   path: ^1.8.0
   flutter_native_timezone: ^1.0.10
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

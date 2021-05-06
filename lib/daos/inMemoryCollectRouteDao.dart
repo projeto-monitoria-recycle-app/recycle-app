@@ -23,8 +23,13 @@ class InMemoryCollectRouteDao{
   }
 
   List<CollectRoute> getAll(){
-    const List<CollectRoute> routes = [];
+    List<CollectRoute> routes = [];
     routes.addAll(_routes.values);
+    return routes;
+  }
+
+  List<CollectRoute> getAllWithIds(Set<int> ids){
+    List<CollectRoute> routes = getAll().where((route) => ids.contains(route.id)).toList();
     return routes;
   }
 

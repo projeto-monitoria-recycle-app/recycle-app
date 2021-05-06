@@ -6,13 +6,14 @@ class ConfirmationDialog extends StatelessWidget {
   final List<Widget> children;
   final Widget confirmationButton;
   final Widget denyButton;
-
+  Function on;
   ConfirmationDialog(
       {this.title, this.children, this.confirmationButton, this.denyButton});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+
       title: this.title,
       content: SingleChildScrollView(
         child: ListBody(
@@ -22,13 +23,13 @@ class ConfirmationDialog extends StatelessWidget {
       actions: <Widget>[
         TextButton(
           child: this.denyButton,
-          onPressed: () {
+          onPressed: () async {
             Navigator.of(context).pop(false);
           },
         ),
         TextButton(
           child: this.confirmationButton,
-          onPressed: () {
+          onPressed: () async {
             Navigator.of(context).pop(true);
           },
         ),
