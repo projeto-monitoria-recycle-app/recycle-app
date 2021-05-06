@@ -7,7 +7,8 @@ class Waste {
   final String title;
   final List<String> content;
   final List<String> images;
-  final String discart;
+  final List<String> discart;
+  final List<String> impacts;
   final List<List<String>> links;
   final List<List<String>> hints;
   final List<String> searchItens;
@@ -22,6 +23,7 @@ class Waste {
     this.content,
     this.images,
     this.discart,
+    this.impacts,
     this.links,
     this.hints,
     this.searchItens,
@@ -41,9 +43,18 @@ List<Waste> wasteList = [
       'Esta prática possui também um importante impacto na economia, pois impede o acúmulo de papeis em aterros sanitários, contribuindo para a redução de resíduos sólidos, diminuição de impactos negativos no solo e, consequentemente, diminuição da poluição.',
     ],
     recyclable:
-        "Jornais, revistas, livros, apostilas, folhas e folhetos (de preferência sem rasgar nem amassar), caixas de papelão desmontadas e embalagens TetraPak.",
+        "Jornais, revistas, livros, apostilas, folhas, folhetos, caixas de papelão, embalagens TetraPak.",
     notRecyclable:
-        "Papel carbono, celofane, amanteigado, parafinado, papeis amanteigados ou sujos, fitas e etiquetas adesivas, fotografias, toalhas, lenços e guardanapos usados.",
+        "Papel carbono, celofane, amanteigado, parafinado, papeis amanteigados, papeis sujos, fitas, etiquetas adesivas, fotografias, toalhas de papel, lenços usados, guardanapos usados",
+    discart: ["Separar os papeis secos em uma sacola plástica.",
+              "Inclua caixas de papelão desmontadas.", 
+              "De preferência a não rasgar e nem amassar o papel.",
+              "Não incluir papeis sujos de gordura, amanteigado ou parafinado."
+              ],
+    impacts: ["Poluição atmosférica por conta da queima do papel.",
+            "Descartado da forma incorreta auxilia no aumento de resíduos nos Aterros Sanitários.",
+            "Escassez de recursos hídricos na produção do material."
+    ],
     images: ['assets/img/recycling-blue.png'],
     links: [],
     hints: [],
@@ -61,9 +72,18 @@ List<Waste> wasteList = [
         'O plástico é um dos produtos mais utilizados na sociedade atual. O material plástico sintético demora um grande tempo para se decompor, em torno de 500 a 1000 anos, acumulando cada vez mais lixo.',
       ],
       recyclable:
-          "Embalagens e utensílios como garrafas e potes, sacos e sacolas, baldes, canetas, brinquedos, canos, tubos e conexão de PVC, mesas e cadeiras de plástico e radiografias.",
+          "Embalagens plasticas, garrafas, potes, sacos,  sacolas, baldes, canetas, brinquedos, canos, tubos PVC, conexão PVC, mesas de plástico, cadeiras de plástico, radiografias.",
       notRecyclable:
-          "Embalagens metalizadas, adesivos, cabos de panela, espuma de colchão, esponja de cozinha, embalagens de produtos tóxicos, isopor.",
+          "Embalagens metalizadas, adesivos, cabos de panela, espuma de colchão, esponja, embalagens de produtos tóxicos, isopor",
+      discart: ["Lave as embalagens e deixe-as secar.",
+                "Diminuir o tamanho das garrafas PETs, amassando-as com as mãos.",
+                "É preciso ainda fechar as garrafas com a tampa após amassada.",
+                "As sacolas plásticas podem ser usadas como sacos de lixo e depositados nos ecopontos."
+                ],
+      impacts: ["Causa grande impacto na fauna marinha, pois os animais podem se alimentar dos fragmentos plásticos no mar.",
+                "Gera um grande volume de lixo, levando a enchentes e entupimentos de bueiros.",
+                "A grande maioria das embalagens são longa vida, demorando anos para sumir do ambiente."
+      ],
       images: ['assets/img/recycling-red.png'],
       links: [],
       hints: [],
@@ -82,9 +102,18 @@ List<Waste> wasteList = [
         'Uma das etapas mais importantes no processo de reciclagem de metal é a separação e sua coleta seletiva, realizada pela associação de catadores.',
       ],
       recyclable:
-          'Latas limpas de bebidas e alimentos, panelas, parafusos e pregos, grampos e clipes, os objetos de ferro ou lata de aerossóis.',
+          'latas de bebidas, Latas de alimentos, panelas, parafusos, pregos, grampos, clipes, objetos de ferro, objetos de alumínio, objetos de cobre, objetos de latão, lata de aerossóis',
       notRecyclable:
-          'Latas com tintas, vernizes e outros, restos de materiais tóxicos, esponja de aço, pilhas e baterias.',
+          'latas com tintas, vernizes, objetos contaminados com materiais tóxicos, esponja de aço, pilhas, baterias',
+      discart: ["Lavar e secar o material completamente",
+                "Latas sempre devem estar amassadas ou prensadas para otimizar o armazenamento",
+                "Parafusos e pregos devem ser mantidos todos dentro de uma garrafa PET ou recipiente similar.",
+                "Depois de separado, deposite na lixeira correta. "
+                ],
+      impacts: ["Absorvido por vegetais e animais, causando intoxicações em todos os níveis da cadeia alimentar.", 
+              "Contaminação dos rios e nascentes.",
+              "Contaminação por vias aéreas de toxinas liberadas no ar."
+      ],
       images: ['assets/img/recycling-yellow.png'],
       links: [],
       hints: [],
@@ -102,9 +131,18 @@ List<Waste> wasteList = [
         'Outro aspecto é o menor descarte de lixo, reduzindo os custos de coleta urbana, e aumentando a vida útil dos aterros sanitários. ',
       ],
       recyclable:
-          'Embalagens como garrafas e potes de qualquer cor vazias e limpas, copos e taças.',
+          'embalagens de vidro, garrafas, potes, copos, taças, garrafas de cerveja, garrafa de vinho, pratos de vidro',
       notRecyclable:
-          'Espelhos, vidros planos, temperados e resfriados, cristais, utensílios de porcelanas e cerâmica, pirex e similares, lâmpadas.',
+          'espelhos, vidros planos, temperados e resfriados, cristais, objetos de porcelanas, objetos de cerâmica, pirex, lâmpadas.',
+      discart: ["Separar os papeis secos em uma sacola plástica",
+                "Inclua caixas de papelão desmontadas",
+                "De preferência a não rasgar e nem amassar o papel",
+                "Não incluir papeis sujos de gordura, amanteigado ou parafinado."
+                ],
+      impacts: ["Causa acidentes gravíssimos descartado de forma incorreta.",
+              "Não se degrada na natureza gerando acúmulo de material não usado.",
+              "Causa incêndios em florestas no período de estiagem onde a vegetação fica mais seca."
+      ],
       images: ['assets/img/recycling-green.png'],
       links: [],
       hints: [],
@@ -121,6 +159,16 @@ List<Waste> wasteList = [
       'A prática de reciclagem de lixo orgânico está sendo cada vez mais utilizada. Uma possibilidade é a compostagem. Este processo transforma o lixo orgânico em adubo o que é favorável tanto ao meio ambiente, uma vez que esse material não será despejado em aterros sanitários, quanto ao solo que será amparado por um material bastante nutritivo. O mais legal é que esse método pode ser feito em casa. ',
       'A coleta seletiva não faz a coleta do lixo orgânico. Acesse o link para mais informações sobre compostagem: ',
     ],
+    discart: ["Separe cascas de frutas, raízes e legumes e cascas de ovos.",
+              "Escolha um recipiente limpo e seco.",
+              "Distribua o seu lixo neste recipiente.",
+              "Espere por uma semana.",
+              "Você vai ver os seus restos de comida se transformarem em solo. Seu composto estará pronto quando tiver aspecto e cheiro de terra."
+              ],
+    impacts: ["Interfere gravemente no efeito estufa, uma vez descartado de forma incorreta a decomposição desse material produz gás metano.",
+              "O estado de decomposição faz com que saia um líquido escuro que contém alta carga de poluidora e é proveniente de matérias orgânicas em putrefação.",
+              "O acúmulo do lixo orgânico nos Aterros Sanitários atrai animais vetores de doenças.",
+    ],
     links: [
       [
         'Compostagem de Materiais Orgânicos',
@@ -129,7 +177,7 @@ List<Waste> wasteList = [
     ],
     images: ['assets/img/recycling-brown.png'],
     hints: [],
-    recyclable: '',
+    recyclable: 'organico, orgânico comida, frutas, legumes, verduras, pizza, leite, farinha, alimentos, bebidas, arroz, feijão, macarrão, carne, massas, peixe, frango',
     notRecyclable: '',
     searchItens: [
       'organico, orgânico comida, frutas, legumes, verduras, pizza, leite, farinha, alimentos, bebidas, arroz, feijão, macarrão, carne, massas, peixe, frango'
@@ -146,8 +194,17 @@ List<Waste> wasteList = [
       'Como separar o seu óleo vegetal: armazenar o óleo de cozinha em uma garrafa pet ou embalagem de sabão liquido.',
       'O que não realizar com o óleo: não descartar o óleo na pia, ralos, bueiros ou no meio ambiente.'
     ],
-    recyclable: "",
-    notRecyclable: "Óleos minerais e sinteticos (de máquinas e veiculos)",
+    recyclable: "óleo vegetal, óleo de cozinha, óleo de girassol, óleo de canola, óleo de soja, gordura animal",
+    notRecyclable: "óleos minerais, óleos sinteticos, óleo de máquinas, óleo de veiculos",
+    discart: ["Esperar o óleo esfriar.",
+              "Peneirar o óleo de modo que ele fique mais limpo possível.",
+              "Colocar o óleo usado em um recipiente de garrafa PET ou embalagem de sabão líquido.",
+              "Fazer o descarte em locais onde tenha os ecopontos.",
+    ],
+    impacts: ["Poluição das águas que abastecem as residências para o consumo.",
+            "Prejudica as condições estéticas e sanitárias do meio ambiente.",
+            "Poluição dos lençóis freáticos e contaminação do solo."
+    ],
     images: ['assets/img/recycling-orangel.png'],
     links: [],
     hints: [],
@@ -166,15 +223,15 @@ List<Waste> wasteList = [
     recyclable:
         'A coleta seletiva não faz a coleta de materiais não recicláveis. Eles devem ser jogados nas lixeiras tradicionais.',
     notRecyclable:
-        "Papéis não recicláveis: adesivos, etiquetas, fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados.\n\nMetais não recicláveis: clipes, grampos, esponjas de aço, latas de tintas, latas de combustível e pilhas.\n\nPlásticos não recicláveis: cabos de panela, tomadas, isopor, adesivos, espuma, acrílicos.\n\nVidros não recicláveis: espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planos",
+        "adesivos, etiquetas, fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados.\n\nMetais não recicláveis: clipes, grampos, esponjas de aço, latas de tintas, latas de combustível e pilhas.\n\nPlásticos não recicláveis: cabos de panela, tomadas, isopor, adesivos, espuma, acrílicos.\n\nVidros não recicláveis: espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados planos",
     images: ['assets/img/recycling-grey.png'],
     links: [],
     hints: [],
     searchItens: [
       'Papel carbono, celofane, amanteigado, parafinado, papeis amanteigados ou sujos, adesivos, fotografias, toalhas, lenços e guardanapos',
-      ' espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados cabos de panela, tomadas, isopor, adesivos',
-      ' espuma, acrílicos clipes, grampos, esponjas de aço, latas de tintas, latas de combustível, adesivos, etiquetas',
-      ' fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados',
+      'espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados cabos de panela, tomadas, isopor, adesivos',
+      'espuma, acrílicos clipes, grampos, esponjas de aço, latas de tintas, latas de combustível, adesivos, etiquetas',
+      'fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados',
       'Papel higiênico, absorventes, fraudas, fita crepe, guardanapos, fotografias, filtro de cigarros, copos de papel, caixa de pizza engordurada',
       'Papéis enxarcados, Papel vegetal,  Lata de desodorante, Lata de tinta, Lata de verniz,,',
       'osso de frango, carne, Vidros de janela, Cristal, Espelho, Madeira'
@@ -189,8 +246,17 @@ List<Waste> wasteList = [
       'A contaminação do solo e lençóis freáticos são algumas consequências do descarte incorreto de pilhas e baterias usadas. Algumas dessas, compostas de metais pesados, como o chumbo, mercúrio, níquel e cádmio; são capazes de causar doenças renais, cânceres e problemas relacionados no sistema nervoso central. ',
       'A coleta seletiva recolhe o lixo eletrônico como, computadores, eletrodomésticos e demais produtos eletrônicos, porém coleta seletiva não faz a coleta de pilhas e baterias.',
     ],
-    recyclable: '',
+    recyclable: 'pilhas, baterias',
     notRecyclable: '',
+    discart: ["Confira se essa embalagem pode ser descartada em lixo comum, como a parte plástica ou de papelão.",
+              "Certifique-se que o material não está estourado ou vazando. Caso isso aconteça, não ingerir ou colocar as mãos sujas nos olhos.",
+              "Guardar em um recipiente separado, que pode ser uma garrafa pet.",
+              "As pilhas/baterias após o uso devem ser entregues aos estabelecimentos como supermercados e/ou às assistências técnicas."
+    ],
+    impacts: ["Esses materiais jogados em aterros sanitários ou lixões pode ocorrer a contaminação do solo e lençóis freáticos por metais pesados.",
+             "Jogados na água podem entrar na cadeia alimentar e causar sérios problemas à saúde como câncer e danos ao sistema nervoso central.",
+             "A queima deste material pode contaminar o ar."
+    ],
     images: ['assets/img/recycling-orange.png'],
     links: [],
     hints: [
