@@ -10,7 +10,7 @@ class NewMaterialWasteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Waste waste = ModalRoute.of(context).settings.arguments;
     // final double screenHeight = MediaQuery.of(context).size.height;
-    // final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenWidth = MediaQuery.of(context).size.width;
 
     return NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (OverscrollIndicatorNotification overScroll) {
@@ -35,20 +35,44 @@ class NewMaterialWasteScreen extends StatelessWidget {
                   snap: true,
                   title: Text(waste.name),
                   expandedHeight: 200,
-                  backgroundColor: waste.color,
+                  backgroundColor: waste.color.withAlpha(220),
                   flexibleSpace: FlexibleSpaceBar(
                     background: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(
-                          height: 40,
+                          height: 15,
                         ),
-                        Text(
-                          'Descubra os pontos de coleta próximos a você.',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(
+                              width: screenWidth*0.5,
+                              child: Text(
+                                'Descubra os pontos de coleta próximos a você.',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Hero(
+                              tag: waste.name,
+                              child: Container(
+                                padding: EdgeInsets.all(20),
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: waste.color,
+                                ),
+                                child: ImageIcon(
+                                  waste.icon,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ],
                     ),
@@ -61,6 +85,31 @@ class NewMaterialWasteScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("!", 
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: waste.color,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  SizedBox(
+                    width: screenWidth*0.7,
+                    child: Text(waste.discart[1], 
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
                 Container(
                   margin: EdgeInsets.only(top:15),
                   child: Row(
@@ -80,17 +129,34 @@ class NewMaterialWasteScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(15),
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text("oi"),
-                          ),
-                        ],
-                      ),
-                    ],
+                  child: Column(
+                    children: List.generate(
+                      waste.discart.length, 
+                      (index) {
+                        var step = waste.discart[index];
+                        return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+
+                            Text((index+1).toString() +"." , 
+                              style: TextStyle(
+                                color: waste.color, 
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                 
+                                ),
+                              ), 
+                            SizedBox(
+                              width: screenWidth*0.7,
+                              child: Text(step),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+                   
                   ),
                 ),
                 Container(
@@ -112,50 +178,64 @@ class NewMaterialWasteScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(15),
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Text("Impactos Economicos"),
-                          Text("Impactos Ambiental"),
-                          Text("Impactos Social"),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top:15),
-                  child: Row(
-                    children: [
-                      Text("TRATAMENTO DO RESÍDUO", 
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey[800]),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text("oi"),
+                  child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                    children: [ for (String impact in waste.impacts)
+                      
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ImageIcon(
+                                AssetImage("assets/icons/earth-care.png"),
+                                size: 40,
+                                color: waste.color,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: SizedBox(
+                                  width: screenWidth*0.7,
+                                  child: Text(impact),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
+                ),
+                // Container(
+                //   margin: EdgeInsets.only(top:15),
+                //   child: Row(
+                //     children: [
+                //       Text("TRATAMENTO DO RESÍDUO", 
+                //         textAlign: TextAlign.left,
+                //         style: TextStyle(
+                //               fontSize: 16,
+                //               fontWeight: FontWeight.bold,
+                //               color: Colors.grey[800]),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // Card(
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.all(Radius.circular(15),
+                //     ),
+                //   ),
+                //   child: Row(
+                //     children: [
+                //       Column(
+                //         children: [
+                //           Padding(
+                //             padding: const EdgeInsets.all(10.0),
+                //             child: Text("oi"),
+                //           ),
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 Container(
                   margin: EdgeInsets.only(top:15),
                   child: Row(
@@ -182,8 +262,9 @@ class NewMaterialWasteScreen extends StatelessWidget {
                           children: [],
                         ),
                         Wrap(
+                          alignment: WrapAlignment.center,
                           children: [
-                            for (String item in waste.searchItens[1].split(","))
+                            for (String item in waste.recyclable.split(","))
                             Card(
                               elevation: 0,
                               color: waste.color,
@@ -227,9 +308,10 @@ class NewMaterialWasteScreen extends StatelessWidget {
                           children: [],
                         ),
                         Wrap(
-                          alignment: WrapAlignment.start,
+                          alignment: WrapAlignment.center,
+
                           children: [
-                            for (String item in waste.searchItens[1].split(","))
+                            for (String item in waste.notRecyclable.split(","))
                             Card(
                               elevation: 0,
                               color: Colors.grey,
