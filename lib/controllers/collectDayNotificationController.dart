@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:recicle_app/daos/inMemoryCollectRouteDao.dart';
 import 'package:recicle_app/models/collectRouteModel.dart';
 import 'package:recicle_app/services/collectDayNotificationService.dart';
@@ -15,13 +16,13 @@ class CollectDayNotificationController extends ChangeNotifier{
   Future<void> scheduleNotification(CollectRoute route) async {
     await _collectDayNotificationService.scheduleNotification(route);
     this._activeCollectRouteNotificationsIdsCache.add(route.id);
-    this.notifyListeners();
+    Future(this.notifyListeners);
   }
 
   Future<void> removeNotificationFor(int collectRouteId) async{
     await _collectDayNotificationService.deleteByCollectRouteId(collectRouteId);
     this._activeCollectRouteNotificationsIdsCache.remove(collectRouteId);
-    this.notifyListeners();
+    Future(this.notifyListeners);
   }
 
   Future<Set<int>> getActiveCollectRouteNotificationsIds() async{
@@ -37,5 +38,15 @@ class CollectDayNotificationController extends ChangeNotifier{
   Future<List<CollectRoute>> getCollectRoutesWithActiveNotifications() async {
     Set<int> ids = await this.getActiveCollectRouteNotificationsIds();
     return InMemoryCollectRouteDao().getAllWithIds(ids);
+  }
+
+  bool hasCachedIds(){
+    return _activeCollectRouteNotificationsIdsCache != null;
+  }
+
+  Set<int> get cachedActiveCollectRouteNotificationsIds{
+    Set<int> ids = Set();
+    ids.addAll(this._activeCollectRouteNotificationsIdsCache);
+    return ids;
   }
 }

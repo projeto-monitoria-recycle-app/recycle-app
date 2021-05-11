@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
-import 'package:recicle_app/configs/localNotificationPluginFactory.dart';
-import 'package:recicle_app/daos/collectDayNotificationDao.dart';
 import 'package:recicle_app/screens/mapScreen.dart';
 import 'package:recicle_app/screens/questionAnswerScreen.dart';
 import 'package:recicle_app/screens/mainScreen.dart';

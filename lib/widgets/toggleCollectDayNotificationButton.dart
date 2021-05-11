@@ -38,17 +38,17 @@ class ToggleNotificationButton extends StatelessWidget {
         Icons.notifications_none,
       ),
       onTurnOn: () async {
-        bool confirmation = await _showConfirmationDialog(context, true);
-        if (confirmation) {
-          return _scheduleNotification(controller);
-        }
+        bool confirmation = await _showConfirmationDialog(context, true, controller);
+        // if (confirmation) {
+        //   return _scheduleNotification(controller);
+        // }
         return confirmation;
       },
       onTurnOff: () {
-        return _showConfirmationDialog(context, false).then((confirmation) {
-          if (confirmation) {
-            return _removeNotification(controller);
-          }
+        return _showConfirmationDialog(context, false, controller).then((confirmation) {
+          // if (confirmation) {
+          //   return _removeNotification(controller);
+          // }
           return confirmation;
         });
       },
@@ -78,14 +78,18 @@ class ToggleNotificationButton extends StatelessWidget {
   }
 
   Future<bool> _showConfirmationDialog(
-      BuildContext context, bool activation) async {
+      BuildContext context, bool activation, CollectDayNotificationController controller) async {
     return showDialog<bool>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return activation
-            ? NotificationActivationDialog()
-            : NotificationDeactivationDialog();
+            ? NotificationActivationDialog(onConfirm: (){
+                return _scheduleNotification(controller);
+                },)
+            : NotificationDeactivationDialog(onConfirm: (){
+              return _removeNotification(controller);
+        },);
       },
     );
   }

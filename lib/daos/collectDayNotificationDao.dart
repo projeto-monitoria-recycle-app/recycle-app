@@ -21,9 +21,6 @@ class CollectDayNotificationDao {
 
       if (afterInsert != null) {
         return afterInsert(id);
-        //     .then((value) {
-        //   notification.id = id;
-        // });
       }
 
       notification.notificationId= id;
@@ -36,7 +33,6 @@ class CollectDayNotificationDao {
     return database.query(_tableName).then((rows) {
       List<CollectDayNotification> notifications = [];
       rows.forEach((row) {
-        print(row);
         notifications.add(_toObject(row));
       });
       return notifications;
@@ -70,7 +66,6 @@ class CollectDayNotificationDao {
   Future<CollectDayNotification> getByCollectRouteId(int id) async{
     var database = await DatabaseFactory.getDatabase();
     var rows =  await database.query(_tableName, where: "$_routeIdColumn = ?", whereArgs: [id], limit: 1);
-    print("fetched rows: $rows");
     return rows.length > 0 ? _toObject(rows[0]) : null;
   }
 

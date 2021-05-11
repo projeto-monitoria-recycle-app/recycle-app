@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:recicle_app/controllers/collectDayNotificationController.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
 import 'package:recicle_app/models/collectRouteModel.dart';
 import 'package:recicle_app/services/collectDayNotificationService.dart';
@@ -312,45 +310,25 @@ class CollectRouteSliverList extends StatelessWidget {
   final List<CollectRoute> filteredCollectRouteList;
   final Set<int> ids = Set();
 
-  CollectRouteSliverList(
-    this.filteredCollectRouteList, {
+  CollectRouteSliverList(this.filteredCollectRouteList, {
     Key key,
   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) =>
-      Consumer<CollectDayNotificationController>(
-        builder: (context, controller, widget) {
-          return FutureBuilder<Set<int>>(
-            future: controller.getActiveCollectRouteNotificationsIds(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                Set<int> ids = snapshot.data;
-                return SliverList(
-                  delegate: SliverChildListDelegate(
-                      List.generate(filteredCollectRouteList.length, (index) {
-                    var collectRoute = filteredCollectRouteList[index];
-                    return CollectRouteListItem(
-                      collectRoute,
-                      initialButtonState:
-                          ids.contains(collectRoute.id),
-                    );
-                  })),
-                );
-              } else {
-                return SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: LinearProgressIndicator(),
-                  ),
-                );
-              }
-            },
-          );
-        },
-      );
-}
 
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("building CollectRouteSliverList");
+    return SliverList(
+            delegate: SliverChildListDelegate(
+                List.generate(filteredCollectRouteList.length, (index) {
+                  var collectRoute = filteredCollectRouteList[index];
+                  return CollectRouteListItem(
+                    collectRoute,
+                  );
+                })),
+          );
+  }
+}
 class CollectRouterHeader extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
