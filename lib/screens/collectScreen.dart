@@ -30,7 +30,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
     filteredCollectPointList.clear();
     collectPointList.forEach(
       (element) {
-        if (element.district == district) {
+        if (element.route.district == district) {
           filteredCollectPointList.add(element);
         }
       },
@@ -213,7 +213,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                             itemBuilder: (context, index) {
                               var name = filteredCollectPointList[index].name;
                               var district =
-                                  filteredCollectPointList[index].district;
+                                  filteredCollectPointList[index].route.district;
                               var image = filteredCollectPointList[index].image;
                               return Column(
                                 children: [

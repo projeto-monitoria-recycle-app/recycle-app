@@ -73,7 +73,7 @@ class _GMapScreenState extends State<GMapScreen> {
                 consumeTapEvents: false,
                 infoWindow: InfoWindow(
                   title: collectPoint.name,
-                  snippet: collectPoint.adreess,
+                  snippet: collectPoint.route.location,
                 ),
                 icon: BitmapDescriptor.defaultMarker),
           );
@@ -155,7 +155,7 @@ class _GMapScreenState extends State<GMapScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(collectPoint.adreess),
+                      Text(collectPoint.route.location),
                     ],
                   ),
                 ),

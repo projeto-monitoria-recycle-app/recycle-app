@@ -117,7 +117,7 @@ List<CollectRoute> collectRouteList = [
   ),
   CollectRoute(
     13,
-    "Shopping do Valle ",
+    "Shopping do Valle - RJ-130 - Estrada Tere-Fri",
     "Manhã",
     DayOfWeek.wednesday,
     "Albuquerque",
@@ -255,4 +255,11 @@ List<CollectRoute> collectRouteList = [
     DayOfWeek.friday,
     "Barra do Imbuí",
   ),
+  CollectRoute(
+    33,
+    'Corpo de Bombeiros - Estrada Tere-Fri',
+    null,
+    DayOfWeek.wednesday,
+    'Bonsucesso',
+  )
 ];
