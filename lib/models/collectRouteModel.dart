@@ -258,7 +258,7 @@ List<CollectRoute> collectRouteList = [
   CollectRoute(
     33,
     'Corpo de Bombeiros - Estrada Tere-Fri',
-    null,
+    "",
     DayOfWeek.wednesday,
     'Bonsucesso',
   )

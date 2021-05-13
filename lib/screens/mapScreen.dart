@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import 'package:provider/provider.dart';
+import 'package:recicle_app/controllers/collectDayNotificationController.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
+import 'package:recicle_app/widgets/toggleCollectDayNotificationButton.dart';
 
 class GMapScreen extends StatefulWidget {
   @override
@@ -14,6 +17,7 @@ class GMapScreen extends StatefulWidget {
 
 class _GMapScreenState extends State<GMapScreen> {
   _GMapScreenState();
+
   Set<Marker> _markers = HashSet<Marker>();
 
   // IMPLEMENTING GPS LOCATION -------------------------------------------------
@@ -155,7 +159,7 @@ class _GMapScreenState extends State<GMapScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(collectPoint.route.location),
+                      Text(_truncateString(collectPoint.route.location, 26, truncatedSuffix: " ...")),
                     ],
                   ),
                 ),
@@ -312,11 +316,85 @@ class _GMapScreenState extends State<GMapScreen> {
                     ],
                   ),
                 ),
+                if(collectPoint.route.id != null ) ToggleNotificationMapOption(collectPoint),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  String _truncateString(String string, int maxLength, {String truncatedSuffix}) {
+    return string.length > maxLength ? string.substring(0, maxLength) + truncatedSuffix ?? "" : string;
+  }
+}
+
+class ToggleNotificationMapOption extends StatelessWidget {
+  final CollectPoint collectPoint;
+
+  const ToggleNotificationMapOption(
+    this.collectPoint, {
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var controller = Provider.of<CollectDayNotificationController>(context);
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: FutureBuilder<Set<int>>(
+        future: controller.getActiveCollectRouteNotificationsIds(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            bool isNotificationActive =
+                snapshot.data.contains(collectPoint.route.id);
+            return buildButton(context, isNotificationActive);
+          }
+          return Container(child: CircularProgressIndicator());
+        },
+      ),
+    );
+  }
+
+  Row buildButton(BuildContext context, bool isNotificationActive) {
+    return Row(
+      children: [
+        Container(
+          height: 30,
+          width: 150,
+          color: Colors.white,
+          child: Center(
+            child: Text(isNotificationActive
+                ? "Desativar notificação"
+                : "Ativar notificação"),
+          ),
+        ),
+        Container(
+          height: 45,
+          width: 45,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Theme.of(context).accentColor,
+          ),
+          child: ClipOval(
+              child: ToggleNotificationButton(
+            collectPoint.route,
+            initialButtonState: isNotificationActive,
+            colorOn: Colors.white,
+            colorOff: Colors.white,
+          )),
+        ),
+      ],
+    );
+  }
+
+  Future<Set<int>> buildActiveCollectRouteNotificationsIds(
+      BuildContext context) {
+    return Provider.of<CollectDayNotificationController>(context)
+        .getActiveCollectRouteNotificationsIds();
   }
 }

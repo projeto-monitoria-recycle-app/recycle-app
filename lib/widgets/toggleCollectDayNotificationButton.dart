@@ -9,11 +9,13 @@ import 'notificationDialogWidget.dart';
 class ToggleNotificationButton extends StatelessWidget {
   final CollectRoute _collectRoute;
   final bool initialButtonState;
+  final Color colorOff;
+  final Color colorOn;
 
   ToggleNotificationButton(
     this._collectRoute, {
     Key key,
-    this.initialButtonState,
+    this.initialButtonState, this.colorOff, this.colorOn,
   }) : super(key: key);
 
   @override
@@ -32,10 +34,11 @@ class ToggleNotificationButton extends StatelessWidget {
       initialButtonState: initialButtonState,
       iconOn: Icon(
         Icons.notifications_active,
-        color: Theme.of(context).primaryColor,
+        color: colorOn ?? Theme.of(context).primaryColor,
       ),
       iconOff: Icon(
         Icons.notifications_none,
+        color: colorOff,
       ),
       onTurnOn: () async {
         bool confirmation = await _showConfirmationDialog(context, true, controller);
