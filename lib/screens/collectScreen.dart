@@ -1,8 +1,17 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
 import 'package:recicle_app/models/collectRouteModel.dart';
+import 'package:recicle_app/services/collectDayNotificationService.dart';
+import 'package:recicle_app/widgets/activeNotificationsBottomSheet.dart';
+import 'package:recicle_app/widgets/collectRouteListItem.dart';
+import 'package:recicle_app/widgets/notificationCounter.dart';
 
 class RecycleScreen extends StatefulWidget {
+  final CollectDayNotificationService collectDayNotificationService =
+      CollectDayNotificationService();
+
   @override
   _RecycleScreenState createState() => _RecycleScreenState();
 }
@@ -21,8 +30,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
     filteredCollectPointList.clear();
     collectPointList.forEach(
       (element) {
-        print(element);
-        if (element.district == district) {
+        if (element.route.district == district) {
           filteredCollectPointList.add(element);
         }
       },
@@ -33,7 +41,6 @@ class _RecycleScreenState extends State<RecycleScreen> {
     filteredCollectRouteList.clear();
     collectRouteList.forEach(
       (element) {
-        print(element);
         if (element.district == district) {
           filteredCollectRouteList.add(element);
         }
@@ -126,7 +133,6 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                   filteredCollectRouteList.add(element);
                                 });
                               }
-                              print(selectedDistrict);
                             });
                           },
                           items: districtList
@@ -207,7 +213,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                             itemBuilder: (context, index) {
                               var name = filteredCollectPointList[index].name;
                               var district =
-                                  filteredCollectPointList[index].district;
+                                  filteredCollectPointList[index].route.district;
                               var image = filteredCollectPointList[index].image;
                               return Column(
                                 children: [
@@ -293,23 +299,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
               // floating: false,
               delegate: CollectRouterHeader(),
             ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                  List.generate(filteredCollectRouteList.length, (index) {
-                var dayOfWeek = filteredCollectRouteList[index].dayOfWeek;
-                var dayPart = filteredCollectRouteList[index].dayPart;
-                var location = filteredCollectRouteList[index].location;
-                var district = filteredCollectRouteList[index].district;
-
-                return Card(
-                  child: ListTile(
-                    title: Text(location),
-                    subtitle:
-                        Text("Bairro: $district - $dayOfWeek - $dayPart "),
-                  ),
-                );
-              })),
-            ),
+            CollectRouteSliverList(filteredCollectRouteList),
           ],
         ),
       ),
@@ -317,16 +307,56 @@ class _RecycleScreenState extends State<RecycleScreen> {
   }
 }
 
+class CollectRouteSliverList extends StatelessWidget {
+  final List<CollectRoute> filteredCollectRouteList;
+  final Set<int> ids = Set();
+
+  CollectRouteSliverList(this.filteredCollectRouteList, {
+    Key key,
+  }) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("building CollectRouteSliverList");
+    return SliverList(
+            delegate: SliverChildListDelegate(
+                List.generate(filteredCollectRouteList.length, (index) {
+                  var collectRoute = filteredCollectRouteList[index];
+                  return CollectRouteListItem(
+                    collectRoute,
+                  );
+                })),
+          );
+  }
+}
 class CollectRouterHeader extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
+    NotificationCounter notificationCounter = NotificationCounter(
+      onTap: () {
+        showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return ActiveNotificationsBottomSheet();
+            });
+      },
+    );
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      child: Text(
-        'ROTAS DE COLETA SELETIVA',
-        style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey[800]),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'ROTAS DE COLETA SELETIVA',
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[800]),
+          ),
+          notificationCounter
+        ],
       ),
     );
   }
@@ -342,3 +372,4 @@ class CollectRouterHeader extends SliverPersistentHeaderDelegate {
     return true;
   }
 }
+
