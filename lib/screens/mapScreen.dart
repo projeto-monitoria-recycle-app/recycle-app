@@ -88,12 +88,6 @@ class _GMapScreenState extends State<GMapScreen> {
 // DEFINING MAP MARKER ---------------------------------------------------------
 
 //FLARE ANIMATIONS CONTROL -----------------------------------------------------
-    final FlareControls controls = FlareControls();
-
-    void _playSuccessAnimation() {
-      // Use the controls to trigger an animation.
-      controls.play("tracking");
-    }
 
     return Scaffold(
       body: Stack(
@@ -112,6 +106,7 @@ class _GMapScreenState extends State<GMapScreen> {
               ),
             ),
           ),
+          MapOptionsLayer(collectPoint, _mapController, _currentPosition),
           Positioned(
             top: 50,
             left: 20,
@@ -159,7 +154,8 @@ class _GMapScreenState extends State<GMapScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(_truncateString(collectPoint.route.location, 26, truncatedSuffix: " ...")),
+                      Text(_truncateString(collectPoint.route.location, 26,
+                          truncatedSuffix: " ...")),
                     ],
                   ),
                 ),
@@ -189,144 +185,297 @@ class _GMapScreenState extends State<GMapScreen> {
               ],
             ),
           ),
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 20,
-                        width: 80,
-                        color: Colors.white,
-                        child: Center(child: Text("Ecoponto")),
-                      ),
-                      Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).accentColor,
-                        ),
-                        child: ClipOval(
-                          child: InkWell(
-                            child: Icon(
-                              Icons.location_on,
-                              color: Colors.white,
-                            ),
-                            onTap: () {
-                              _playSuccessAnimation();
-                              _mapController.animateCamera(
-                                CameraUpdate.newCameraPosition(
-                                  CameraPosition(
-                                    target: LatLng(collectPoint.latitude,
-                                        collectPoint.longitude),
-                                    zoom: 16.0,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+          // Positioned(
+          //   bottom: 20,
+          //   right: 20,
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.end,
+          //     children: [
+          //       CollectPointMapOption(collectPoint, _mapController),
+          //       SeeRouteMapOption(collectPoint),
+          //       MyLocationMapOption(_currentPosition, _mapController),
+          //       if (collectPoint.route.id != null)
+          //         ToggleNotificationMapOption(collectPoint),
+          //     ],
+          //   ),
+          // ),
+        ],
+      ),
+    );
+  }
+
+  String _truncateString(String string, int maxLength,
+      {String truncatedSuffix}) {
+    return string.length > maxLength
+        ? string.substring(0, maxLength) + truncatedSuffix ?? ""
+        : string;
+  }
+}
+
+class CollectPointMapOption extends StatelessWidget {
+  final CollectPoint _collectPoint;
+  final GoogleMapController _mapController;
+
+  const CollectPointMapOption(
+    this._collectPoint,
+    this._mapController, {
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final FlareControls controls = FlareControls();
+
+    void _playSuccessAnimation() {
+      // Use the controls to trigger an animation.
+      controls.play("tracking");
+    }
+
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Row(
+        children: [
+          Container(
+            height: 20,
+            width: 80,
+            color: Colors.white,
+            child: Center(child: Text("Ecoponto")),
+          ),
+          Container(
+            height: 45,
+            width: 45,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Theme.of(context).accentColor,
+            ),
+            child: ClipOval(
+              child: InkWell(
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.white,
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 30,
-                        width: 80,
-                        color: Colors.white,
-                        child: Center(child: Text("Ver Rota")),
+                onTap: () {
+                  _playSuccessAnimation();
+                  _mapController.animateCamera(
+                    CameraUpdate.newCameraPosition(
+                      CameraPosition(
+                        target: LatLng(
+                            _collectPoint.latitude, _collectPoint.longitude),
+                        zoom: 16.0,
                       ),
-                      Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).accentColor,
-                        ),
-                        child: ClipOval(
-                          child: InkWell(
-                            child: Icon(Icons.directions, color: Colors.white),
-                            onTap: () {
-                              MapsLauncher.launchCoordinates(
-                                  collectPoint.latitude,
-                                  collectPoint.longitude);
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 30,
-                        width: 130,
-                        color: Colors.white,
-                        child: Center(child: Text("Minha Localização")),
-                      ),
-                      Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).accentColor,
-                        ),
-                        child: ClipOval(
-                          child: InkWell(
-                            child: Icon(
-                              Icons.my_location,
-                              color: Colors.white,
-                            ),
-                            onTap: () {
-                              _mapController.animateCamera(
-                                CameraUpdate.newCameraPosition(
-                                  CameraPosition(
-                                    target: LatLng(_currentPosition.latitude,
-                                        _currentPosition.longitude),
-                                    zoom: 16.0,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                if(collectPoint.route.id != null ) ToggleNotificationMapOption(collectPoint),
-              ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],
       ),
     );
   }
+}
 
-  String _truncateString(String string, int maxLength, {String truncatedSuffix}) {
-    return string.length > maxLength ? string.substring(0, maxLength) + truncatedSuffix ?? "" : string;
+class SeeRouteMapOption extends StatelessWidget {
+  final CollectPoint _collectPoint;
+
+  const SeeRouteMapOption(
+    this._collectPoint, {
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Row(
+        children: [
+          Container(
+            height: 30,
+            width: 80,
+            color: Colors.white,
+            child: Center(child: Text("Ver Rota")),
+          ),
+          Container(
+            height: 45,
+            width: 45,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Theme.of(context).accentColor,
+            ),
+            child: ClipOval(
+              child: InkWell(
+                child: Icon(Icons.directions, color: Colors.white),
+                onTap: () {
+                  MapsLauncher.launchCoordinates(
+                      _collectPoint.latitude, _collectPoint.longitude);
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MyLocationMapOption extends StatelessWidget {
+  final Position _currentPosition;
+  final GoogleMapController _mapController;
+
+  const MyLocationMapOption(
+    this._currentPosition,
+    this._mapController, {
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Row(
+        children: [
+          Container(
+            height: 30,
+            width: 130,
+            color: Colors.white,
+            child: Center(child: Text("Minha Localização")),
+          ),
+          Container(
+            height: 45,
+            width: 45,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Theme.of(context).accentColor,
+            ),
+            child: ClipOval(
+              child: InkWell(
+                child: Icon(
+                  Icons.my_location,
+                  color: Colors.white,
+                ),
+                onTap: () {
+                  _mapController.animateCamera(
+                    CameraUpdate.newCameraPosition(
+                      CameraPosition(
+                        target: LatLng(_currentPosition.latitude,
+                            _currentPosition.longitude),
+                        zoom: 16.0,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MapOptionsLayer extends StatefulWidget {
+  final CollectPoint collectPoint;
+  final GoogleMapController mapController;
+  final Position currentPosition;
+
+  const MapOptionsLayer(
+    this.collectPoint,
+    this.mapController,
+    this.currentPosition, {
+    Key key,
+  }) : super(key: key);
+
+  @override
+  _MapOptionsLayerState createState() => _MapOptionsLayerState();
+}
+
+class _MapOptionsLayerState extends State<MapOptionsLayer> {
+  double _visibility = 0.0;
+  bool _visible = false;
+  double _floatingActionButtonRightPosition = 24.0;
+  double _floatingActionButtonBottomPosition = 24.0;
+  double _mapOptionsRightPosition;
+  static const double _mapOptionsInitialRightPosition = -200;
+
+  _MapOptionsLayerState() {
+    _mapOptionsRightPosition = _mapOptionsInitialRightPosition;
+  }
+
+  double get _mapOptionsBottomPosition {
+    return _floatingActionButtonBottomPosition + 72;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () {
+            if (_visible) {
+              setState(() {
+                _hideOptions();
+              });
+            }
+          },
+          child: AnimatedContainer(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.transparent),
+              color: Color.fromRGBO(0, 0, 0, _visibility),
+            ),
+            duration: Duration(milliseconds: 250),
+          ),
+        ),
+        AnimatedPositioned(
+          duration: Duration(milliseconds: 250),
+          bottom: _floatingActionButtonBottomPosition,
+          right: _floatingActionButtonRightPosition,
+          child: FloatingActionButton(
+            onPressed: _showOptions,
+            child: Icon(Icons.add),
+          ),
+        ),
+        AnimatedPositioned(
+          duration: Duration(milliseconds: 250),
+          bottom: _mapOptionsBottomPosition,
+          right: _mapOptionsRightPosition,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              CollectPointMapOption(widget.collectPoint, widget.mapController),
+              SeeRouteMapOption(widget.collectPoint),
+              MyLocationMapOption(widget.currentPosition, widget.mapController),
+              if (widget.collectPoint.route.id != null)
+                ToggleNotificationMapOption(widget.collectPoint),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  void _hideOptions() {
+    _visible = false;
+    _visibility = 0.0;
+    _floatingActionButtonRightPosition = 24.0;
+    _mapOptionsRightPosition = _mapOptionsInitialRightPosition;
+  }
+
+  void _showOptions() {
+    setState(() {
+      _visible = true;
+      _visibility = 0.5;
+      _floatingActionButtonRightPosition = -80.0;
+      _mapOptionsRightPosition = 16.0;
+    });
   }
 }
 
