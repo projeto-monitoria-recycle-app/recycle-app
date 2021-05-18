@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:recicle_app/models/materialModel.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MaterialWasteScreen extends StatelessWidget {
   static const routeName = '/material';
@@ -11,193 +11,334 @@ class MaterialWasteScreen extends StatelessWidget {
     // final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: waste.color,
-        title: Text(waste.name),
-        shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(60),
-            bottomRight: Radius.circular(60),
-          ),
-        ),
-        toolbarHeight: 75,
-        actions: [
-          ImageIcon(
-            waste.icon,
-            size: 40,
-          ),
-          Container(
-            width: 20,
-          )
-        ],
-      ),
-      body: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (OverscrollIndicatorNotification overScroll) {
-          overScroll.disallowGlow();
-          return false;
-        },
-        child: SingleChildScrollView(
-          child: IntrinsicHeight(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    waste.title,
-                    style: TextStyle(
-                        color: waste.color,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  for (String item in waste.content)
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical:5, horizontal: 10),
-                      child: Text(
-                        item,
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
+    return NotificationListener<OverscrollIndicatorNotification>(
+      onNotification: (OverscrollIndicatorNotification overScroll) {
+        overScroll.disallowGlow();
+        return false;
+      },
+      child: Material(
+        child: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(8),
+            color: Colors.grey[100],
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  shape: ContinuousRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
                     ),
-                  waste.links.isEmpty
-                      ? SizedBox()
-                      : Container(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                          child: InkWell(
-                            onTap: () async {
-                              String url = waste.links[0][1];
-                              if (await canLaunch(url)) {
-                                await launch(url);
-                              } else {
-                                throw 'Não foi possivel acesse o link: $url.';
-                              }
-                            },
-                            child: Text(
-                              waste.links[0][0],
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.blue),
+                  ),
+                  pinned: true,
+                  floating: true,
+                  snap: true,
+                  title: Text(waste.name),
+                  expandedHeight: 200,
+                  backgroundColor: waste.color,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(
+                              width: screenWidth * 0.5,
+                              child: Text(
+                                waste.content[0],
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
-                          ),
-                        ),
-                  waste.recyclable.isEmpty
-                      ? SizedBox()
-                      : Text(
-                          "O que separar para a coleta seletiva: ",
-                          style: TextStyle(
-                              color: waste.color,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    child: Text(
-                      waste.recyclable,
-                      textAlign: TextAlign.justify,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                  waste.notRecyclable.isEmpty
-                      ? SizedBox()
-                      : Text(
-                          "O que não jogar nos Ecopontos: ",
-                          style: TextStyle(
-                              color: waste.color,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    child: Text(
-                      waste.notRecyclable,
-                      textAlign: TextAlign.justify,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                  waste.hints.isEmpty
-                      ? SizedBox()
-                      : Column(
-                          children: List.generate(
-                            waste.hints.length,
-                            (index) {
-                              return Container(
-                                padding: EdgeInsets.all(5),
+                            Hero(
+                              tag: waste.name,
+                              child: Container(
+                                padding: EdgeInsets.all(20),
+                                width: 100,
+                                height: 100,
                                 decoration: BoxDecoration(
-                                  color: Colors.orangeAccent[200],
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(5),
+                                  border: Border.all(
+                                    width: 2,
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: waste.color,
+                                ),
+                                child: ImageIcon(
+                                  waste.icon,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "!",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: waste.color,
+                                      fontSize: 50,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: screenWidth * 0.7,
+                                  child: Text(
+                                    waste.content[1],
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Spacer(),
-                                    Container(
-                                      width: screenWidth * 0.50,
-                                      child: Text(
-                                        waste.hints[index][0],
-                                        style: TextStyle(color: Colors.white),
-                                        textAlign: TextAlign.justify,
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    InkWell(
-                                      child: Container(
-                                        height: screenWidth * 0.3,
-                                        width: screenWidth * 0.3,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(5),
+                              ],
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 15),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "COMO DESCARTAR " +
+                                        waste.name.toUpperCase(),
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[800]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Column(
+                                  children: List.generate(waste.discart.length,
+                                      (index) {
+                                    var step = waste.discart[index];
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(
+                                            (index + 1).toString() + ".",
+                                            style: TextStyle(
+                                              color: waste.color,
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(1),
-                                              blurRadius: 1,
-                                              offset: Offset(2, 1),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Expanded(
+                                            // width: screenWidth * 0.7,
+                                            child: Text(step),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 15),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "IMPACTOS",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[800]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: [
+                                    for (var impact in waste.impacts)
+                                      Container(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 5),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            ImageIcon(
+                                              AssetImage(
+                                                  "assets/icons/${impact[0]}.png"),
+                                              size: 40,
+                                              color: waste.color,
+                                            ),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                impact[1],
+                                              ),
                                             ),
                                           ],
                                         ),
-                                        clipBehavior: Clip.antiAlias,
-                                        child: Image.asset(
-                                          waste.hints[index][1],
-                                          fit: BoxFit.cover,
-                                        ),
                                       ),
-                                      onTap: () {
-                                        Navigator.pushNamed(context, "/photo",
-                                            arguments: waste.hints[index][1]);
-                                      },
-                                    ),
                                   ],
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 15),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "ITENS RECICLÁVEIS",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[800]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [],
+                                  ),
+                                  Wrap(
+                                    alignment: WrapAlignment.center,
+                                    children: [
+                                      for (String item
+                                          in waste.recyclable.split(","))
+                                        Card(
+                                          elevation: 0,
+                                          color: waste.color,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(100),
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 5),
+                                            child: Text(
+                                              item,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "ITENS NÃO RECICLÁVEIS",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[800]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [],
+                                  ),
+                                  Wrap(
+                                    alignment: WrapAlignment.center,
+                                    children: [
+                                      for (String item
+                                          in waste.notRecyclable.split(","))
+                                        Card(
+                                          elevation: 0,
+                                          color: Colors.grey,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(100),
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 5),
+                                            child: Text(
+                                              item,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
-                    clipBehavior: Clip.antiAlias,
-                    child: Image.asset(
-                      waste.images[0],
-                      fit: BoxFit.cover,
-                    ),
+                      )
+                    ],
                   ),
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),

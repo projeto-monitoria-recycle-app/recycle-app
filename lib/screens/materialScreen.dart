@@ -100,7 +100,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
                       ),
-                    
                     ],
                   ),
                 ),
@@ -123,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          "/newmaterial",
+                          "/material",
                           arguments: filteredWasteList[index],
                         );
                       },
@@ -134,12 +133,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50,
                           decoration: BoxDecoration(
                             image: new DecorationImage(
-                              image:
-                                  new ExactAssetImage('assets/icons/recycle.png'),
+                              image: new ExactAssetImage(
+                                  'assets/icons/recycle.png'),
                               alignment: Alignment(1.5, 1.5),
                               scale: 0.5,
                               colorFilter: ColorFilter.mode(
-                                  color.withOpacity(0.93), BlendMode.difference),
+                                  color.withOpacity(0.93),
+                                  BlendMode.difference),
                             ),
                             color: color,
                             borderRadius: BorderRadius.circular(10),
@@ -163,12 +163,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   textAlign: TextAlign.center),
                               // Hero(
                               //   tag: material,
-                              //   child: 
-                                ImageIcon(
-                                  icon,
-                                  color: Colors.white,
-                                  size: 60,
-                                ),
+                              //   child:
+                              ImageIcon(
+                                icon,
+                                color: Colors.white,
+                                size: 60,
+                              ),
                               // )
                             ],
                           ),

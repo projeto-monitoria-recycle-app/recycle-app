@@ -49,6 +49,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: DrawerConfig(),
       body: NotificationListener<OverscrollIndicatorNotification>(
@@ -62,6 +63,60 @@ class _MainScreenState extends State<MainScreen> {
           onPageChanged: _onPageViewChange,
         ),
       ),
+      // floatingActionButton: Container(
+      //   width: screenWidth * 0.92,
+      //   decoration: BoxDecoration(
+      //     color: Colors.white,
+      //     border: Border.all(
+      //       color: Colors.grey[500],
+      //       width: 1,
+      //     ),
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       Container(
+      //         color: Colors.grey[100],
+      //         child: IconButton(
+      //             icon: ImageIcon(
+      //               AssetImage('assets/icons/waste.png'),
+      //               size: 24,
+      //             ),
+      //             onPressed: () {}),
+      //       ),
+      //       Container(
+      //         color: Colors.white,
+      //         child: IconButton(
+      //           icon: ImageIcon(
+      //             AssetImage('assets/icons/waste.png'),
+      //             size: 24,
+      //           ),
+      //           onPressed: () {},
+      //         ),
+      //       ),
+      //       Container(
+      //         color: Colors.white,
+      //         child: IconButton(
+      //           icon: ImageIcon(
+      //             AssetImage('assets/icons/waste.png'),
+      //             size: 24,
+      //           ),
+      //           onPressed: () {},
+      //         ),
+      //       ),
+      //       Container(
+      //         color: Colors.white,
+      //         child: IconButton(
+      //           icon: ImageIcon(
+      //             AssetImage('assets/icons/waste.png'),
+      //             size: 24,
+      //           ),
+      //           onPressed: () {},
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -69,7 +124,6 @@ class _MainScreenState extends State<MainScreen> {
               AssetImage('assets/icons/waste.png'),
             ),
             label: 'Recicláveis',
-            
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
