@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:provider/provider.dart';
+
 import 'package:recicle_app/screens/mapScreen.dart';
 import 'package:recicle_app/screens/questionAnswerScreen.dart';
 import 'package:recicle_app/screens/mainScreen.dart';
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CollectDayNotificationController>.value(value: CollectDayNotificationController(),)
@@ -41,6 +44,7 @@ class MyApp extends StatelessWidget {
           GMapScreen.routeName: (context) => GMapScreen(),
           PhotoView.routeName: (context) => PhotoView(),
         },
+        
       ),
     );
   }

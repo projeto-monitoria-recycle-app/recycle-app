@@ -100,19 +100,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
                       ),
-                      Stack(
-                        children: [
-                          Container(),
-                          Positioned(
-                            top: 10,
-                            left: 10,
-                            child: Image.asset(
-                              'assets/img/Trash.png',
-                            ),
-                          ),
-                        ],
-                        overflow: Overflow.visible,
-                      ),
                     ],
                   ),
                 ),
@@ -139,44 +126,52 @@ class _HomeScreenState extends State<HomeScreen> {
                           arguments: filteredWasteList[index],
                         );
                       },
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        height: 50,
-                        decoration: BoxDecoration(
-                          image: new DecorationImage(
-                            image:
-                                new ExactAssetImage('assets/icons/recycle.png'),
-                            alignment: Alignment(1.5, 1.5),
-                            scale: 0.5,
-                            colorFilter: ColorFilter.mode(
-                                color.withOpacity(0.93), BlendMode.difference),
-                          ),
-                          color: color,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.5),
-                              blurRadius: 1,
-                              offset: Offset(0, 1),
+                      child: Hero(
+                        tag: material,
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          height: 50,
+                          decoration: BoxDecoration(
+                            image: new DecorationImage(
+                              image: new ExactAssetImage(
+                                  'assets/icons/recycle.png'),
+                              alignment: Alignment(1.5, 1.5),
+                              scale: 0.5,
+                              colorFilter: ColorFilter.mode(
+                                  color.withOpacity(0.93),
+                                  BlendMode.difference),
                             ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('$material',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center),
-                            ImageIcon(
-                              icon,
-                              color: Colors.white,
-                              size: 60,
-                            )
-                          ],
+                            color: color,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: color.withOpacity(0.5),
+                                blurRadius: 1,
+                                offset: Offset(0, 1),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('$material',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center),
+                              // Hero(
+                              //   tag: material,
+                              //   child:
+                              ImageIcon(
+                                icon,
+                                color: Colors.white,
+                                size: 60,
+                              ),
+                              // )
+                            ],
+                          ),
                         ),
                       ),
                     );
