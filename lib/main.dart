@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recicle_app/screens/MapScreen.dart';
-import 'package:recicle_app/screens/QuestionAnswerScreen.dart';
-import 'package:recicle_app/screens/mainScreen.dart';
-import 'package:recicle_app/screens/materialDescriptionScreen.dart';
-import 'package:recicle_app/screens/photoView.dart';
-// import 'package:recicle_app/screens/onBoardingScreen.dart';
+import 'package:recycle_app/screens/mapScreen.copy.dart';
+import 'package:recycle_app/screens/QuestionAnswerScreen.dart';
+import 'package:recycle_app/screens/mainScreen.dart';
+import 'package:recycle_app/screens/materialDescriptionScreen.dart';
+import 'package:recycle_app/screens/photoView.dart';
 
 void main() => runApp(MyApp());
 

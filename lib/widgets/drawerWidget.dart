@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/models/questionAnswerModel.dart';
+import 'package:recycle_app/models/questionAnswerModel.dart';
 
 class DrawerConfig extends StatelessWidget {
   @override

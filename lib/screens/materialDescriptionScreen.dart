@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/models/materialModel.dart';
+import 'package:recycle_app/models/materialModel.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MaterialWasteScreen extends StatelessWidget {
@@ -8,7 +8,6 @@ class MaterialWasteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Waste waste = ModalRoute.of(context).settings.arguments;
-    final double screenHeight = MediaQuery.of(context).size.height;
 
     final double screenWidth = MediaQuery.of(context).size.width;
 
