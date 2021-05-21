@@ -35,6 +35,8 @@ dependencies:
   flutter_polyline_points: ^0.2.1
   flare_flutter: ^2.0.6
   url_launcher: ^5.5.0
+  
+  flutter_config: ^2.0.0
 
 
 dev_dependencies:
@@ -55,6 +57,7 @@ flutter:
   - assets/img/
   - assets/icons/
   - assets/
+  - .env
 
   # To add assets to your application, add an assets section, like this:
   # assets:
