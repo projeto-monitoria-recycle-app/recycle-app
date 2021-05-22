@@ -1,0 +1,1 @@
+-keep class com.reciclatere.app.BuildConfig { *; }

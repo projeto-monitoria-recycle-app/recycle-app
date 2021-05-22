@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter/rendering.dart';
 import 'package:recicle_app/models/materialModel.dart';
 
@@ -8,7 +9,6 @@ class MaterialWasteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Waste waste = ModalRoute.of(context).settings.arguments;
-    // final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return NotificationListener<OverscrollIndicatorNotification>(

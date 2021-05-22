@@ -1,9 +1,9 @@
 import 'dart:collection';
-import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+
 import 'package:provider/provider.dart';
 import 'package:recicle_app/controllers/collectDayNotificationController.dart';
 import 'package:recicle_app/models/collectPointModel.dart';
@@ -37,16 +37,6 @@ class _GMapScreenState extends State<GMapScreen> {
         _currentPosition = position;
 
         print('CURRENT POS: $_currentPosition');
-
-        // For moving the camera to current location
-        // _mapController.animateCamera(
-        //   CameraUpdate.newCameraPosition(
-        //     CameraPosition(
-        //       target: LatLng(position.latitude, position.longitude),
-        //       zoom: 15.0,
-        //     ),
-        //   ),
-        // );
       });
     }).catchError((e) {
       print(e);
@@ -62,10 +52,8 @@ class _GMapScreenState extends State<GMapScreen> {
 
   @override
   Widget build(BuildContext context) {
-// EXTRACTING ARGUMENTS FROM NAMED ROUTE ---------------------------------------
     final CollectPoint collectPoint = ModalRoute.of(context).settings.arguments;
 
-//CREATING INITIAL EXECUTION ON GOOGLE MAP -------------------------------------
     void _onMapCreated(GoogleMapController controller) {
       _mapController = controller;
       setState(
@@ -83,16 +71,6 @@ class _GMapScreenState extends State<GMapScreen> {
           );
         },
       );
-    }
-
-// DEFINING MAP MARKER ---------------------------------------------------------
-
-//FLARE ANIMATIONS CONTROL -----------------------------------------------------
-    final FlareControls controls = FlareControls();
-
-    void _playSuccessAnimation() {
-      // Use the controls to trigger an animation.
-      controls.play("tracking");
     }
 
     return Scaffold(
@@ -133,6 +111,7 @@ class _GMapScreenState extends State<GMapScreen> {
               },
             ),
           ),
+
           Positioned(
             right: 20,
             top: 50,

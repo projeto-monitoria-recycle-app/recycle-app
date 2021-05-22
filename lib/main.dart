@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:provider/provider.dart';
+import 'package:recycle_app/screens/mapScreen.dart';
+import 'package:recycle_app/screens/QuestionAnswerScreen.dart';
+import 'package:recycle_app/screens/mainScreen.dart';
+import 'package:recycle_app/screens/materialDescriptionScreen.dart';
+import 'package:recycle_app/screens/photoView.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-import 'package:recicle_app/screens/mapScreen.dart';
-import 'package:recicle_app/screens/questionAnswerScreen.dart';
-import 'package:recicle_app/screens/mainScreen.dart';
-import 'package:recicle_app/screens/materialDescriptionScreen.dart';
-import 'package:recicle_app/screens/photoView.dart';
-import 'controllers/collectDayNotificationController.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
+  await FlutterConfig.loadEnvVariables();
 
-void main() {
   runApp(MyApp());
-
 }
 
 
@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
     
     return MultiProvider(
       providers: [
