@@ -1,11 +1,10 @@
-import 'package:recicle_app/configs/dataBase.dart';
-import 'package:recicle_app/models/CollectDayNotification.dart';
-
+import 'package:recycle_app/configs/dataBase.dart';
+import 'package:recycle_app/models/CollectDayNotification.dart';
 
 class CollectDayNotificationDao {
   static final String _notificationIdColumn = "notification_id";
-  static final String _routeIdColumn= "route_id";
-  static final String _tableName= "notification_route";
+  static final String _routeIdColumn = "route_id";
+  static final String _tableName = "notification_route";
 
   static final String tableCreationQuery = '''CREATE TABLE $_tableName (
     $_notificationIdColumn INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,10 +22,9 @@ class CollectDayNotificationDao {
         return afterInsert(id);
       }
 
-      notification.notificationId= id;
+      notification.notificationId = id;
     });
   }
-
 
   Future<List<CollectDayNotification>> getAll() async {
     var database = await DatabaseFactory.getDatabase();
@@ -37,12 +35,11 @@ class CollectDayNotificationDao {
       });
       return notifications;
     });
-
   }
 
-  Future<Set<int>> getCollectRouteIds() async{
+  Future<Set<int>> getCollectRouteIds() async {
     var database = await DatabaseFactory.getDatabase();
-    var rows  =  await database.query(_tableName, columns: [_routeIdColumn]);
+    var rows = await database.query(_tableName, columns: [_routeIdColumn]);
     Set<int> routeIds = Set();
     rows.forEach((row) {
       routeIds.add(row[_routeIdColumn]);
@@ -54,7 +51,8 @@ class CollectDayNotificationDao {
     var database = await DatabaseFactory.getDatabase();
     if (afterDelete != null) {
       return database.transaction((txn) async {
-        int rowsAffected = await txn.delete(_tableName, where: "$_routeIdColumn = ?", whereArgs: [routeId]);
+        int rowsAffected = await txn.delete(_tableName,
+            where: "$_routeIdColumn = ?", whereArgs: [routeId]);
         await Future(afterDelete);
         return rowsAffected;
       });
@@ -62,13 +60,12 @@ class CollectDayNotificationDao {
     return database.delete(_tableName);
   }
 
-
-  Future<CollectDayNotification> getByCollectRouteId(int id) async{
+  Future<CollectDayNotification> getByCollectRouteId(int id) async {
     var database = await DatabaseFactory.getDatabase();
-    var rows =  await database.query(_tableName, where: "$_routeIdColumn = ?", whereArgs: [id], limit: 1);
+    var rows = await database.query(_tableName,
+        where: "$_routeIdColumn = ?", whereArgs: [id], limit: 1);
     return rows.length > 0 ? _toObject(rows[0]) : null;
   }
-
 
   Future<int> deleteAll({Function() afterDelete}) async {
     var database = await DatabaseFactory.getDatabase();
@@ -89,8 +86,9 @@ class CollectDayNotificationDao {
   }
 
   CollectDayNotification _toObject(Map<String, Object> row) {
-    CollectDayNotification notification = CollectDayNotification(row[_routeIdColumn], notificationId: row[_notificationIdColumn]);
+    CollectDayNotification notification = CollectDayNotification(
+        row[_routeIdColumn],
+        notificationId: row[_notificationIdColumn]);
     return notification;
   }
 }
-

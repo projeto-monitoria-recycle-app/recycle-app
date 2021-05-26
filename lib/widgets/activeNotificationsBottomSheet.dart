@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recicle_app/controllers/collectDayNotificationController.dart';
-import 'package:recicle_app/models/collectRouteModel.dart';
-import 'package:recicle_app/widgets/collectRouteListItem.dart';
+import 'package:recycle_app/controllers/collectDayNotificationController.dart';
+import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/widgets/collectRouteListItem.dart';
 
 class ActiveNotificationsBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectDayNotificationController controller =
-    Provider.of<CollectDayNotificationController>(context);
+        Provider.of<CollectDayNotificationController>(context);
     return FutureBuilder<List<CollectRoute>>(
         future: controller.getCollectRoutesWithActiveNotifications(),
         builder: (context, snapshot) {
@@ -19,10 +19,10 @@ class ActiveNotificationsBottomSheet extends StatelessWidget {
               minChildSize: 0.05,
               builder: (context, scrollController) {
                 return ListView.builder(
-                    itemCount: snapshot.data.length+1,
+                    itemCount: snapshot.data.length + 1,
                     itemBuilder: (context, index) {
-                      if(index == 0){
-                        return  Center(
+                      if (index == 0) {
+                        return Center(
                           child: Text(
                             'ROTAS COM NOTIFICAÇÃO ATIVA',
                             style: TextStyle(
@@ -33,7 +33,7 @@ class ActiveNotificationsBottomSheet extends StatelessWidget {
                         );
                       }
                       return CollectRouteListItem(
-                        snapshot.data[index-1],
+                        snapshot.data[index - 1],
                         initialButtonState: true,
                       );
                     });

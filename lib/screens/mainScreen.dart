@@ -49,7 +49,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: DrawerConfig(),
       body: NotificationListener<OverscrollIndicatorNotification>(

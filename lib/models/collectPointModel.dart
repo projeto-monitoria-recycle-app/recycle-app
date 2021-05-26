@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
-import 'package:recicle_app/daos/inMemoryCollectRouteDao.dart';
-import 'package:recicle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/daos/inMemoryCollectRouteDao.dart';
+import 'package:recycle_app/models/collectRouteModel.dart';
 
 class CollectPoint {
   final String name;
@@ -18,6 +16,7 @@ class CollectPoint {
     this.longitude,
   });
 }
+
 var dao = InMemoryCollectRouteDao();
 List<CollectPoint> collectPointList = [
   //Rua Carmela Dutra
@@ -59,7 +58,8 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     "SHOPPING COMARY",
-    route: CollectRoute(null, 'Rua Praça Higino da Silveira', null, null, "Alto"),
+    route:
+        CollectRoute(null, 'Rua Praça Higino da Silveira', null, null, "Alto"),
     image: "assets/img/ecoponto-feirinha-do-alto.jpg",
     latitude: -22.44231,
     longitude: -42.97886,
@@ -92,14 +92,16 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     "UNIFESO (QUINTA)",
-    route: CollectRoute(null, 'Est. Wenceslau José de Medeiros', null, null, 'Vale do Paraíso'),
+    route: CollectRoute(
+        null, 'Est. Wenceslau José de Medeiros', null, null, 'Vale do Paraíso'),
     image: "assets/img/ecoponto-unifeso-quinta-do-paraiso.jpg",
     latitude: -22.39494,
     longitude: -42.95974,
   ),
   CollectPoint(
     "GUARITA DA POLICIA MILITAR",
-    route: CollectRoute(null, 'RJ 130-Est. Tere-Fri', null, null, 'Vargem Grande'),
+    route:
+        CollectRoute(null, 'RJ 130-Est. Tere-Fri', null, null, 'Vargem Grande'),
     image: "assets/img/ecoponto-vargem-grande.jpg",
     latitude: -22.37093,
     longitude: -42.87199,

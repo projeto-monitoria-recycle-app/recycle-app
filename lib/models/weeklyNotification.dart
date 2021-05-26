@@ -1,6 +1,6 @@
-import 'package:recicle_app/models/daysOfWeek.dart';
+import 'package:recycle_app/models/daysOfWeek.dart';
 
-class WeeklyNotification{
+class WeeklyNotification {
   int id;
   final String title;
   final String body;

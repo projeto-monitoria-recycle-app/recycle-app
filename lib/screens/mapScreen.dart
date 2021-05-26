@@ -5,9 +5,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
 import 'package:provider/provider.dart';
-import 'package:recicle_app/controllers/collectDayNotificationController.dart';
-import 'package:recicle_app/models/collectPointModel.dart';
-import 'package:recicle_app/widgets/toggleCollectDayNotificationButton.dart';
+import 'package:recycle_app/controllers/collectDayNotificationController.dart';
+import 'package:recycle_app/models/collectPointModel.dart';
+import 'package:recycle_app/widgets/toggleCollectDayNotificationButton.dart';
 
 class GMapScreen extends StatefulWidget {
   @override
@@ -111,7 +111,6 @@ class _GMapScreenState extends State<GMapScreen> {
               },
             ),
           ),
-
           Positioned(
             right: 20,
             top: 50,
@@ -138,7 +137,8 @@ class _GMapScreenState extends State<GMapScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(_truncateString(collectPoint.route.location, 26, truncatedSuffix: " ...")),
+                      Text(_truncateString(collectPoint.route.location, 26,
+                          truncatedSuffix: " ...")),
                     ],
                   ),
                 ),
@@ -201,7 +201,6 @@ class _GMapScreenState extends State<GMapScreen> {
                               color: Colors.white,
                             ),
                             onTap: () {
-                              _playSuccessAnimation();
                               _mapController.animateCamera(
                                 CameraUpdate.newCameraPosition(
                                   CameraPosition(
@@ -295,7 +294,8 @@ class _GMapScreenState extends State<GMapScreen> {
                     ],
                   ),
                 ),
-                if(collectPoint.route.id != null ) ToggleNotificationMapOption(collectPoint),
+                if (collectPoint.route.id != null)
+                  ToggleNotificationMapOption(collectPoint),
               ],
             ),
           ),
@@ -304,8 +304,11 @@ class _GMapScreenState extends State<GMapScreen> {
     );
   }
 
-  String _truncateString(String string, int maxLength, {String truncatedSuffix}) {
-    return string.length > maxLength ? string.substring(0, maxLength) + truncatedSuffix ?? "" : string;
+  String _truncateString(String string, int maxLength,
+      {String truncatedSuffix}) {
+    return string.length > maxLength
+        ? string.substring(0, maxLength) + truncatedSuffix ?? ""
+        : string;
   }
 }
 

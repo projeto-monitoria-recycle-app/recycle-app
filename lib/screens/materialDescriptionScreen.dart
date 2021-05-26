@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
-import 'package:recicle_app/models/materialModel.dart';
+import 'package:recycle_app/models/materialModel.dart';
 
 class MaterialWasteScreen extends StatelessWidget {
   static const routeName = '/material';

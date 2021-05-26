@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recicle_app/controllers/collectDayNotificationController.dart';
-import 'package:recicle_app/models/collectRouteModel.dart';
-import 'package:recicle_app/widgets/toggleButtonWidget.dart';
+import 'package:recycle_app/controllers/collectDayNotificationController.dart';
+import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/widgets/toggleButtonWidget.dart';
 
 import 'notificationDialogWidget.dart';
 
@@ -15,7 +15,9 @@ class ToggleNotificationButton extends StatelessWidget {
   ToggleNotificationButton(
     this._collectRoute, {
     Key key,
-    this.initialButtonState, this.colorOff, this.colorOn,
+    this.initialButtonState,
+    this.colorOff,
+    this.colorOn,
   }) : super(key: key);
 
   @override
@@ -41,14 +43,16 @@ class ToggleNotificationButton extends StatelessWidget {
         color: colorOff,
       ),
       onTurnOn: () async {
-        bool confirmation = await _showConfirmationDialog(context, true, controller);
+        bool confirmation =
+            await _showConfirmationDialog(context, true, controller);
         // if (confirmation) {
         //   return _scheduleNotification(controller);
         // }
         return confirmation;
       },
       onTurnOff: () {
-        return _showConfirmationDialog(context, false, controller).then((confirmation) {
+        return _showConfirmationDialog(context, false, controller)
+            .then((confirmation) {
           // if (confirmation) {
           //   return _removeNotification(controller);
           // }
@@ -75,24 +79,28 @@ class ToggleNotificationButton extends StatelessWidget {
   }
 
   _handleError(e, stackTrace) {
-        debugPrint(e.toString());
-        debugPrintStack(stackTrace: stackTrace);
-        return false;
+    debugPrint(e.toString());
+    debugPrintStack(stackTrace: stackTrace);
+    return false;
   }
 
-  Future<bool> _showConfirmationDialog(
-      BuildContext context, bool activation, CollectDayNotificationController controller) async {
+  Future<bool> _showConfirmationDialog(BuildContext context, bool activation,
+      CollectDayNotificationController controller) async {
     return showDialog<bool>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return activation
-            ? NotificationActivationDialog(onConfirm: (){
-                return _scheduleNotification(controller);
-                },)
-            : NotificationDeactivationDialog(onConfirm: (){
-              return _removeNotification(controller);
-        },);
+            ? NotificationActivationDialog(
+                onConfirm: () {
+                  return _scheduleNotification(controller);
+                },
+              )
+            : NotificationDeactivationDialog(
+                onConfirm: () {
+                  return _removeNotification(controller);
+                },
+              );
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import 'package:recycle_app/screens/mapScreen.dart';
 import 'package:recycle_app/screens/QuestionAnswerScreen.dart';
@@ -8,13 +9,14 @@ import 'package:recycle_app/screens/materialDescriptionScreen.dart';
 import 'package:recycle_app/screens/photoView.dart';
 import 'package:flutter_config/flutter_config.dart';
 
+import 'controllers/collectDayNotificationController.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
   await FlutterConfig.loadEnvVariables();
 
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   @override
@@ -24,10 +26,11 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
-    
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<CollectDayNotificationController>.value(value: CollectDayNotificationController(),)
+        ChangeNotifierProvider<CollectDayNotificationController>.value(
+          value: CollectDayNotificationController(),
+        )
       ],
       child: MaterialApp(
         title: 'Recicle App',
@@ -45,7 +48,6 @@ class MyApp extends StatelessWidget {
           GMapScreen.routeName: (context) => GMapScreen(),
           PhotoView.routeName: (context) => PhotoView(),
         },
-        
       ),
     );
   }

@@ -1,17 +1,13 @@
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
-import 'package:recicle_app/helpers/dateTimeHelper.dart';
-import 'package:recicle_app/models/daysOfWeek.dart';
-import 'package:recicle_app/models/notificationChannelDetails.dart';
-import 'package:recicle_app/models/weeklyNotification.dart';
-import 'package:timezone/timezone.dart' as tz;
+import 'package:recycle_app/helpers/dateTimeHelper.dart';
+import 'package:recycle_app/models/notificationChannelDetails.dart';
+import 'package:recycle_app/models/weeklyNotification.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 class NotificationService {
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
 
-  NotificationService(this._flutterLocalNotificationsPlugin){
+  NotificationService(this._flutterLocalNotificationsPlugin) {
     tz.initializeTimeZones();
   }
 
@@ -25,7 +21,8 @@ class NotificationService {
         notification.id,
         notification.title,
         notification.body,
-        await DateTimeHelper.instanceOfNextDayOfWeek(notification.dayOfWeek, notification.hour),
+        await DateTimeHelper.instanceOfNextDayOfWeek(
+            notification.dayOfWeek, notification.hour),
         NotificationDetails(
           android: androidPlatformChannelSpecifics,
         ),
@@ -35,11 +32,11 @@ class NotificationService {
         matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime);
   }
 
-  Future<void> cancelAllNotifications(){
+  Future<void> cancelAllNotifications() {
     return _flutterLocalNotificationsPlugin.cancelAll();
   }
 
-  Future<void> cancelNotification(int id){
+  Future<void> cancelNotification(int id) {
     return _flutterLocalNotificationsPlugin.cancel(id);
   }
 

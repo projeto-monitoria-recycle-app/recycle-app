@@ -1,13 +1,11 @@
-import 'package:recicle_app/configs/localNotificationPluginFactory.dart';
-import 'package:recicle_app/daos/collectDayNotificationDao.dart';
-import 'package:recicle_app/helpers/dateTimeHelper.dart';
-import 'package:recicle_app/models/CollectDayNotification.dart';
-import 'package:recicle_app/models/collectRouteModel.dart';
-import 'package:recicle_app/models/daysOfWeek.dart';
-import 'package:recicle_app/models/notificationChannelDetails.dart';
-import 'package:recicle_app/models/weeklyNotification.dart';
-import 'package:recicle_app/services/notificationService.dart';
-import 'package:recicle_app/widgets/notificationCounter.dart';
+import 'package:recycle_app/configs/localNotificationPluginFactory.dart';
+import 'package:recycle_app/daos/collectDayNotificationDao.dart';
+import 'package:recycle_app/helpers/dateTimeHelper.dart';
+import 'package:recycle_app/models/CollectDayNotification.dart';
+import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/notificationChannelDetails.dart';
+import 'package:recycle_app/models/weeklyNotification.dart';
+import 'package:recycle_app/services/notificationService.dart';
 
 class CollectDayNotificationService {
   static final NotificationChannelDetails _channelDetails =
@@ -25,7 +23,8 @@ class CollectDayNotificationService {
       DateTimeHelper.dayBefore(route.dayOfWeek),
       10,
     );
-    CollectDayNotification collectDayNotification = CollectDayNotification(route.id);
+    CollectDayNotification collectDayNotification =
+        CollectDayNotification(route.id);
 
     return _collectDayNotificationDao.insert(collectDayNotification,
         afterInsert: (id) {
@@ -36,12 +35,14 @@ class CollectDayNotificationService {
   }
 
   Future<void> deleteByCollectRouteId(int collectRouteId) async {
-    var collectDayNotification = await _collectDayNotificationDao.getByCollectRouteId(collectRouteId);
-    return _collectDayNotificationDao.delete(collectRouteId, afterDelete: () async {
+    var collectDayNotification =
+        await _collectDayNotificationDao.getByCollectRouteId(collectRouteId);
+    return _collectDayNotificationDao.delete(collectRouteId,
+        afterDelete: () async {
       var notificationService = await _getNotificationService();
-      return notificationService.cancelNotification(collectDayNotification.notificationId);
+      return notificationService
+          .cancelNotification(collectDayNotification.notificationId);
     });
-
   }
 
   Future<NotificationService> _getNotificationService() async {
@@ -49,13 +50,13 @@ class CollectDayNotificationService {
         await LocalNotificationPluginFactory.buildPlugin());
   }
 
-
   void clearAllNotifications() async {
     List<CollectDayNotification> notifications =
         await _collectDayNotificationDao.getAll();
     _collectDayNotificationDao.deleteAll(afterDelete: () async {
       NotificationService notificationService = await _getNotificationService();
-      notificationService.cancelAllWeeklyNotifications(notifications.map((e) => e.notificationId).toList());
+      notificationService.cancelAllWeeklyNotifications(
+          notifications.map((e) => e.notificationId).toList());
     });
   }
 

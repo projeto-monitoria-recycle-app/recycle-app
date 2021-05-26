@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:recicle_app/models/collectPointModel.dart';
-import 'package:recicle_app/models/collectRouteModel.dart';
-import 'package:recicle_app/services/collectDayNotificationService.dart';
-import 'package:recicle_app/widgets/activeNotificationsBottomSheet.dart';
-import 'package:recicle_app/widgets/collectRouteListItem.dart';
-import 'package:recicle_app/widgets/notificationCounter.dart';
+import 'package:recycle_app/models/collectPointModel.dart';
+import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/services/collectDayNotificationService.dart';
+import 'package:recycle_app/widgets/activeNotificationsBottomSheet.dart';
+import 'package:recycle_app/widgets/collectRouteListItem.dart';
+import 'package:recycle_app/widgets/notificationCounter.dart';
 
 class RecycleScreen extends StatefulWidget {
   final CollectDayNotificationService collectDayNotificationService =
@@ -213,13 +213,13 @@ class _RecycleScreenState extends State<RecycleScreen> {
                             itemCount: filteredCollectPointList.length,
                             itemBuilder: (context, index) {
                               var name = filteredCollectPointList[index].name;
-                              var district =
-                                  filteredCollectPointList[index].route.district;
+                              var district = filteredCollectPointList[index]
+                                  .route
+                                  .district;
                               var image = filteredCollectPointList[index].image;
                               return Column(
                                 children: [
                                   TextButton(
-
                                     // padding: EdgeInsets.all(0),
                                     onPressed: () {
                                       Navigator.pushNamed(
@@ -312,25 +312,26 @@ class CollectRouteSliverList extends StatelessWidget {
   final List<CollectRoute> filteredCollectRouteList;
   final Set<int> ids = Set();
 
-  CollectRouteSliverList(this.filteredCollectRouteList, {
+  CollectRouteSliverList(
+    this.filteredCollectRouteList, {
     Key key,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
     debugPrint("building CollectRouteSliverList");
     return SliverList(
-            delegate: SliverChildListDelegate(
-                List.generate(filteredCollectRouteList.length, (index) {
-                  var collectRoute = filteredCollectRouteList[index];
-                  return CollectRouteListItem(
-                    collectRoute,
-                  );
-                })),
-          );
+      delegate: SliverChildListDelegate(
+          List.generate(filteredCollectRouteList.length, (index) {
+        var collectRoute = filteredCollectRouteList[index];
+        return CollectRouteListItem(
+          collectRoute,
+        );
+      })),
+    );
   }
 }
+
 class CollectRouterHeader extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
@@ -373,4 +374,3 @@ class CollectRouterHeader extends SliverPersistentHeaderDelegate {
     return true;
   }
 }
-
