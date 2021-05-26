@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recicle_app/widgets/chartResults.dart';
 
 class ResultsScreen extends StatelessWidget {
   static const routeName = '/results';
@@ -55,13 +56,21 @@ class ResultsScreen extends StatelessWidget {
                       height: 300,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
+                        children: <Widget>[
 
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 15,
+                    ),
+                    Text('Número de Participantes',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.all(5),
@@ -74,13 +83,50 @@ class ResultsScreen extends StatelessWidget {
                       height: 100,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-
+                        children: <Widget>[
+                          Visibility(
+                            visible: true,
+                            child: Padding(
+                                padding: EdgeInsets.only(right: 10),
+                                child: ImageIcon(
+                                  AssetImage("assets/icons/paper.png"),
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
+                          ),
+                          Text("20 Catadores Registrados\n" +
+                              "14 Empregados no Centro de Reciclagem\n" +
+                              "10 Empresas Apoiando\n" +
+                              "+1000 Moradores Reciclando",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Total de ecopontos',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Text(
+                          'Bairros Atendidos',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                     Row(
                       children: [
@@ -92,12 +138,19 @@ class ResultsScreen extends StatelessWidget {
                               Radius.circular(5),
                             ),
                           ),
-                          height: 80,
-                          width: 173,
+                          height: 55,
+                          width: 182,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-
+                              Text(
+                                '25',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF09995C),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -112,14 +165,22 @@ class ResultsScreen extends StatelessWidget {
                               Radius.circular(5),
                             ),
                           ),
-                          height: 80,
-                          width: 173,
+                          height: 55,
+                          width: 182,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-
+                              Text(
+                                '15',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF09995C),
+                                ),
+                              ),
                             ],
                           ),
+
                         ),
                       ],
                     ),
