@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/widgets/chartResults.dart';
+import 'package:recycle_app/widgets/chartResults.dart';
 
 class ResultsScreen extends StatelessWidget {
   static const routeName = '/results';
@@ -61,12 +61,12 @@ class ResultsScreen extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-                    Text('Número de Participantes',
+                    Text(
+                      'Número de Participantes',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-
                       ),
                     ),
                     Container(
@@ -91,13 +91,13 @@ class ResultsScreen extends StatelessWidget {
                                   color: Colors.white,
                                 )),
                           ),
-                          Text("20 Catadores Registrados\n" +
-                              "14 Empregados no Centro de Reciclagem\n" +
-                              "10 Empresas Apoiando\n" +
-                              "+1000 Moradores Reciclando",
+                          Text(
+                              "20 Catadores Registrados\n" +
+                                  "14 Empregados no Centro de Reciclagem\n" +
+                                  "10 Empresas Apoiando\n" +
+                                  "+1000 Moradores Reciclando",
                               style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500)),
+                                  fontSize: 14, fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
@@ -126,7 +126,7 @@ class ResultsScreen extends StatelessWidget {
                                 ),
                               ),
                               height: 55,
-                              width: screenWidth* .45,
+                              width: screenWidth * .45,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -143,7 +143,6 @@ class ResultsScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-
                         Column(
                           children: [
                             Text(
@@ -162,7 +161,7 @@ class ResultsScreen extends StatelessWidget {
                                 ),
                               ),
                               height: 55,
-                              width: screenWidth* .45,
+                              width: screenWidth * .45,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -176,7 +175,6 @@ class ResultsScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-
                             ),
                           ],
                         ),
