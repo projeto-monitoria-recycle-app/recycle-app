@@ -3,6 +3,7 @@ import 'package:recycle_app/screens/collectScreen.dart';
 import 'package:recycle_app/screens/impactScreen.dart';
 import 'package:recycle_app/screens/materialScreen.dart';
 import 'package:recycle_app/widgets/drawerWidget.dart';
+import 'package:recycle_app/screens/resultsScreen.dart';
 
 class MainScreen extends StatefulWidget {
   static const routeName = '/mainpage';
@@ -21,7 +22,8 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> _widgetList = <Widget>[
     HomeScreen(),
     RecycleScreen(),
-    ImpactScreen()
+    ImpactScreen(),
+    ResultsScreen()
   ];
 
   void _onMenuTapped(int index) {
@@ -135,6 +137,12 @@ class _MainScreenState extends State<MainScreen> {
               AssetImage('assets/icons/earth-care.png'),
             ),
             label: 'Impacto',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/graphic.png'),
+            ),
+            label: 'Resultados',
           ),
         ],
         currentIndex: _selectedMenu,

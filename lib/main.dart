@@ -7,6 +7,7 @@ import 'package:recycle_app/screens/QuestionAnswerScreen.dart';
 import 'package:recycle_app/screens/mainScreen.dart';
 import 'package:recycle_app/screens/materialDescriptionScreen.dart';
 import 'package:recycle_app/screens/photoView.dart';
+import 'package:recycle_app/screens/resultsScreen.dart';
 import 'package:flutter_config/flutter_config.dart';
 
 import 'controllers/collectDayNotificationController.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
           QuestionAnswerScreen.routeName: (context) => QuestionAnswerScreen(),
           GMapScreen.routeName: (context) => GMapScreen(),
           PhotoView.routeName: (context) => PhotoView(),
+          ResultsScreen.routeName: (context) => ResultsScreen(),
         },
       ),
     );
