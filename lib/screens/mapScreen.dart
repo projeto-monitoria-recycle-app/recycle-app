@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
-import 'package:recicle_app/models/collectPointModel.dart';
+import 'package:recycle_app/models/collectPointModel.dart';
 
 class GMapScreen extends StatefulWidget {
   @override

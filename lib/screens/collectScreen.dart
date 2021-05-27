@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recicle_app/models/collectPointModel.dart';
-import 'package:recicle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/collectPointModel.dart';
+import 'package:recycle_app/models/collectRouteModel.dart';
 
 class RecycleScreen extends StatefulWidget {
   @override
