@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:provider/provider.dart';
+import 'package:recycle_app/controllers/collectDayNotificationController.dart';
 
 import 'package:recycle_app/screens/mapScreen.dart';
 import 'package:recycle_app/screens/QuestionAnswerScreen.dart';
@@ -8,9 +10,6 @@ import 'package:recycle_app/screens/mainScreen.dart';
 import 'package:recycle_app/screens/materialDescriptionScreen.dart';
 import 'package:recycle_app/screens/photoView.dart';
 import 'package:recycle_app/screens/resultsScreen.dart';
-import 'package:flutter_config/flutter_config.dart';
-
-import 'controllers/collectDayNotificationController.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
