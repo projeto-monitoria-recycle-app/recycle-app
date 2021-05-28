@@ -38,11 +38,8 @@ class AboutProject extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        'Conheça como funciona o projeto de reciclagem',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
+                        'Conheça como funciona o projeto de reciclagem.',
+                        style: Theme.of(context).textTheme.subtitle2,
                       ),
                     ],
                   ),

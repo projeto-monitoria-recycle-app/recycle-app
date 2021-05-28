@@ -85,6 +85,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                 floating: true,
                 snap: true,
                 title: Text('Coleta Seletiva'),
+                centerTitle: true,
                 expandedHeight: 170,
                 backgroundColor: Theme.of(context).accentColor,
                 flexibleSpace: FlexibleSpaceBar(
@@ -96,10 +97,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                       ),
                       Text(
                         'Descubra os pontos de coleta próximos a você.',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
+                        style: Theme.of(context).textTheme.subtitle2,
                       ),
                       Container(
                         alignment: Alignment.center,

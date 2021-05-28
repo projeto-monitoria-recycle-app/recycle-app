@@ -19,6 +19,7 @@ class ResultsScreen extends StatelessWidget {
               padding: EdgeInsets.all(5),
               sliver: SliverAppBar(
                 title: Text('Resultados'),
+                centerTitle: true,
                 shape: ContinuousRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(20),
@@ -26,6 +27,25 @@ class ResultsScreen extends StatelessWidget {
                 ),
                 pinned: true,
                 backgroundColor: Theme.of(context).accentColor,
+                expandedHeight: 100,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Veja os resultados do projeto de reciclagem na cidade de Teresópolis',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.subtitle2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
             SliverFillRemaining(
@@ -36,20 +56,23 @@ class ResultsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      'Veja os resultados do projeto de reciclagem na cidade de Teresópolis',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    // Text(
+                    //   'Veja os resultados do projeto de reciclagem na cidade de Teresópolis',
+                    //   style: TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 15,
                     ),
+                    Card(
+                        // child: BarChartSample2(),
+                        ),
                     Container(
                       padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Colors.white,
                         borderRadius: BorderRadius.all(
                           Radius.circular(5),
                         ),
@@ -57,7 +80,7 @@ class ResultsScreen extends StatelessWidget {
                       height: 300,
                       // child: [],
                     ),
-                    //BarChartSample2(),
+                    // BarChartSample2(),
                     SizedBox(
                       height: 15,
                     ),
@@ -69,76 +92,93 @@ class ResultsScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      height: 100,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Visibility(
-                            visible: true,
-                            child: Padding(
-                                padding: EdgeInsets.only(right: 10),
-                                child: ImageIcon(
-                                  AssetImage("assets/icons/paper.png"),
-                                  size: 30,
-                                  color: Colors.white,
-                                )),
-                          ),
-                          Text(
-                              "20 Catadores Registrados\n" +
-                                  "14 Empregados no Centro de Reciclagem\n" +
-                                  "10 Empresas Apoiando\n" +
-                                  "+1000 Moradores Reciclando",
+                    Card(
+                      // padding: EdgeInsets.all(5),
+                      // decoration: BoxDecoration(
+                      //   color: Colors.grey[300],
+                      //   borderRadius: BorderRadius.all(
+                      //     Radius.circular(5),
+                      //   ),
+                      // ),
+                      // height: 100,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Visibility(
+                              visible: true,
+                              child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  child: ImageIcon(
+                                    AssetImage(
+                                        "assets/icons/icons8-user-groups-100.png"),
+                                    size: 50,
+                                    color: Colors.grey[900],
+                                  )),
+                            ),
+                            Text(
+                              "4 Empresas Apoiando\n" +
+                                  "14 Colaboradores\n" +
+                                  "20 Catadores Registrados\n" +
+                                  "+200 Moradores Reciclando",
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500)),
-                        ],
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           children: [
                             Text(
-                              'Total de ecopontos',
+                              'Total de Ecopontos',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5),
-                                ),
-                              ),
-                              height: 55,
-                              width: screenWidth * .45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '25',
-                                    style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF09995C),
+                            Card(
+                              // padding: EdgeInsets.all(10),
+                              // decoration: BoxDecoration(
+                              //   color: Colors.grey[300],
+                              //   borderRadius: BorderRadius.all(
+                              //     Radius.circular(5),
+                              //   ),
+                              // ),
+                              // height: 55,
+                              // width: screenWidth * .45,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 10),
+                                      child: ImageIcon(
+                                        AssetImage("assets/icons/waste.png"),
+                                        size: 40,
+                                        color: Colors.grey[700],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      '25',
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF09995C),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -148,32 +188,46 @@ class ResultsScreen extends StatelessWidget {
                             Text(
                               'Bairros Atendidos',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5),
-                                ),
-                              ),
-                              height: 55,
-                              width: screenWidth * .45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '15',
-                                    style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF09995C),
-                                    ),
+                            Card(
+                              // padding: EdgeInsets.all(10),
+                              // decoration: BoxDecoration(
+                              //   color: Colors.grey[300],
+                              //   borderRadius: BorderRadius.all(
+                              //     Radius.circular(5),
+                              //   ),
+                              // ),
+                              // // height: 55,
+                              // width: screenWidth * .45,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: ImageIcon(
+                                          AssetImage(
+                                              "assets/icons/icons8-caminhão-de-lixo-100.png"),
+                                          size: 40,
+                                          color: Colors.grey[700],
+                                        ),
+                                      ),
+                                      Text(
+                                        '15',
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF09995C),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ],
@@ -183,7 +237,6 @@ class ResultsScreen extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-
                     SizedBox(
                       height: 15,
                     ),

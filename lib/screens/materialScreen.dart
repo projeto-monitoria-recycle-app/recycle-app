@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.all(5),
               sliver: SliverAppBar(
                 title: Text('Materiais Recicláveis'),
+                centerTitle: true,
                 backgroundColor: Theme.of(context).accentColor,
                 shape: ContinuousRectangleBorder(
                   borderRadius: BorderRadius.all(
@@ -55,10 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Text(
                         'O que você gostaria de descartar hoje?',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
+                        style: Theme.of(context).textTheme.subtitle2,
                       ),
                       Container(
                         alignment: Alignment.center,
@@ -95,10 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Text(
                         'Aprenda aqui a separar cada tipo de material!',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
+                        style: Theme.of(context).textTheme.subtitle2,
                       ),
                     ],
                   ),

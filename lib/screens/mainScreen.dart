@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycle_app/screens/AboutProject.dart';
 import 'package:recycle_app/screens/collectScreen.dart';
 import 'package:recycle_app/screens/impactScreen.dart';
 import 'package:recycle_app/screens/materialScreen.dart';
@@ -20,9 +21,9 @@ class _MainScreenState extends State<MainScreen> {
   );
 
   static List<Widget> _widgetList = <Widget>[
+    AboutProject(),
     HomeScreen(),
     RecycleScreen(),
-    ImpactScreen(),
     ResultsScreen()
   ];
 
@@ -52,7 +53,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerConfig(),
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (OverscrollIndicatorNotification overScroll) {
           overScroll.disallowGlow();
@@ -122,25 +122,25 @@ class _MainScreenState extends State<MainScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: ImageIcon(
+              AssetImage('assets/icons/icons8-planejamento-ambiental-100.png'),
+            ),
+            label: 'ReciclaTerê',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
               AssetImage('assets/icons/waste.png'),
             ),
             label: 'Recicláveis',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/truck.png'),
+              AssetImage('assets/icons/icons8-caminhão-de-lixo-100.png'),
             ),
             label: 'Coleta Seletiva',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage('assets/icons/earth-care.png'),
-            ),
-            label: 'Impacto',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/icons/graphic.png'),
+              AssetImage('assets/icons/icons8-gráfico-positivo-100.png'),
             ),
             label: 'Resultados',
           ),
@@ -156,7 +156,7 @@ class _MainScreenState extends State<MainScreen> {
           fontWeight: FontWeight.w600,
         ),
         selectedItemColor: Theme.of(context).accentColor,
-        showUnselectedLabels: true,
+        showUnselectedLabels: false,
         unselectedIconTheme: IconThemeData(
           size: 25,
           color: Colors.grey[900],

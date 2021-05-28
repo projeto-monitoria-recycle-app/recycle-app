@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:provider/provider.dart';
+import 'package:recycle_app/screens/AboutProject.dart';
 import 'package:recycle_app/controllers/collectDayNotificationController.dart';
 
 import 'package:recycle_app/screens/mapScreen.dart';
@@ -33,13 +34,21 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        title: 'Recicle App',
+        title: 'Recycle App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          // primarySwatch: Colors.green,
-          accentColor: Color(0xFF09995C),
-          appBarTheme: AppBarTheme(elevation: 0),
-        ),
+            // primarySwatch: Colors.green,
+            accentColor: Color(0xFF09995C),
+            appBarTheme: AppBarTheme(elevation: 0),
+            textTheme: TextTheme(
+              bodyText1: TextStyle(color: Colors.red),
+              subtitle2: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontFamily: "Poppins-Bold",
+                fontWeight: FontWeight.w400,
+              ),
+            )),
         home: MainScreen(),
         routes: {
           MainScreen.routeName: (context) => MainScreen(),
@@ -48,6 +57,7 @@ class MyApp extends StatelessWidget {
           GMapScreen.routeName: (context) => GMapScreen(),
           PhotoView.routeName: (context) => PhotoView(),
           ResultsScreen.routeName: (context) => ResultsScreen(),
+          AboutProject.routeName: (context) => AboutProject(),
         },
       ),
     );
