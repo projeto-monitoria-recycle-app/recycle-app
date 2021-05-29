@@ -16,7 +16,13 @@ class PhotoView extends StatelessWidget {
           children: [
             Card(
               clipBehavior: Clip.antiAlias,
-              child: Image.asset(image, fit: BoxFit.contain),
+              child: Hero(
+                tag: "image",
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
             Positioned(
               top: 50,
