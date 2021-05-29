@@ -186,25 +186,28 @@ class _GMapScreenState extends State<GMapScreen> {
                           },
                         ),
                         InkWell(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(15),
-                                bottomRight: Radius.circular(15),
+                          child: Hero(
+                            tag: "imagem",
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black87,
+                                  )
+                                ],
+                                color: Colors.grey,
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black87,
-                                )
-                              ],
-                              color: Colors.grey,
-                            ),
-                            width: 50,
-                            height: 50,
-                            clipBehavior: Clip.antiAlias,
-                            child: Image.asset(
-                              collectPoint.image,
-                              fit: BoxFit.cover,
+                              width: 50,
+                              height: 50,
+                              clipBehavior: Clip.antiAlias,
+                              child: Image.asset(
+                                collectPoint.image,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                           onTap: () {
