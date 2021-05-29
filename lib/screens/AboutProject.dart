@@ -72,7 +72,7 @@ class AboutProject extends StatelessWidget {
                               child: Card(
                                 clipBehavior: Clip.antiAlias,
                                 child: Container(
-                                  height: 100,
+                                  height: 150,
                                   width: 350,
                                   child: Image.asset(aboutUs.images,
                                       fit: BoxFit.cover),
