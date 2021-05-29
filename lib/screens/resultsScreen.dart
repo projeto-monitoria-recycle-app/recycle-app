@@ -59,7 +59,7 @@ class ResultsScreen extends StatelessWidget {
                     // Text(
                     //   'Veja os resultados do projeto de reciclagem na cidade de Teresópolis',
                     //   style: TextStyle(
-                    //     fontSize: 18,
+                    //     fontSize:  18,
                     //     fontWeight: FontWeight.bold,
                     //   ),
                     // ),
