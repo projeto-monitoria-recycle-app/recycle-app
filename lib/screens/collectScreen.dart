@@ -169,7 +169,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                   ),
                   // Text("Clique no card para ver o ponto no mapa."),
                   Container(
-                    height: 180,
+                    height: 200,
                     child: filteredCollectPointList.isEmpty
                         ? Column(
                             children: [

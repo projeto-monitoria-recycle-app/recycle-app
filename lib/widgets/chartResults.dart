@@ -16,6 +16,7 @@ class BarChartSample2 extends StatefulWidget {
 
 class BarChartSample2State extends State<BarChartSample2> {
   int selectMaterial = 0;
+  String selectPeriod = periodos.last;
   final Color leftBarColor = const Color(0xff09995C);
   final double width = 7;
 
@@ -76,7 +77,40 @@ class BarChartSample2State extends State<BarChartSample2> {
                     }).toList(),
                   ),
                 ),
-                
+                Container(
+                  alignment: Alignment.center,
+                  height: 45,
+                  width: screenWidth * .40,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white,
+                  ),
+                  child: DropdownButton<String>(
+                    style: TextStyle(color: Colors.grey[700]),
+                    hint: Text(
+                      'Período',
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .accentColor
+                            .withOpacity(0.5),
+                      ),
+                    ),
+                    value: selectPeriod,
+                    onChanged: (String newValue) {
+                      setState(() {
+                          selectPeriod = newValue;
+                          print(selectPeriod);
+                      });
+                    },
+                    items: periodos.map<DropdownMenuItem<String>>((e){
+                      return DropdownMenuItem<String>(
+                        value: e,
+                        child: Text(e.toString()),
+                      );
+                    }).toList(),
+                  ),
+                ),
               ],
             ),
             const SizedBox(
@@ -161,9 +195,21 @@ class BarChartSample2State extends State<BarChartSample2> {
 
   makeGroupData(List<int> results) {
     List<BarChartGroupData> list = [];
-    for(int i =  0; i<12; i++){
+    int ini = 6;
+    int fim = 12;
+
+    if(selectPeriod[5] == "1"){
+      ini = 0;
+      fim = 6;
+    } else if(selectPeriod[5] == "2") {
+      ini = 6;
+      fim = 12;
+    }
+
+    for(int i = ini ; i<fim; i++){
+      int num = 0;
       if(results[i]==0){
-        continue;
+        num = -1;
       }
       BarChartGroupData br = BarChartGroupData(
         x: i,
@@ -171,7 +217,7 @@ class BarChartSample2State extends State<BarChartSample2> {
         barRods: [
           BarChartRodData(y:results[i].toDouble(), colors: [wasteList[selectMaterial].color])
         ],
-        showingTooltipIndicators: [0]
+        showingTooltipIndicators: [num]
       );
     list.add(br);
     }
