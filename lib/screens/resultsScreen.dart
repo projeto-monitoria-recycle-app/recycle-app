@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/collectPointModel.dart';
 import 'package:recycle_app/widgets/chartResults.dart';
 
 class ResultsScreen extends StatelessWidget {
@@ -6,6 +8,7 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Set<String> districts = new Set<String>.from(collectRouteList.map((e) => e.district));
     double screenWidth = MediaQuery.of(context).size.width;
     return NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (OverscrollIndicatorNotification overScroll) {
@@ -158,7 +161,7 @@ class ResultsScreen extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        '25',
+                                        collectPointList.length.toString(),
                                         style: TextStyle(
                                           fontSize: 30,
                                           fontWeight: FontWeight.bold,
@@ -201,7 +204,7 @@ class ResultsScreen extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          '15',
+                                          districts.length.toString(),
                                           style: TextStyle(
                                             fontSize: 30,
                                             fontWeight: FontWeight.bold,
