@@ -2,16 +2,20 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:recycle_app/models/CollectResult.dart';
+import 'package:recycle_app/models/collectPointModel.dart';
 import 'dart:math';
+
+import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/materialModel.dart';
 
 
 class BarChartSample2 extends StatefulWidget {
   @override
-
   State<StatefulWidget> createState() => BarChartSample2State();
 }
 
 class BarChartSample2State extends State<BarChartSample2> {
+  int selectMaterial = 0;
   final Color leftBarColor = const Color(0xff09995C);
   final double width = 7;
 
@@ -21,17 +25,63 @@ class BarChartSample2State extends State<BarChartSample2> {
   int touchedGroupIndex = -1;
   @override
   Widget build(BuildContext context) {
-    return Card(
+    double screenWidth = MediaQuery.of(context).size.width;
+    return
+      Card(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
+        child:
+          Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           //mainAxisSize: MainAxisSize.max,
           children: <Widget>[
+            Row(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  height: 45,
+                  width: screenWidth * .40,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white,
+                  ),
+                  child: DropdownButton<int>(
+                    style: TextStyle(color: Colors.grey[700]),
+                    hint: Text(
+                      'Material',
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .accentColor
+                            .withOpacity(0.5),
+                      ),
+                    ),
+                    value: selectMaterial,
+                    onChanged: (int newValue) {
+                      setState(() {
+                        selectMaterial = newValue;
+                        print(selectMaterial);
+                        }
+                      );
+                    },
+                    items: indiceMateriais.map<DropdownMenuItem<int>>((int e){
+                      return DropdownMenuItem<int>(
+                        value: e,
+                        child: Text(wasteList[e].name),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
@@ -70,7 +120,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                       },
                     ),
                     ),
-                    maxY: ano2020[0].reduce(max).toDouble(),
+                    maxY: wasteList[selectMaterial].ano2020.reduce(max).toDouble(),
                     titlesData: FlTitlesData(
                       show: true,
                       bottomTitles: SideTitles(
@@ -95,7 +145,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                       borderData: FlBorderData(
                       show: false,
                     ),
-                    barGroups: makeGroupData(ano2020[0]).toList(),
+                    barGroups: makeGroupData(wasteList[selectMaterial].ano2020).toList(),
                   ),
                 ),
               ),
@@ -119,7 +169,7 @@ class BarChartSample2State extends State<BarChartSample2> {
         x: i,
 
         barRods: [
-          BarChartRodData(y:results[i].toDouble(), colors: [Colors.lightBlueAccent, Colors.greenAccent])
+          BarChartRodData(y:results[i].toDouble(), colors: [wasteList[selectMaterial].color])
         ],
         showingTooltipIndicators: [0]
       );

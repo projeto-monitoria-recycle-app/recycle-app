@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+
 import 'package:recycle_app/models/collectRouteModel.dart';
 import 'package:recycle_app/models/collectPointModel.dart';
 import 'package:recycle_app/widgets/chartResults.dart';
@@ -70,14 +73,24 @@ class ResultsScreen extends StatelessWidget {
                       height: 15,
                     ),
 
+
+              Column(
+                children: [
+                Text(
+                'Materiais Reciclados / Kg',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),),
                     Card(
                       child: Container(
-                          width: screenWidth * .9,
-                          height: screenWidth * .8,
-                          child: BarChartSample2(),
-                          ),
+                        width: screenWidth * .9,
+                        height: screenWidth * .8,
+                        child: BarChartSample2(),
+                        ),
                     ),
-
+                  ],
+              ),
                     SizedBox(
                       height: 15,
                     ),
