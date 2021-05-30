@@ -66,21 +66,15 @@ class ResultsScreen extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
+
                     Card(
-                        // child: BarChartSample2(),
-                        ),
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      height: 300,
-                      // child: [],
+                      child: Container(
+                          width: screenWidth * .9,
+                          height: screenWidth * .8,
+                          child: BarChartSample2(),
+                          ),
                     ),
-                    // BarChartSample2(),
+
                     SizedBox(
                       height: 15,
                     ),
@@ -147,37 +141,32 @@ class ResultsScreen extends StatelessWidget {
                               ),
                             ),
                             Card(
-                              // padding: EdgeInsets.all(10),
-                              // decoration: BoxDecoration(
-                              //   color: Colors.grey[300],
-                              //   borderRadius: BorderRadius.all(
-                              //     Radius.circular(5),
-                              //   ),
-                              // ),
-                              // height: 55,
-                              // width: screenWidth * .45,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(right: 10),
-                                      child: ImageIcon(
-                                        AssetImage("assets/icons/waste.png"),
-                                        size: 40,
-                                        color: Colors.grey[700],
+                              child: Container(
+                                height: 55,
+                                width: screenWidth * .40,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: ImageIcon(
+                                          AssetImage("assets/icons/waste.png"),
+                                          size: 40,
+                                          color: Colors.grey[700],
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      '25',
-                                      style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFF09995C),
+                                      Text(
+                                        '25',
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF09995C),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -193,39 +182,34 @@ class ResultsScreen extends StatelessWidget {
                               ),
                             ),
                             Card(
-                              // padding: EdgeInsets.all(10),
-                              // decoration: BoxDecoration(
-                              //   color: Colors.grey[300],
-                              //   borderRadius: BorderRadius.all(
-                              //     Radius.circular(5),
-                              //   ),
-                              // ),
-                              // // height: 55,
-                              // width: screenWidth * .45,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 10),
-                                        child: ImageIcon(
-                                          AssetImage(
-                                              "assets/icons/icons8-caminhão-de-lixo-100.png"),
-                                          size: 40,
-                                          color: Colors.grey[700],
+                              child: Container(
+                                height: 55,
+                                width: screenWidth * .40,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Expanded(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 10),
+                                          child: ImageIcon(
+                                            AssetImage(
+                                                "assets/icons/icons8-caminhão-de-lixo-100.png"),
+                                            size: 40,
+                                            color: Colors.grey[700],
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        '15',
-                                        style: TextStyle(
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFF09995C),
+                                        Text(
+                                          '15',
+                                          style: TextStyle(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF09995C),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
