@@ -14,6 +14,7 @@ class Waste {
   final List<String> searchItens;
   final String recyclable;
   final String notRecyclable;
+  final List<int> ano2020;
 
   Waste(
     this.name, {
@@ -29,6 +30,7 @@ class Waste {
     this.searchItens,
     this.recyclable,
     this.notRecyclable,
+    this.ano2020,
   });
 }
 
@@ -74,6 +76,7 @@ List<Waste> wasteList = [
       "Livro, Jornal, jornais, Revista ,Caderno, Envelopes, Listas Telefônica, Cartolina, Cartões, Cartazes, Aparas de papel, Formulários",
       "Sacos de papel, Panfletos, Caixa de leite, Caixa de suco, Papeis de presente, papel de seda, Papelão, Apostilas"
     ],
+    ano2020: [0 ,0 ,0 ,0 ,0 ,0 ,3775 ,3135 ,3399 ,3868 ,3571 ,2623 ],
   ),
   Waste('Plástico',
       color: Color(0xFFFF3636),
@@ -114,7 +117,10 @@ List<Waste> wasteList = [
         'plastico plástico garrafas e potes, sacos e sacolas, baldes, canetas, brinquedos, canos, tubos e conexão de PVC, mesas e cadeiras de plástico e radiografias',
         "Potes de creme, xampu e condicionador lavados, embalagens plásticas de alimentos tipo de leite e iogurte, bolsa plástica, garrafas pet, embalagens de produto de limpeza e higiene, como detergente, sabão liquido, amaciante, água sanitária, sabonete liquido, álcool,",
         "Potes de creme, shampoo,  xampu e condicionador lavados, embalagens plásticas de alimentos tipo de leite e iogurte, bolsa plástica, garrafas pet, embalagens de produto de limpeza e higiene, como detergente, sabão liquido, amaciante, água sanitária, sabonete liquido, álcool,"
-      ]),
+      ],
+    ano2020: [0 ,0 ,0 ,0 ,0 ,0 ,1374 ,1397 ,1327 ,2092 ,2075 ,1086 ],
+  ),
+
   Waste('Metal',
       color: Color(0xFFFFBC11),
       icon: AssetImage('assets/icons/metal.png'),
@@ -150,7 +156,9 @@ List<Waste> wasteList = [
       searchItens: [
         'metal, metais latas limpas de bebidas e alimentos, panelas, parafusos e pregos, grampos e clipes, os objetos de ferro ou lata de aerossóis, garfo, faca, ferramenta, colher, fios , cabos',
         'Ferragens, arames, fio de cobre, latas de alumínio de refrigerantes, cerveja, chás entre outras, folhas de alumínio, embalagem marmitex limpas, panelas, prateleiras e estantes de ferro, fogão, geladeira, freezer',
-      ]),
+      ],
+      ano2020: [0 ,0 ,0 ,0 ,0 ,0 ,2167 ,2023 ,2805 ,1640 ,1023 ,971 ],
+  ),
   Waste('Vidro',
       color: Color(0xFF2D9F46),
       icon: AssetImage('assets/icons/glass.png'),
@@ -188,7 +196,9 @@ List<Waste> wasteList = [
       searchItens: [
         'vidro, garrafas, potes , copos, taças, prato',
         'Frascos, garrafas de cerveja, vinho, bebidas destiladas'
-      ]),
+      ],
+      ano2020: [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,15160 ,0 ],
+  ),
   Waste(
     'Orgânico',
     color: Color(0xFFA33315),
@@ -233,6 +243,7 @@ List<Waste> wasteList = [
     searchItens: [
       'organico, orgânico comida, frutas, legumes, verduras, pizza, leite, farinha, alimentos, bebidas, arroz, feijão, macarrão, carne, massas, peixe, frango'
     ],
+    ano2020: [0,0,0,0,0,0,0,0,0,0,0,0],
   ),
   Waste(
     'Óleo Vegetal',
@@ -268,6 +279,7 @@ List<Waste> wasteList = [
     links: [],
     hints: [],
     searchItens: [' oleo óleo, gordura'],
+    ano2020: [0 ,0 ,0 ,0 ,0 ,0 ,135 ,120 ,40 ,150 ,150 ,0 ],
   ),
   Waste(
     'Não Reciclável',
@@ -305,6 +317,7 @@ List<Waste> wasteList = [
       'Papéis enxarcados, Papel vegetal,  Lata de desodorante, Lata de tinta, Lata de verniz,,',
       'osso de frango, carne, Vidros de janela, Cristal, Espelho, Madeira'
     ],
+    ano2020: [0,0,0,0,0,0,0,0,0,0,0,0],
   ),
   Waste(
     'Pilhas e Baterias',
@@ -342,10 +355,11 @@ List<Waste> wasteList = [
         "assets/img/coletor-baterias.jpg"
       ]
     ],
+    ano2020: [0,0,0,0,0,0,0,0,0,0,0,0],
     searchItens: ['pilhas e baterias'],
   ),
   Waste(
-    'Resíduo Eletrônico',
+    'Eletrônico',
     color: Colors.green[900],
     icon: AssetImage('assets/icons/eletronic.png'),
     title: 'Como descartar eletrônicos corretamente?',
@@ -376,5 +390,6 @@ List<Waste> wasteList = [
     searchItens: [
       'eletronicos , eletrônicos, Computadores, tablets, monitores, LEDs, Teclados, impressoras, câmeras fotográficas, aparelhos de som, televisores, tv, micro-ondas, microondas, rádios, radios, telefones, celulares e carregadores'
     ],
+    ano2020: [0 ,0 ,0 ,0 ,0 ,0 ,3 ,0 ,0 ,26 ,0 ,0 ],
   ),
 ];
