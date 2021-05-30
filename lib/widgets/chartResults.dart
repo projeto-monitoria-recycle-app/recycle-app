@@ -1,9 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:recycle_app/models/CollectResult.dart';
+
 
 class BarChartSample2 extends StatefulWidget {
   @override
+
   State<StatefulWidget> createState() => BarChartSample2State();
 }
 
@@ -54,27 +57,15 @@ class BarChartSample2State extends State<BarChartSample2> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
+          //mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                makeTransactionsIcon(),
                 const SizedBox(
                   width: 38,
-                ),
-                const Text(
-                  'Transactions',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                const Text(
-                  'state',
-                  style: TextStyle(color: Color(0xff77839a), fontSize: 16),
                 ),
               ],
             ),
@@ -135,25 +126,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                         getTextStyles: (value) => const TextStyle(
                             color: Color(0xff7589a2), fontWeight: FontWeight.bold, fontSize: 14),
                         margin: 20,
-                        getTitles: (double value) {
-                          switch (value.toInt()) {
-                            case 0:
-                              return 'Mn';
-                            case 1:
-                              return 'Te';
-                            case 2:
-                              return 'Wd';
-                            case 3:
-                              return 'Tu';
-                            case 4:
-                              return 'Fr';
-                            case 5:
-                              return 'St';
-                            case 6:
-                              return 'Sn';
-                            default:
-                              return '';
-                          }
+                        getTitles: (ano2020) {
                         },
                       ),
                       leftTitles: SideTitles(
