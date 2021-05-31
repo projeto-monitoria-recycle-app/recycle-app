@@ -2,12 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:recycle_app/models/CollectResult.dart';
-import 'package:recycle_app/models/collectPointModel.dart';
 import 'dart:math';
-
-import 'package:recycle_app/models/collectRouteModel.dart';
 import 'package:recycle_app/models/materialModel.dart';
-
 
 class BarChartSample2 extends StatefulWidget {
   @override
@@ -27,25 +23,24 @@ class BarChartSample2State extends State<BarChartSample2> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return
-      Card(
+    return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
-        child:
-          Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           //mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   alignment: Alignment.center,
                   height: 45,
-                  width: screenWidth * .40,
+                  // width: screenWidth * .45,
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
@@ -56,9 +51,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                     hint: Text(
                       'Material',
                       style: TextStyle(
-                        color: Theme.of(context)
-                            .accentColor
-                            .withOpacity(0.5),
+                        color: Theme.of(context).accentColor.withOpacity(0.5),
                       ),
                     ),
                     value: selectMaterial,
@@ -66,10 +59,9 @@ class BarChartSample2State extends State<BarChartSample2> {
                       setState(() {
                         selectMaterial = newValue;
                         print(selectMaterial);
-                        }
-                      );
+                      });
                     },
-                    items: indiceMateriais.map<DropdownMenuItem<int>>((int e){
+                    items: indiceMateriais.map<DropdownMenuItem<int>>((int e) {
                       return DropdownMenuItem<int>(
                         value: e,
                         child: Text(wasteList[e].name),
@@ -80,7 +72,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                 Container(
                   alignment: Alignment.center,
                   height: 45,
-                  width: screenWidth * .40,
+                  // width: screenWidth * .45,
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
@@ -91,19 +83,17 @@ class BarChartSample2State extends State<BarChartSample2> {
                     hint: Text(
                       'Período',
                       style: TextStyle(
-                        color: Theme.of(context)
-                            .accentColor
-                            .withOpacity(0.5),
+                        color: Theme.of(context).accentColor.withOpacity(0.5),
                       ),
                     ),
                     value: selectPeriod,
                     onChanged: (String newValue) {
                       setState(() {
-                          selectPeriod = newValue;
-                          print(selectPeriod);
+                        selectPeriod = newValue;
+                        print(selectPeriod);
                       });
                     },
-                    items: periodos.map<DropdownMenuItem<String>>((e){
+                    items: periodos.map<DropdownMenuItem<String>>((e) {
                       return DropdownMenuItem<String>(
                         value: e,
                         child: Text(e.toString()),
@@ -135,32 +125,37 @@ class BarChartSample2State extends State<BarChartSample2> {
                 child: BarChart(
                   BarChartData(
                     barTouchData: BarTouchData(
-                    enabled: false,
-                    touchTooltipData: BarTouchTooltipData(
-                    tooltipBgColor: Colors.transparent,
-                      getTooltipItem: (
+                      enabled: false,
+                      touchTooltipData: BarTouchTooltipData(
+                        tooltipBgColor: Colors.transparent,
+                        getTooltipItem: (
                           BarChartGroupData group,
                           int groupIndex,
                           BarChartRodData rod,
                           int rodIndex,
-                          ) {
-                        return BarTooltipItem(
-                          rod.y.round().toString(),
-                          TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
+                        ) {
+                          return BarTooltipItem(
+                            rod.y.round().toString(),
+                            TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                    ),
-                    maxY: wasteList[selectMaterial].ano2020.reduce(max).toDouble(),
+                    maxY: wasteList[selectMaterial]
+                        .ano2020
+                        .reduce(max)
+                        .toDouble(),
                     titlesData: FlTitlesData(
                       show: true,
                       bottomTitles: SideTitles(
                         showTitles: true,
                         getTextStyles: (value) => const TextStyle(
-                            color: Color(0xff7589a2), fontWeight: FontWeight.bold, fontSize: 14),
+                            color: Color(0xff7589a2),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
                         margin: 20,
                         getTitles: (double value) {
                           return meses[value.toInt()];
@@ -169,17 +164,18 @@ class BarChartSample2State extends State<BarChartSample2> {
                       leftTitles: SideTitles(
                         showTitles: false,
                         getTextStyles: (value) => const TextStyle(
-                            color: Color(0xff7589a2), fontWeight: FontWeight.bold, fontSize: 14),
+                            color: Color(0xff7589a2),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
                         margin: 32,
                         reservedSize: 14,
-
-
                       ),
                     ),
-                      borderData: FlBorderData(
+                    borderData: FlBorderData(
                       show: false,
                     ),
-                    barGroups: makeGroupData(wasteList[selectMaterial].ano2020).toList(),
+                    barGroups: makeGroupData(wasteList[selectMaterial].ano2020)
+                        .toList(),
                   ),
                 ),
               ),
@@ -198,28 +194,28 @@ class BarChartSample2State extends State<BarChartSample2> {
     int ini = 6;
     int fim = 12;
 
-    if(selectPeriod[5] == "1"){
+    if (selectPeriod[5] == "1") {
       ini = 0;
       fim = 6;
-    } else if(selectPeriod[5] == "2") {
+    } else if (selectPeriod[5] == "2") {
       ini = 6;
       fim = 12;
     }
 
-    for(int i = ini ; i<fim; i++){
+    for (int i = ini; i < fim; i++) {
       int num = 0;
-      if(results[i]==0){
+      if (results[i] == 0) {
         num = -1;
       }
-      BarChartGroupData br = BarChartGroupData(
-        x: i,
-
-        barRods: [
-          BarChartRodData(y:results[i].toDouble(), colors: [wasteList[selectMaterial].color])
-        ],
-        showingTooltipIndicators: [num]
-      );
-    list.add(br);
+      BarChartGroupData br = BarChartGroupData(x: i, barRods: [
+        BarChartRodData(
+          y: results[i].toDouble(),
+          colors: [wasteList[selectMaterial].color],
+        )
+      ], showingTooltipIndicators: [
+        num
+      ]);
+      list.add(br);
     }
     return list;
   }
