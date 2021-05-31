@@ -64,13 +64,15 @@ List<CollectPoint> collectPointList = [
     latitude: -22.44231,
     longitude: -42.97886,
   ),
-  // CollectPoint(
-  //   "HOTEL SESC ALPINA",
-  //   adreess: 'Rua 05',
-  //   district: 'Golfe',
-  // ),
   CollectPoint(
-    "POSTO DE SAÚDE",
+    "SECS HOTEL ALPINA",
+    route: CollectRoute(null, 'Rua Cândido Portinari,', null, null, "Golf"),
+    image: "assets/img/ecopontos.jpg",
+    latitude: -22.3942477,
+    longitude: -42.9876638,
+  ),
+  CollectPoint(
+    "ROD. SANTOS DUMONT, BR 116",
     route: dao.getById(15),
     image: "assets/img/ecoponto-pessegueiros.jpg",
     latitude: -22.31674,
@@ -99,7 +101,7 @@ List<CollectPoint> collectPointList = [
     longitude: -42.95974,
   ),
   CollectPoint(
-    "GUARITA DA POLICIA MILITAR",
+    "VARGEM GRANDE (GUARITA DA POLICIA MILITAR)",
     route:
         CollectRoute(null, 'RJ 130-Est. Tere-Fri', null, null, 'Vargem Grande'),
     image: "assets/img/ecoponto-vargem-grande.jpg",
