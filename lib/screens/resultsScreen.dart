@@ -11,7 +11,8 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Set<String> districts = new Set<String>.from(collectRouteList.map((e) => e.district));
+    Set<String> districts =
+        new Set<String>.from(collectRouteList.map((e) => e.district));
     double screenWidth = MediaQuery.of(context).size.width;
     return NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (OverscrollIndicatorNotification overScroll) {
@@ -73,139 +74,90 @@ class ResultsScreen extends StatelessWidget {
                       height: 15,
                     ),
 
-
-              Column(
-                children: [
-                Text(
-                'Materiais Reciclados / Kg',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),),
-                    Card(
-                      child: Container(
-                        width: screenWidth * .9,
-                        height: screenWidth * .8,
-                        child: BarChartSample2(),
-                        ),
-                    ),
-                  ],
-              ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Número de Participantes',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Card(
-                      // padding: EdgeInsets.all(5),
-                      // decoration: BoxDecoration(
-                      //   color: Colors.grey[300],
-                      //   borderRadius: BorderRadius.all(
-                      //     Radius.circular(5),
-                      //   ),
-                      // ),
-                      // height: 100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Visibility(
-                              visible: true,
-                              child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: ImageIcon(
-                                    AssetImage(
-                                        "assets/icons/icons8-user-groups-100.png"),
-                                    size: 50,
-                                    color: Colors.grey[900],
-                                  )),
-                            ),
-                            Text(
-                              "4 Empresas Apoiando\n" +
-                                  "14 Colaboradores\n" +
-                                  "20 Catadores Registrados\n" +
-                                  "+200 Moradores Reciclando",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              'Total de Ecopontos',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                        Text(
+                          'MATERIAIS RECICLADOS - KG/MÊS',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Card(
+                          child: Container(
+                            width: screenWidth * .9,
+                            height: screenWidth * .8,
+                            child: BarChartSample2(),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      width: screenWidth,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                'TOTAL DE ECOPONTOS',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[800]),
                               ),
-                            ),
-                            Card(
-                              child: Container(
-                                height: 55,
-                                width: screenWidth * .40,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 10),
-                                        child: ImageIcon(
-                                          AssetImage("assets/icons/waste.png"),
-                                          size: 40,
-                                          color: Colors.grey[700],
+                              Card(
+                                child: Container(
+                                  height: 60,
+                                  width: screenWidth * .40,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 10),
+                                          child: ImageIcon(
+                                            AssetImage(
+                                                "assets/icons/waste.png"),
+                                            size: 40,
+                                            color: Colors.grey[700],
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        collectPointList.length.toString(),
-                                        style: TextStyle(
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFF09995C),
+                                        Text(
+                                          collectPointList.length.toString(),
+                                          style: TextStyle(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF09995C),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              'Bairros Atendidos',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'BAIRROS ATENDIDOS',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[800]),
                               ),
-                            ),
-                            Card(
-                              child: Container(
-                                height: 55,
-                                width: screenWidth * .40,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Expanded(
+                              Card(
+                                child: Container(
+                                  height: 60,
+                                  width: screenWidth * .40,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Padding(
                                           padding: EdgeInsets.only(right: 10),
@@ -229,13 +181,70 @@ class ResultsScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 15,
+                    ),
+                    Text(
+                      'NÚMERO DE PARTICIPANTES',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: ImageIcon(
+                                  AssetImage(
+                                      "assets/icons/icons8-user-groups-100.png"),
+                                  size: 50,
+                                  color: Colors.grey[900],
+                                )),
+                            Column(
+                              children: [
+                                Text(
+                                  "4 Empresas Apoiando",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  "14 Colaboradores",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  "20 Catadores Registrados",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  "+200 Moradores Reciclando",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 15,
