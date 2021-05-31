@@ -91,7 +91,12 @@ class AboutProject extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(15, 20, 10, 10),
-                      child: Text('Perguntas Frequentes:'.toUpperCase()),
+                      child: Text(
+                        'PERGUNTAS FREQUENTES:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Card(
                       child: Column(
@@ -166,51 +171,60 @@ class AboutProject extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                             ),
                           ),
-                          ListTile(
-                            title: Text(
-                              "NOSSOS PARCEIROS",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                        ],
+                      ),
+                    ),
+                    FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "NOSSOS PARCEIROS",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: SingleChildScrollView(
+                          child: Container(
+                            height: 100,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(5.0),
+                                  height: 70,
+                                  width: 130,
+                                  child: Image.asset(
+                                      'assets/img/logo-unifeso.png'),
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.all(5.0),
+                                  height: 70,
+                                  width: 160,
+                                  child: Image.asset(
+                                      'assets/img/logo-prefeitura.png'),
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: SingleChildScrollView(
-                              child: Container(
-                                height: 100,
-                                width: 320,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(5.0),
-                                      height: 70,
-                                      width: 150,
-                                      child: Image.asset(
-                                          'assets/img/logo-unifeso.png'),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.all(5.0),
-                                      height: 70,
-                                      width: 170,
-                                      child: Image.asset(
-                                          'assets/img/logo-prefeitura.png'),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     )
                   ],
