@@ -200,13 +200,6 @@ List<CollectRoute> collectRouteList = [
     "Agriões",
   ),
   CollectRoute(
-    25,
-    "Rua Rui Barbosa",
-    "Tarde",
-    DayOfWeek.thursday,
-    "Agriões",
-  ),
-  CollectRoute(
     26,
     "Rua Rui Barbosa",
     "Tarde",
