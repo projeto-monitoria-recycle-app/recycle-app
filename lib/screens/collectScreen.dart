@@ -177,7 +177,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                     ),
                     // Text("Clique no card para ver o ponto no mapa."),
                     Container(
-                      height: 200,
+                      height: 180,
                       child: filteredCollectPointList.isEmpty
                           ? Column(
                               children: [
@@ -188,13 +188,14 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                       Stack(
                                         children: [
                                           Container(
-                                              width: 120,
-                                              height: 120,
-                                              child: Icon(
-                                                Icons.delete_forever,
-                                                color: Colors.grey[300],
-                                                size: 50,
-                                              )),
+                                            width: 90,
+                                            height: 110,
+                                            child: Icon(
+                                              Icons.delete_forever,
+                                              color: Colors.grey[300],
+                                              size: 50,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ],
@@ -203,13 +204,10 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "ESSE BAIRRO NÃO TEM UM ECOPONTO AINDA.",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Colors.grey[600],
-                                    ),
-                                  ),
+                                      "ESSE BAIRRO NÃO TEM UM ECOPONTO AINDA.",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
                                 ),
                               ],
                             )
@@ -228,73 +226,71 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                     "${filteredCollectPointList[index].name}: $image");
                                 return Column(
                                   children: [
-                                    TextButton(
-                                      // padding: EdgeInsets.all(0),
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                          context,
-                                          '/map',
-                                          arguments:
-                                              filteredCollectPointList[index],
-                                        );
-                                      },
-                                      child: Card(
-                                        clipBehavior: Clip.antiAlias,
-                                        child: Column(
-                                          children: [
-                                            Stack(
-                                              children: [
-                                                Container(
-                                                  width: 120,
-                                                  height: 120,
-                                                  child: Image.asset(image,
-                                                      fit: BoxFit.cover),
-                                                ),
-                                                Positioned(
-                                                  bottom: 7,
-                                                  right: 7,
-                                                  child: Icon(
-                                                    Icons.location_on,
-                                                    size: 30,
-                                                    color: Colors.white,
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                            context,
+                                            '/map',
+                                            arguments:
+                                                filteredCollectPointList[index],
+                                          );
+                                        },
+                                        child: Card(
+                                          clipBehavior: Clip.antiAlias,
+                                          child: Column(
+                                            children: [
+                                              Stack(
+                                                children: [
+                                                  Container(
+                                                    width: 90,
+                                                    height: 110,
+                                                    child: Image.asset(image,
+                                                        fit: BoxFit.cover),
                                                   ),
-                                                ),
-                                                Positioned(
-                                                  bottom: 10,
-                                                  right: 10,
-                                                  child: Icon(Icons.location_on,
-                                                      size: 24,
-                                                      color: Theme.of(context)
-                                                          .accentColor),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                  Positioned(
+                                                    bottom: 7,
+                                                    right: 7,
+                                                    child: Icon(
+                                                      Icons.location_on,
+                                                      size: 30,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  Positioned(
+                                                    bottom: 10,
+                                                    right: 10,
+                                                    child: Icon(
+                                                        Icons.location_on,
+                                                        size: 24,
+                                                        color: Theme.of(context)
+                                                            .accentColor),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            district,
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: Theme.of(context)
-                                                    .accentColor),
-                                          ),
-                                          Text(
-                                            name,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12,
-                                              color: Colors.grey[600],
-                                            ),
-                                          ),
-                                        ],
+                                    Text(
+                                      district,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context).accentColor),
+                                    ),
+                                    Text(
+                                      name,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 10,
+                                        color: Colors.grey[600],
                                       ),
+                                      overflow: TextOverflow.fade,
                                     ),
                                   ],
                                 );
