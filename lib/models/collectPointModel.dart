@@ -11,7 +11,7 @@ class CollectPoint {
   CollectPoint(
     this.name, {
     this.route,
-    this.image,
+    this.image = "assets/img/ecopontos.jpg",
     this.latitude,
     this.longitude,
   });
@@ -37,7 +37,7 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     "UNIFESO (SEDE)",
-    route: CollectRoute(null, 'Rua Sebastião Lacerda', null, null, 'Alto'),
+    route: dao.getById(36),
     image: "assets/img/ecoponto-unifeso-sede.jpg",
     latitude: -22.43336,
     longitude: -42.97959,
@@ -58,8 +58,7 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     "SHOPPING COMARY",
-    route:
-        CollectRoute(null, 'Rua Praça Higino da Silveira', null, null, "Alto"),
+    route: dao.getById(34),
     image: "assets/img/ecoponto-feirinha-do-alto.jpg",
     latitude: -22.44231,
     longitude: -42.97886,
@@ -102,8 +101,7 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     "VARGEM GRANDE (GUARITA DA POLICIA MILITAR)",
-    route:
-        CollectRoute(null, 'RJ 130-Est. Tere-Fri', null, null, 'Vargem Grande'),
+    route: dao.getById(35),
     image: "assets/img/ecoponto-vargem-grande.jpg",
     latitude: -22.37093,
     longitude: -42.87199,
@@ -114,5 +112,38 @@ List<CollectPoint> collectPointList = [
     image: "assets/img/central-coleta-seletiva.jpg",
     latitude: -22.34926,
     longitude: -42.94055,
-  )
+  ),
+  CollectPoint(
+    'CASA DE CULTURA',
+    route: CollectRoute(null, 'Praça Juscelino Kubitscheck', null, null, "Alto"),
+    image:  "assets/img/ecopontos.jpg",
+    latitude: -22.43448,
+    longitude: -42.97430,
+  ),
+  CollectPoint(
+    'RUA GUANDU',
+    route: CollectRoute(null, 'Rua Guandu', null, null, "Pimenteiras"),
+    latitude: -22.41612,
+    longitude: -42.98428,
+  ),
+  CollectPoint(
+    'PRAÇA DOS EXPEDICIONÁRIOS',
+    route: CollectRoute(null, 'Rua José Viana da Silveira', null, null, "São Pedro"),
+    latitude: -22.42518,
+    longitude: -42.96613
+  ),
+  CollectPoint(
+      'AMAVALE',
+      route: CollectRoute(null, '', null, null, "Amavale"),
+      latitude: -22.39038,
+      longitude: -42.87179
+  ),
+  CollectPoint(
+      'ESTR. FRANCISCO SMOLKA',
+      route: dao.getById(37),
+      latitude: -22.39732,
+      longitude: -42.99175
+  ),
 ];
+
+// ,

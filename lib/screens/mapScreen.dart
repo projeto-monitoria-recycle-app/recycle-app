@@ -167,6 +167,7 @@ class _GMapScreenState extends State<GMapScreen> {
                             ),
                           ],
                         ),
+                        if (collectPoint.route.id != null)
                         FutureBuilder<Set<int>>(
                           future: controller
                               .getActiveCollectRouteNotificationsIds(),

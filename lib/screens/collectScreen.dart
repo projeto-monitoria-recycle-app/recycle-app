@@ -215,6 +215,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                   .route
                                   .district;
                               var image = filteredCollectPointList[index].image;
+                              debugPrint("${filteredCollectPointList[index].name}: $image");
                               return Column(
                                 children: [
                                   TextButton(

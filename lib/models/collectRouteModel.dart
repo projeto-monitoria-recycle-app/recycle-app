@@ -124,7 +124,7 @@ List<CollectRoute> collectRouteList = [
   ),
   CollectRoute(
     14,
-    "Loja Rústica ",
+    "Loja Rústica",
     "Manhã",
     DayOfWeek.wednesday,
     "Vargem Grande",
@@ -137,15 +137,8 @@ List<CollectRoute> collectRouteList = [
     "Pessegueiros",
   ),
   CollectRoute(
-    16,
-    "EcoPonto Santa Rita",
-    "Manhã",
-    DayOfWeek.wednesday,
-    "Santa Rita",
-  ),
-  CollectRoute(
     17,
-    "Escola Fazenda Alpina",
+    "Estrada de Santa Rita (Escola Fazenda Alpina)",
     "Manhã",
     DayOfWeek.wednesday,
     "Santa Rita",
@@ -254,5 +247,33 @@ List<CollectRoute> collectRouteList = [
     "",
     DayOfWeek.wednesday,
     'Bonsucesso',
-  )
+  ),
+  CollectRoute(
+    34,
+    'Praça Higino da Silveira',
+    "Manhã",
+    DayOfWeek.tuesday,
+    "Alto",
+  ),
+  CollectRoute(
+    35,
+    "Guarita da Polícia Militar - RJ-130 - Estrada Tere-Fri",
+    "Manhã",
+    DayOfWeek.wednesday,
+    "Vargem Grande",
+  ),
+  CollectRoute(
+    36,
+    'Rua Sebastião Lacerda',
+    "Manhã",
+    DayOfWeek.tuesday,
+    'Alto',
+  ),
+  CollectRoute(
+    37,
+    "Ecoponto Estrada Francisco Smolka",
+    "Manhã",
+    DayOfWeek.friday,
+    "Quebra Frascos",
+  ),
 ];
