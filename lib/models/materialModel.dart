@@ -252,7 +252,7 @@ List<Waste> wasteList = [
     title: 'Como descartar pilhas e baterias corretamente?',
     content: [
       'Pilhas e Baterias possuem metais pesados que podem contaminar o solo e lençóis freáticos',
-      '” A COLETA SELETIVA não faz coleta de pilhas e baterias, então não deve ser jogando nos ECOPONTOS. Mas alguns supermercados recolhem esses materiais.',
+      'A COLETA SELETIVA não faz coleta de pilhas e baterias, então não deve ser jogado nos ECOPONTOS. Mas alguns supermercados recolhem esses materiais.',
     ],
     recyclable: 'pilhas, baterias',
     notRecyclable: '',
