@@ -115,7 +115,7 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     'CASA DE CULTURA',
-    route: CollectRoute(null, 'Praça Juscelino Kubitscheck', null, null, "Alto"),
+    route: CollectRoute(null, 'Praça Juscelino Kubitscheck', null, null, "Nossa Sra. de Fatima"),
     image:  "assets/img/ecopontos.jpg",
     latitude: -22.43448,
     longitude: -42.97430,
@@ -128,7 +128,7 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     'PRAÇA DOS EXPEDICIONÁRIOS',
-    route: CollectRoute(null, 'Rua José Viana da Silveira', null, null, "São Pedro"),
+    route: CollectRoute(null, 'Praça dos Expedicionários', null, null, "São Pedro"),
     latitude: -22.42518,
     longitude: -42.96613
   ),
