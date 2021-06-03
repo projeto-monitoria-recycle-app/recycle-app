@@ -25,6 +25,6 @@ List<String> meses = [
   "Dez",
 ];
 
-List<int> indiceMateriais = [0, 1, 2, 3, 4, 7];
+List<int> indiceMateriais = [0, 1, 2, 3, 5, 6];
 
 List<String> periodos = ["2020-1", "2020-2"];

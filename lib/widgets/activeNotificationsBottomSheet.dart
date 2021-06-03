@@ -25,10 +25,7 @@ class ActiveNotificationsBottomSheet extends StatelessWidget {
                         return Center(
                           child: Text(
                             'ROTAS COM NOTIFICAÇÃO ATIVA',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey[800]),
+                            style: Theme.of(context).textTheme.headline2,
                           ),
                         );
                       }

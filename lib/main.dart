@@ -37,18 +37,41 @@ class MyApp extends StatelessWidget {
         title: 'Recycle App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            // primarySwatch: Colors.green,
-            accentColor: Color(0xFF09995C),
-            appBarTheme: AppBarTheme(elevation: 0),
-            textTheme: TextTheme(
-              bodyText1: TextStyle(color: Colors.red),
-              subtitle2: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                fontFamily: "Poppins-Bold",
-                fontWeight: FontWeight.w400,
-              ),
-            )),
+          accentColor: Color(0xFF09995C),
+          appBarTheme: AppBarTheme(elevation: 0),
+          textTheme: TextTheme(
+            headline1: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+              fontSize: 18,
+            ),
+            headline2: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF1E1E1E),
+              fontSize: 14,
+            ),
+            overline: TextStyle(
+              color: Colors.white,
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
+            ),
+            subtitle1: TextStyle(
+              color: Colors.white,
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
+            ),
+            bodyText1: TextStyle(
+              color: Color(0xFF1E1E1E),
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w400,
+              fontSize: 13,
+            ),
+          ),
+        ),
         home: MainScreen(),
         routes: {
           MainScreen.routeName: (context) => MainScreen(),

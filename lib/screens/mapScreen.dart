@@ -124,11 +124,7 @@ class _GMapScreenState extends State<GMapScreen> {
                             ),
                             Text(
                               "Ecopontos",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: Theme.of(context).textTheme.headline1,
                             ),
                           ],
                         ),
@@ -154,9 +150,7 @@ class _GMapScreenState extends State<GMapScreen> {
                           children: [
                             Text(
                               collectPoint.name,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context).textTheme.headline2,
                             ),
                             Text(
                               _truncateString(
@@ -164,28 +158,29 @@ class _GMapScreenState extends State<GMapScreen> {
                                 26,
                                 truncatedSuffix: "...",
                               ),
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
                           ],
                         ),
                         if (collectPoint.route.id != null)
-                        FutureBuilder<Set<int>>(
-                          future: controller
-                              .getActiveCollectRouteNotificationsIds(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              bool isNotificationActive =
-                                  snapshot.data.contains(collectPoint.route.id);
-                              return ToggleNotificationButton(
-                                collectPoint.route,
-                                initialButtonState: isNotificationActive,
-                                colorOn: Colors.black26,
-                                colorOff: Colors.black26,
-                              );
-                            }
-                            return Container(
-                                child: CircularProgressIndicator());
-                          },
-                        ),
+                          FutureBuilder<Set<int>>(
+                            future: controller
+                                .getActiveCollectRouteNotificationsIds(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                bool isNotificationActive = snapshot.data
+                                    .contains(collectPoint.route.id);
+                                return ToggleNotificationButton(
+                                  collectPoint.route,
+                                  initialButtonState: isNotificationActive,
+                                  colorOn: Colors.black26,
+                                  colorOff: Colors.black26,
+                                );
+                              }
+                              return Container(
+                                  child: CircularProgressIndicator());
+                            },
+                          ),
                         InkWell(
                           child: Hero(
                             tag: "imagem",
@@ -264,9 +259,13 @@ class CollectPointMapOption extends StatelessWidget {
         children: [
           Container(
             height: 20,
-            width: 80,
+            width: 100,
             color: Colors.white,
-            child: Center(child: Text("Ecoponto")),
+            child: Center(
+                child: Text(
+              "Ecoponto",
+              style: Theme.of(context).textTheme.bodyText1,
+            )),
           ),
           Container(
             height: 45,
@@ -321,9 +320,13 @@ class SeeRouteMapOption extends StatelessWidget {
         children: [
           Container(
             height: 30,
-            width: 80,
+            width: 100,
             color: Colors.white,
-            child: Center(child: Text("Ver Rota")),
+            child: Center(
+                child: Text(
+              "Ver Rota",
+              style: Theme.of(context).textTheme.bodyText1,
+            )),
           ),
           Container(
             height: 45,
@@ -369,9 +372,13 @@ class MyLocationMapOption extends StatelessWidget {
         children: [
           Container(
             height: 30,
-            width: 130,
+            width: 150,
             color: Colors.white,
-            child: Center(child: Text("Minha Localização")),
+            child: Center(
+                child: Text(
+              "Minha Localização",
+              style: Theme.of(context).textTheme.bodyText1,
+            )),
           ),
           Container(
             height: 45,
@@ -541,9 +548,12 @@ class ToggleNotificationMapOption extends StatelessWidget {
           width: 150,
           color: Colors.white,
           child: Center(
-            child: Text(isNotificationActive
-                ? "Desativar notificação"
-                : "Ativar notificação"),
+            child: Text(
+              isNotificationActive
+                  ? "Desativar notificação"
+                  : "Ativar notificação",
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
           ),
         ),
         Container(

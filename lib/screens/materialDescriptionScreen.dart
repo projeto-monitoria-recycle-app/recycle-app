@@ -19,7 +19,11 @@ class MaterialWasteScreen extends StatelessWidget {
       child: Material(
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.only(
+              top: 8,
+              right: 8,
+              left: 8,
+            ),
             color: Colors.grey[100],
             child: CustomScrollView(
               slivers: [
@@ -32,8 +36,11 @@ class MaterialWasteScreen extends StatelessWidget {
                   pinned: true,
                   floating: true,
                   snap: true,
-                  title: Text(waste.name),
-                  expandedHeight: 200,
+                  title: Text(
+                    waste.name,
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
+                  expandedHeight: 160,
                   backgroundColor: waste.color,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Column(
@@ -49,18 +56,15 @@ class MaterialWasteScreen extends StatelessWidget {
                               width: screenWidth * 0.5,
                               child: Text(
                                 waste.content[0],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500),
+                                style: Theme.of(context).textTheme.subtitle1,
                               ),
                             ),
                             Hero(
                               tag: waste.name,
                               child: Container(
                                 padding: EdgeInsets.all(20),
-                                width: 100,
-                                height: 100,
+                                width: 75,
+                                height: 75,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     width: 2,
@@ -89,7 +93,7 @@ class MaterialWasteScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
                                   "!",
@@ -100,14 +104,12 @@ class MaterialWasteScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
-                                  width: screenWidth * 0.7,
+                                  width: screenWidth * 0.6,
                                   child: Text(
                                     waste.content[1],
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600),
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
                               ],
@@ -120,10 +122,8 @@ class MaterialWasteScreen extends StatelessWidget {
                                     "COMO DESCARTAR " +
                                         waste.name.toUpperCase(),
                                     textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[800]),
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
                                   ),
                                 ],
                               ),
@@ -160,7 +160,12 @@ class MaterialWasteScreen extends StatelessWidget {
                                           ),
                                           Expanded(
                                             // width: screenWidth * 0.7,
-                                            child: Text(step),
+                                            child: Text(
+                                              step,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyText1,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -176,10 +181,8 @@ class MaterialWasteScreen extends StatelessWidget {
                                   Text(
                                     "IMPACTOS",
                                     textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[800]),
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
                                   ),
                                 ],
                               ),
@@ -214,6 +217,9 @@ class MaterialWasteScreen extends StatelessWidget {
                                             Expanded(
                                               child: Text(
                                                 impact[1],
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1,
                                               ),
                                             ),
                                           ],
@@ -230,107 +236,73 @@ class MaterialWasteScreen extends StatelessWidget {
                                   Text(
                                     "ITENS RECICLÁVEIS",
                                     textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[800]),
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
                                   ),
                                 ],
                               ),
                             ),
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [],
+                            Wrap(
+                              alignment: WrapAlignment.center,
+                              children: [
+                                for (String item in waste.recyclable.split(","))
+                                  Card(
+                                    elevation: 0,
+                                    color: waste.color,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(100),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 5),
+                                      child: Text(
+                                        item,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .subtitle1,
+                                      ),
+                                    ),
                                   ),
-                                  Wrap(
-                                    alignment: WrapAlignment.center,
-                                    children: [
-                                      for (String item
-                                          in waste.recyclable.split(","))
-                                        Card(
-                                          elevation: 0,
-                                          color: waste.color,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(100),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 5),
-                                            child: Text(
-                                              item,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
                             Container(
+                              margin: EdgeInsets.only(top: 15),
                               child: Row(
                                 children: [
                                   Text(
                                     "ITENS NÃO RECICLÁVEIS",
                                     textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[800]),
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
                                   ),
                                 ],
                               ),
                             ),
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [],
+                            Wrap(
+                              alignment: WrapAlignment.center,
+                              children: [
+                                for (String item
+                                    in waste.notRecyclable.split(","))
+                                  Card(
+                                    elevation: 0,
+                                    color: Colors.grey,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(100),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 5),
+                                      child: Text(item,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subtitle1),
+                                    ),
                                   ),
-                                  Wrap(
-                                    alignment: WrapAlignment.center,
-                                    children: [
-                                      for (String item
-                                          in waste.notRecyclable.split(","))
-                                        Card(
-                                          elevation: 0,
-                                          color: Colors.grey,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(100),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 5),
-                                            child: Text(
-                                              item,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
                           ],
                         ),

@@ -246,6 +246,79 @@ List<Waste> wasteList = [
   //   ano2020: [0,0,0,0,0,0,0,0,0,0,0,0],
   // ),
   Waste(
+    'Pilhas e Baterias',
+    color: Color(0xFFFF5C00),
+    icon: AssetImage('assets/icons/battery.png'),
+    title: 'Como descartar pilhas e baterias corretamente?',
+    content: [
+      'Pilhas e Baterias possuem metais pesados que podem contaminar o solo e lençóis freáticos',
+      '” A COLETA SELETIVA não faz coleta de pilhas e baterias, então não deve ser jogando nos ECOPONTOS. Mas alguns supermercados recolhem esses materiais.',
+    ],
+    recyclable: 'pilhas, baterias',
+    notRecyclable: '',
+    discart: [
+      "Confira se essa embalagem pode ser descartada em lixo comum, como a parte plástica ou de papelão.",
+      "Certifique-se que o material não está estourado ou vazando. Caso isso aconteça, não ingerir ou colocar as mãos sujas nos olhos.",
+      "Guardar as pilhas em um recipiente separado, que pode ser uma garrafa pet.",
+      "As pilhas/baterias após o uso devem ser entregues aos estabelecimentos como supermercados e/ou às assistências técnicas."
+    ],
+    impacts: [
+      [
+        "ambiental",
+        "Esses materiais jogados em aterros sanitários ou lixões pode ocorrer a contaminação do solo e lençóis freáticos por metais pesados."
+      ],
+      [
+        "ambiental",
+        "Jogados na água podem entrar na cadeia alimentar e causar sérios problemas à saúde como câncer e danos ao sistema nervoso central."
+      ],
+      ["ambiental", "A queima deste material pode contaminar o ar."]
+    ],
+    images: ['assets/img/recycling-orange.png'],
+    links: [],
+    hints: [
+      [
+        'Dica: Você pode separar suas pilhas e baterias em um recipiente e levar em supermercados que realizam a coleta destes objetos. ',
+        "assets/img/coletor-baterias.jpg"
+      ]
+    ],
+    ano2020: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    searchItens: ['pilhas e baterias'],
+  ),
+  Waste(
+    'Eletrônico',
+    color: Colors.green[900],
+    icon: AssetImage('assets/icons/eletronic.png'),
+    title: 'Como descartar eletrônicos corretamente?',
+    content: [
+      'Resíduo eletrônico, ou lixo eletrônico, são os equipamentos eletrônicos descartados ou obsoletos.',
+      'A COLETA SELETIVA realiza o tratamento correto desses equipamentos, portanto eles podem ser descartados nos ECOPONTOS.'
+    ],
+    recyclable:
+        'Computadores, Tablets, Monitores, LEDs, Teclados, Impressoras, Câmeras Fotográficas, Aparelhos de som, Televisores, Microondas, Rádios, Telefones, Celulares, Carregadores',
+    notRecyclable: 'Baterias e pilhas.',
+    discart: [
+      '',
+      '',
+      '',
+      '',
+    ],
+    impacts: [
+      [
+        "ambiental",
+        "Eletrônicos possuem em sua composição metais pesados altamente tóxicos, como mercúrio, cádmio, berílio e chumbo. Em contato com o solo, podem contaminam o lençol freático, e, se queimados, podem liberar toxinas perigosas ao meio ambiente."
+      ],
+      ["ambiental", "."],
+      ["ambiental", "."]
+    ],
+    images: ['assets/img/recycling-green.png'],
+    links: [],
+    hints: [],
+    searchItens: [
+      'eletronicos , eletrônicos, Computadores, tablets, monitores, LEDs, Teclados, impressoras, câmeras fotográficas, aparelhos de som, televisores, tv, micro-ondas, microondas, rádios, radios, telefones, celulares e carregadores'
+    ],
+    ano2020: [0, 0, 0, 0, 0, 0, 3, 0, 0, 26, 0, 0],
+  ),
+  Waste(
     'Óleo Vegetal',
     color: Color(0xFFDFA100),
     icon: AssetImage('assets/icons/oil.png'),
@@ -319,78 +392,5 @@ List<Waste> wasteList = [
           'organico, orgânico comida, frutas, legumes, verduras, pizza, leite, farinha, alimentos, bebidas, arroz, feijão, macarrão, carne, massas, peixe, frango'
     ],
     ano2020: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ),
-  Waste(
-    'Pilhas e Baterias',
-    color: Color(0xFFFF5C00),
-    icon: AssetImage('assets/icons/battery.png'),
-    title: 'Como descartar pilhas e baterias corretamente?',
-    content: [
-      'Pilhas e Baterias possuem metais pesados que podem contaminar o solo e lençóis freáticos',
-      '” A COLETA SELETIVA não faz coleta de pilhas e baterias, então não deve ser jogando nos ECOPONTOS. Mas alguns supermercados recolhem esses materiais.',
-    ],
-    recyclable: 'pilhas, baterias',
-    notRecyclable: '',
-    discart: [
-      "Confira se essa embalagem pode ser descartada em lixo comum, como a parte plástica ou de papelão.",
-      "Certifique-se que o material não está estourado ou vazando. Caso isso aconteça, não ingerir ou colocar as mãos sujas nos olhos.",
-      "Guardar as pilhas em um recipiente separado, que pode ser uma garrafa pet.",
-      "As pilhas/baterias após o uso devem ser entregues aos estabelecimentos como supermercados e/ou às assistências técnicas."
-    ],
-    impacts: [
-      [
-        "ambiental",
-        "Esses materiais jogados em aterros sanitários ou lixões pode ocorrer a contaminação do solo e lençóis freáticos por metais pesados."
-      ],
-      [
-        "ambiental",
-        "Jogados na água podem entrar na cadeia alimentar e causar sérios problemas à saúde como câncer e danos ao sistema nervoso central."
-      ],
-      ["ambiental", "A queima deste material pode contaminar o ar."]
-    ],
-    images: ['assets/img/recycling-orange.png'],
-    links: [],
-    hints: [
-      [
-        'Dica: Você pode separar suas pilhas e baterias em um recipiente e levar em supermercados que realizam a coleta destes objetos. ',
-        "assets/img/coletor-baterias.jpg"
-      ]
-    ],
-    ano2020: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    searchItens: ['pilhas e baterias'],
-  ),
-  Waste(
-    'Eletrônico',
-    color: Colors.green[900],
-    icon: AssetImage('assets/icons/eletronic.png'),
-    title: 'Como descartar eletrônicos corretamente?',
-    content: [
-      'Resíduo eletrônico, ou lixo eletrônico, são os equipamentos eletrônicos descartados ou obsoletos.',
-      'A COLETA SELETIVA realiza o tratamento correto desses equipamentos, portanto eles podem ser descartados nos ECOPONTOS.'
-    ],
-    recyclable:
-        'Computadores, Tablets, Monitores, LEDs, Teclados, Impressoras, Câmeras Fotográficas, Aparelhos de som, Televisores, Microondas, Rádios, Telefones, Celulares, Carregadores',
-    notRecyclable: 'Baterias e pilhas.',
-    discart: [
-      '',
-      '',
-      '',
-      '',
-    ],
-    impacts: [
-      [
-        "ambiental",
-        "Eletrônicos possuem em sua composição metais pesados altamente tóxicos, como mercúrio, cádmio, berílio e chumbo. Em contato com o solo, podem contaminam o lençol freático, e, se queimados, podem liberar toxinas perigosas ao meio ambiente."
-      ],
-      ["ambiental", "."],
-      ["ambiental", "."]
-    ],
-    images: ['assets/img/recycling-green.png'],
-    links: [],
-    hints: [],
-    searchItens: [
-      'eletronicos , eletrônicos, Computadores, tablets, monitores, LEDs, Teclados, impressoras, câmeras fotográficas, aparelhos de som, televisores, tv, micro-ondas, microondas, rádios, radios, telefones, celulares e carregadores'
-    ],
-    ano2020: [0, 0, 0, 0, 0, 0, 3, 0, 0, 26, 0, 0],
   ),
 ];

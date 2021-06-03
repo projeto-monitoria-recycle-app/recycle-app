@@ -100,7 +100,7 @@ List<CollectPoint> collectPointList = [
     longitude: -42.95974,
   ),
   CollectPoint(
-    "VARGEM GRANDE (GUARITA DA POLICIA MILITAR)",
+    "GUARITA DA POLICIA MILITAR",
     route: dao.getById(35),
     image: "assets/img/ecoponto-vargem-grande.jpg",
     latitude: -22.37093,
@@ -115,8 +115,9 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     'CASA DE CULTURA',
-    route: CollectRoute(null, 'Praça Juscelino Kubitscheck', null, null, "Alto"),
-    image:  "assets/img/ecopontos.jpg",
+    route:
+        CollectRoute(null, 'Praça Juscelino Kubitscheck', null, null, "Alto"),
+    image: "assets/img/ecopontos.jpg",
     latitude: -22.43448,
     longitude: -42.97430,
   ),
@@ -126,24 +127,17 @@ List<CollectPoint> collectPointList = [
     latitude: -22.41612,
     longitude: -42.98428,
   ),
-  CollectPoint(
-    'PRAÇA DOS EXPEDICIONÁRIOS',
-    route: CollectRoute(null, 'Rua José Viana da Silveira', null, null, "São Pedro"),
-    latitude: -22.42518,
-    longitude: -42.96613
-  ),
-  CollectPoint(
-      'AMAVALE',
+  CollectPoint('PRAÇA DOS EXPEDICIONÁRIOS',
+      route: CollectRoute(
+          null, 'Rua José Viana da Silveira', null, null, "São Pedro"),
+      latitude: -22.42518,
+      longitude: -42.96613),
+  CollectPoint('AMAVALE',
       route: CollectRoute(null, '', null, null, "Amavale"),
       latitude: -22.39038,
-      longitude: -42.87179
-  ),
-  CollectPoint(
-      'ESTR. FRANCISCO SMOLKA',
-      route: dao.getById(37),
-      latitude: -22.39732,
-      longitude: -42.99175
-  ),
+      longitude: -42.87179),
+  CollectPoint('ESTR. FRANCISCO SMOLKA',
+      route: dao.getById(37), latitude: -22.39732, longitude: -42.99175),
 ];
 
 // ,

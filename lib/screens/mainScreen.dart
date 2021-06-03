@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycle_app/screens/AboutProject.dart';
 import 'package:recycle_app/screens/collectScreen.dart';
-import 'package:recycle_app/screens/impactScreen.dart';
 import 'package:recycle_app/screens/materialScreen.dart';
-import 'package:recycle_app/widgets/drawerWidget.dart';
 import 'package:recycle_app/screens/resultsScreen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -153,6 +151,7 @@ class _MainScreenState extends State<MainScreen> {
         ),
         selectedLabelStyle: TextStyle(
           fontSize: 14,
+          fontFamily: "Poppins",
           fontWeight: FontWeight.w600,
         ),
         selectedItemColor: Theme.of(context).accentColor,

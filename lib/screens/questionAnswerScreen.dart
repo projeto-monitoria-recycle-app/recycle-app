@@ -13,7 +13,10 @@ class QuestionAnswerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).accentColor,
-        title: Text('Recicle Terê'),
+        title: Text(
+          'Recicla Terê',
+          style: Theme.of(context).textTheme.headline1,
+        ),
         toolbarHeight: 60,
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -29,7 +32,7 @@ class QuestionAnswerScreen extends StatelessWidget {
             children: [
               Text(
                 question.question,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                style: Theme.of(context).textTheme.headline2,
               ),
               SizedBox(
                 height: 20,
@@ -40,7 +43,7 @@ class QuestionAnswerScreen extends StatelessWidget {
                   child: Text(
                     sentence,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               SingleChildScrollView(

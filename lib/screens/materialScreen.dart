@@ -30,12 +30,19 @@ class _HomeScreenState extends State<HomeScreen> {
         return false;
       },
       child: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: EdgeInsets.all(5),
-              sliver: SliverAppBar(
-                title: Text('Materiais Recicláveis'),
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 8,
+            right: 8,
+            left: 8,
+          ),
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                title: Text(
+                  'Materiais Recicláveis',
+                  style: Theme.of(context).textTheme.headline1,
+                ),
                 centerTitle: true,
                 backgroundColor: Theme.of(context).accentColor,
                 shape: ContinuousRectangleBorder(
@@ -46,17 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 pinned: true,
                 floating: true,
                 snap: true,
-                expandedHeight: 200,
+                expandedHeight: 160,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        height: 75,
+                        height: 40,
                       ),
                       Text(
                         'O que você gostaria de descartar hoje?',
-                        style: Theme.of(context).textTheme.subtitle2,
+                        style: Theme.of(context).textTheme.subtitle1,
                       ),
                       Container(
                         alignment: Alignment.center,
@@ -68,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white,
                         ),
                         child: TextField(
+                          style: Theme.of(context).textTheme.bodyText1,
                           onChanged: (value) {
                             setState(
                               () {
@@ -93,88 +101,91 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Text(
                         'Aprenda aqui a separar cada tipo de material!',
-                        style: Theme.of(context).textTheme.subtitle2,
+                        style: Theme.of(context).textTheme.subtitle1,
                       ),
                     ],
                   ),
                 ),
               ),
-            ),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-              sliver: SliverGrid.count(
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                crossAxisCount:
-                    (MediaQuery.of(context).size.width / 140).floor(),
-                children: List.generate(
-                  filteredWasteList.length,
-                  (index) {
-                    var material = filteredWasteList[index].name;
-                    var icon = filteredWasteList[index].icon;
-                    var color = filteredWasteList[index].color;
-                    return InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          "/material",
-                          arguments: filteredWasteList[index],
-                        );
-                      },
-                      child: Hero(
-                        tag: material,
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          height: 50,
-                          decoration: BoxDecoration(
-                            image: new DecorationImage(
-                              image: new ExactAssetImage(
-                                  'assets/icons/recycle.png'),
-                              alignment: Alignment(1.5, 1.5),
-                              scale: 0.5,
-                              colorFilter: ColorFilter.mode(
-                                  color.withOpacity(0.93),
-                                  BlendMode.difference),
+              SliverPadding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                sliver: SliverGrid.count(
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  crossAxisCount:
+                      (MediaQuery.of(context).size.width / 140).floor(),
+                  children: List.generate(
+                    filteredWasteList.length,
+                    (index) {
+                      var material = filteredWasteList[index].name;
+                      var icon = filteredWasteList[index].icon;
+                      var color = filteredWasteList[index].color;
+                      return InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            "/material",
+                            arguments: filteredWasteList[index],
+                          );
+                        },
+                        child: Hero(
+                          tag: material,
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            height: 50,
+                            decoration: BoxDecoration(
+                              image: new DecorationImage(
+                                image: new ExactAssetImage(
+                                    'assets/icons/recycle.png'),
+                                alignment: Alignment(1.5, 1.5),
+                                scale: 0.5,
+                                colorFilter: ColorFilter.mode(
+                                    color.withOpacity(
+                                      0.95,
+                                    ),
+                                    BlendMode.difference),
+                              ),
+                              color: color,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: color.withOpacity(0.5),
+                                  blurRadius: 6,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
                             ),
-                            color: color,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: color.withOpacity(0.5),
-                                blurRadius: 1,
-                                offset: Offset(0, 1),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text('$material',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center),
-                              // Hero(
-                              //   tag: material,
-                              //   child:
-                              ImageIcon(
-                                icon,
-                                color: Colors.white,
-                                size: 60,
-                              ),
-                              // )
-                            ],
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text('$material',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.center),
+                                // Hero(
+                                //   tag: material,
+                                //   child:
+                                ImageIcon(
+                                  icon,
+                                  color: Colors.white,
+                                  size: 50,
+                                ),
+                                // )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

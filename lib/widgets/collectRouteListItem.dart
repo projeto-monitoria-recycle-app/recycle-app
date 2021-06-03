@@ -20,9 +20,14 @@ class CollectRouteListItem extends StatelessWidget {
     var controller = Provider.of<CollectDayNotificationController>(context);
     return Card(
         child: ListTile(
-      title: Text(this._collectRoute.location),
+      title: Text(
+        this._collectRoute.location,
+        style: Theme.of(context).textTheme.headline2,
+      ),
       subtitle: Text(
-          "Bairro: ${this._collectRoute.district} - ${this._collectRoute.dayOfWeek.ptBrValue} - ${this._collectRoute.dayPart} "),
+        "Bairro: ${this._collectRoute.district} - ${this._collectRoute.dayOfWeek.ptBrValue} - ${this._collectRoute.dayPart} ",
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
       trailing: _buildToggleNotificationButton(_collectRoute, controller),
     ));
   }
