@@ -115,14 +115,14 @@ List<CollectPoint> collectPointList = [
   ),
   CollectPoint(
     'CASA DE CULTURA',
-    route: CollectRoute(null, 'Praça Juscelino Kubitscheck', null, null, "Nossa Sra. de Fatima"),
+    route: dao.getById(39),
     image:  "assets/img/ecopontos.jpg",
     latitude: -22.43448,
     longitude: -42.97430,
   ),
   CollectPoint(
-    'RUA GUANDU',
-    route: CollectRoute(null, 'Rua Guandu', null, null, "Pimenteiras"),
+    'RUA GUANDÚ',
+    route: dao.getById(38),
     latitude: -22.41612,
     longitude: -42.98428,
   ),
