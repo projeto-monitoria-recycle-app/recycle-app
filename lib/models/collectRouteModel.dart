@@ -276,4 +276,18 @@ List<CollectRoute> collectRouteList = [
     DayOfWeek.friday,
     "Quebra Frascos",
   ),
+  CollectRoute(
+    38,
+    "Rua Guandú",
+    '',
+    DayOfWeek.thursday,
+    "Pimenteiras",
+  ),
+  CollectRoute(
+    39,
+    "Rua Tietê",
+    "",
+    DayOfWeek.tuesday,
+    "Fátima",
+  ),
 ];
