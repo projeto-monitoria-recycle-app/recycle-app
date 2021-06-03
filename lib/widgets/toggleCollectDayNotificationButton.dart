@@ -36,7 +36,7 @@ class ToggleNotificationButton extends StatelessWidget {
       initialButtonState: initialButtonState,
       iconOn: Icon(
         Icons.notifications_active,
-        color: colorOn ?? Theme.of(context).primaryColor,
+        color: colorOn ?? Theme.of(context).accentColor,
       ),
       iconOff: Icon(
         Icons.notifications_none,
