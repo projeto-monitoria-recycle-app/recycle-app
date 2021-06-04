@@ -126,17 +126,30 @@ List<CollectPoint> collectPointList = [
     latitude: -22.41612,
     longitude: -42.98428,
   ),
-  CollectPoint('PRAÇA DOS EXPEDICIONÁRIOS',
-      route: CollectRoute(
-          null, 'Praça dos Expedicionários', null, null, "São Pedro"),
-      latitude: -22.42518,
-      longitude: -42.96613),
-  CollectPoint('AMAVALE',
-      route: CollectRoute(null, '', null, null, "Amavale"),
+  CollectPoint(
+    'PRAÇA DOS EXPEDICIONÁRIOS',
+    route: CollectRoute(null, 'Praça dos Expedicionários', null, null, "São Pedro"),
+    latitude: -22.42518,
+    longitude: -42.96613
+  ),
+  CollectPoint(
+      'AMAVALE',
+      route: CollectRoute(null, 'AMAVALE', null, null, "Agriões de Dentro"),
       latitude: -22.39038,
-      longitude: -42.87179),
-  CollectPoint('ESTR. FRANCISCO SMOLKA',
-      route: dao.getById(37), latitude: -22.39732, longitude: -42.99175),
+      longitude: -42.87179
+  ),
+  CollectPoint(
+      'ESTR. FRANCISCO SMOLKA',
+      route: dao.getById(37),
+      latitude: -22.39732,
+      longitude: -42.99175
+  ),
+  CollectPoint(
+      'SESC',
+      route: dao.getById(40),
+      latitude: -22.39732,
+      longitude: -42.99175
+  ),
 ];
 
 // ,

@@ -271,7 +271,7 @@ List<CollectRoute> collectRouteList = [
   ),
   CollectRoute(
     37,
-    "Ecoponto Estrada Francisco Smolka",
+    "Estrada Francisco Smolka",
     "Manhã",
     DayOfWeek.friday,
     "Quebra Frascos",
@@ -290,4 +290,12 @@ List<CollectRoute> collectRouteList = [
     DayOfWeek.tuesday,
     "Fátima",
   ),
+  CollectRoute(
+    40,
+    "Av Delfim Moreira",
+    "",
+    DayOfWeek.thursday,
+    "Várzea",
+  ),
+
 ];
