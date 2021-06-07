@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycle_app/screens/AboutProject.dart';
-import 'package:recycle_app/screens/collectScreen.dart';
+import 'package:recycle_app/screens/collect_screen/collect_screen.dart';
 import 'package:recycle_app/screens/materialScreen.dart';
 import 'package:recycle_app/screens/resultsScreen.dart';
 
