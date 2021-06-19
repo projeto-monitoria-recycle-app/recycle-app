@@ -37,7 +37,19 @@ class _GMapScreenState extends State<GMapScreen> {
         // Store the position in the variable
         _currentPosition = position;
 
-        print('CURRENT POS: $_currentPosition');
+        // print('CURRENT POS:' + (_currentPosition.latitude).toString());
+        _markers.add(
+          Marker(
+            markerId: MarkerId('Minha localização'),
+            position:
+                LatLng(_currentPosition.latitude, _currentPosition.longitude),
+            consumeTapEvents: false,
+            infoWindow: InfoWindow(
+              title: 'Minha localização',
+            ),
+            icon: BitmapDescriptor.defaultMarker,
+          ),
+        );
       });
     }).catchError((e) {
       print(e);
@@ -61,14 +73,15 @@ class _GMapScreenState extends State<GMapScreen> {
         () {
           _markers.add(
             Marker(
-                markerId: MarkerId(collectPoint.name),
-                position: LatLng(collectPoint.latitude, collectPoint.longitude),
-                consumeTapEvents: false,
-                infoWindow: InfoWindow(
-                  title: collectPoint.name,
-                  snippet: collectPoint.route.location,
-                ),
-                icon: BitmapDescriptor.defaultMarker),
+              markerId: MarkerId(collectPoint.name),
+              position: LatLng(collectPoint.latitude, collectPoint.longitude),
+              consumeTapEvents: false,
+              infoWindow: InfoWindow(
+                title: collectPoint.name,
+                snippet: collectPoint.route.location,
+              ),
+              icon: BitmapDescriptor.defaultMarker,
+            ),
           );
         },
       );
