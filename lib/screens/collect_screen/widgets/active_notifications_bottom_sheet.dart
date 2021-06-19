@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recycle_app/controllers/collectDayNotificationController.dart';
 import 'package:recycle_app/models/collectRouteModel.dart';
-import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/screens/collect_screen/widgets/collect_route_list_item.dart';
+import 'package:recycle_app/screens/collect_screen/widgets/collect_route_list_item.dart';
 
 class ActiveNotificationsBottomSheet extends StatelessWidget {
   @override
