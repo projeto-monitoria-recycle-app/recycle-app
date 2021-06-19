@@ -15,6 +15,7 @@ class Waste {
   final String recyclable;
   final String notRecyclable;
   final List<int> ano2020;
+  final List<int> ano2021;
 
   Waste(
     this.name, {
@@ -31,6 +32,7 @@ class Waste {
     this.recyclable,
     this.notRecyclable,
     this.ano2020,
+    this.ano2021,
   });
 }
 
@@ -68,15 +70,15 @@ List<Waste> wasteList = [
         "A reciclagem diminui o uso de recursos hídricos na produção do material."
       ]
     ],
-    images: ['assets/img/recycling-blue.png'],
-    links: [],
     hints: [],
+    images: ['assets/img/recycling-blue.png'],
     searchItens: [
       '',
       "Livro, Jornal, jornais, Revista ,Caderno, Envelopes, Listas Telefônica, Cartolina, Cartões, Cartazes, Aparas de papel, Formulários",
       "Sacos de papel, Panfletos, Caixa de leite, Caixa de suco, Papeis de presente, papel de seda, Papelão, Apostilas"
     ],
     ano2020: [0, 0, 0, 0, 0, 0, 3775, 3135, 3399, 3868, 3571, 2623],
+    ano2021: [5474, 4492, 2822, 3384, 1707, 0, 0, 0, 0, 0, 0, 0],
   ),
   Waste(
     'Plástico',
@@ -111,15 +113,15 @@ List<Waste> wasteList = [
         "A grande maioria das embalagens são longa vida, demorando anos para sumir do ambiente."
       ]
     ],
-    images: ['assets/img/recycling-red.png'],
-    links: [],
     hints: [],
+    images: ['assets/img/recycling-red.png'],
     searchItens: [
       'plastico plástico garrafas e potes, sacos e sacolas, baldes, canetas, brinquedos, canos, tubos e conexão de PVC, mesas e cadeiras de plástico e radiografias',
       "Potes de creme, xampu e condicionador lavados, embalagens plásticas de alimentos tipo de leite e iogurte, bolsa plástica, garrafas pet, embalagens de produto de limpeza e higiene, como detergente, sabão liquido, amaciante, água sanitária, sabonete liquido, álcool,",
       "Potes de creme, shampoo,  xampu e condicionador lavados, embalagens plásticas de alimentos tipo de leite e iogurte, bolsa plástica, garrafas pet, embalagens de produto de limpeza e higiene, como detergente, sabão liquido, amaciante, água sanitária, sabonete liquido, álcool,"
     ],
     ano2020: [0, 0, 0, 0, 0, 0, 1374, 1397, 1327, 2092, 2075, 1086],
+    ano2021: [2440, 1523, 1568, 1410, 1036, 0, 0, 0, 0, 0, 0, 0],
   ),
 
   Waste(
@@ -149,14 +151,14 @@ List<Waste> wasteList = [
       ["ambiental", "Contaminação dos rios e nascentes."],
       ["ambiental", "Contaminação por vias aéreas de toxinas liberadas no ar."]
     ],
-    images: ['assets/img/recycling-yellow.png'],
-    links: [],
     hints: [],
+    images: ['assets/img/recycling-yellow.png'],
     searchItens: [
       'metal, metais latas limpas de bebidas e alimentos, panelas, parafusos e pregos, grampos e clipes, os objetos de ferro ou lata de aerossóis, garfo, faca, ferramenta, colher, fios , cabos',
       'Ferragens, arames, fio de cobre, latas de alumínio de refrigerantes, cerveja, chás entre outras, folhas de alumínio, embalagem marmitex limpas, panelas, prateleiras e estantes de ferro, fogão, geladeira, freezer',
     ],
     ano2020: [0, 0, 0, 0, 0, 0, 2167, 2023, 2805, 1640, 1023, 971],
+    ano2021: [1380, 1947, 1309, 1271, 2562, 0, 0, 0, 0, 0, 0, 0],
   ),
   Waste(
     'Vidro',
@@ -190,14 +192,14 @@ List<Waste> wasteList = [
         "Causa incêndios em florestas no período de estiagem onde a vegetação fica mais seca."
       ]
     ],
-    images: ['assets/img/recycling-green.png'],
-    links: [],
     hints: [],
+    images: ['assets/img/recycling-green.png'],
     searchItens: [
       'vidro, garrafas, potes , copos, taças, prato',
       'Frascos, garrafas de cerveja, vinho, bebidas destiladas'
     ],
     ano2020: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15160, 0],
+    ano2021: [489, 10467, 5067, 5141, 314, 0, 0, 0, 0, 0, 0, 0],
   ),
   // Waste(
   //   'Orgânico',
@@ -275,14 +277,10 @@ List<Waste> wasteList = [
     ],
     images: ['assets/img/recycling-orange.png'],
     links: [],
-    hints: [
-      [
-        'Dica: Você pode separar suas pilhas e baterias em um recipiente e levar em supermercados que realizam a coleta destes objetos. ',
-        "assets/img/coletor-baterias.jpg"
-      ]
-    ],
-    ano2020: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    hints: [],
     searchItens: ['pilhas e baterias'],
+    ano2021: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ano2020: [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
   ),
   Waste(
     'Eletrônico',
@@ -297,26 +295,29 @@ List<Waste> wasteList = [
         'Computadores, Tablets, Monitores, LEDs, Teclados, Impressoras, Câmeras Fotográficas, Aparelhos de som, Televisores, Microondas, Rádios, Telefones, Celulares, Carregadores',
     notRecyclable: 'Baterias e pilhas.',
     discart: [
-      '',
-      '',
-      '',
-      '',
+      'Pode reunir seus materiais em uma bolsa plástica e depositar em algum ecoponto.',
+      'Os materiais podem ser descartados junto ao caminhão nas rotas em que o caminhão circula.',
+      'Você pode depositar os seus materiais diretamente no galpão da coleta seletiva. Em caso de duvidas da localização do galpão, veja a aba “Coleta Seletiva”.',
+      'Todos estes materiais são separados e selecionados pelos catadores no galpão.',
     ],
     impacts: [
       [
         "ambiental",
-        "Eletrônicos possuem em sua composição metais pesados altamente tóxicos, como mercúrio, cádmio, berílio e chumbo. Em contato com o solo, podem contaminam o lençol freático, e, se queimados, podem liberar toxinas perigosas ao meio ambiente."
+        "Os materiais eletrônicos possuem metais pesados que podem contaminar tanto o solo quanto as águas."
       ],
-      ["ambiental", "."],
-      ["ambiental", "."]
+      ["ambiental", "Se queimados, podem liberar toxinas que poluem o ar."],
+      [
+        "ambiental",
+        "O descarte incorreto pode impactar a saúde humana por conta dos metais pesados."
+      ]
     ],
-    images: ['assets/img/recycling-green.png'],
-    links: [],
     hints: [],
+    images: ['assets/img/recycling-green.png'],
     searchItens: [
       'eletronicos , eletrônicos, Computadores, tablets, monitores, LEDs, Teclados, impressoras, câmeras fotográficas, aparelhos de som, televisores, tv, micro-ondas, microondas, rádios, radios, telefones, celulares e carregadores'
     ],
     ano2020: [0, 0, 0, 0, 0, 0, 3, 0, 0, 26, 0, 0],
+    ano2021: [26, 0, 0, 67, 0, 0, 0, 0, 0, 0, 0, 0],
   ),
   Waste(
     'Óleo Vegetal',
@@ -353,6 +354,7 @@ List<Waste> wasteList = [
     hints: [],
     searchItens: [' oleo óleo, gordura'],
     ano2020: [0, 0, 0, 0, 0, 0, 135, 120, 40, 150, 150, 0],
+    ano2021: [190, 83, 54, 12, 52, 0, 0, 0, 0, 0, 0, 0],
   ),
   Waste(
     'Não Reciclável',
@@ -368,29 +370,44 @@ List<Waste> wasteList = [
         "Orgânicos, Adesivos, Etiquetas, Fita Crepe, Papel Carbono, Fotografias, Papel Toalha, Papel Higiênico, Papéis Sujos, Guardanapos Engordurados, Papéis Metalizados, Papéis Plastificados, Clipes, Grampos, Esponjas de Aço, Latas de Tintas, Latas de Combustível, Pilhas, Cabos de Panela, Tomadas, Isopor, Espuma, Acrílicos, Espelhos, Cristal, Ampolas de Medicamentos, Cerâmicas,Louças, Lâmpadas, Vidros Temperados",
     images: ['assets/img/recycling-grey.png'],
     discart: [
-      '',
-      '',
-      '',
-      '',
+      'Não colocar papeis como: etiquetas, adesivos, fita crepe, papel carbono, papel higiênico, fotografias, guardanapos engordurados e papeis metalizados.',
+      'Não incluir metais como: clipes, grampos, esponjas de aço, latas de tinta, latas de combustível e pilha.',
+      'Não separar cabos de panela, tomadas, isopor, adesivos, espuma e acrílicos.',
+      'Espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas e vidros temperados não devem ser incluídos para a coleta.',
     ],
     impacts: [
-      ["ambiental", ''],
-      ["ambiental", ''],
-      ["ambiental", ''],
-      ["ambiental", ''],
+      [
+        "ambiental",
+        'Podem gerar grandes volumes de resíduo nos aterros sanitários.'
+      ],
+      [
+        "ambiental",
+        'Uma sugestão é reutilizar e reaproveitar os materiais que ainda possuem uma vida útil, como bolsas e sacolas'
+      ],
     ],
-    links: [],
-    hints: [],
+    links: [
+      [
+        'Compostagem de Materiais Orgânicos',
+        'https://www.dinamicambiental.com.br/blog/reciclagem/lixo-organico-reciclado'
+      ]
+    ],
+    hints: [
+      [
+        'Em relação aos resíduos orgânicos, você sabia que o lixo orgânico pode ser transformado em adubo?',
+        'Você pode aprender como fazer a compostagem em casa clicando neste link.',
+      ]
+    ],
     searchItens: [
       'Papel carbono, celofane, amanteigado, parafinado, papeis amanteigados ou sujos, adesivos, fotografias, toalhas, lenços e guardanapos',
       'espelhos, cristal, ampolas de medicamentos, cerâmicas e louças, lâmpadas, vidros temperados cabos de panela, tomadas, isopor, adesivos',
       'espuma, acrílicos clipes, grampos, esponjas de aço, latas de tintas, latas de combustível, adesivos, etiquetas',
       'fita crepe, papel carbono, fotografias, papel toalha, papel higiênico, papéis e guardanapos engordurados, papéis metalizados, parafinados ou plastificados',
       'Papel higiênico, absorventes, fraudas, fita crepe, guardanapos, fotografias, filtro de cigarros, copos de papel, caixa de pizza engordurada',
-      'Papéis enxarcados, Papel vegetal,  Lata de desodorante, Lata de tinta, Lata de verniz,,',
-      'osso de frango, carne, Vidros de janela, Cristal, Espelho, Madeira'
-          'organico, orgânico comida, frutas, legumes, verduras, pizza, leite, farinha, alimentos, bebidas, arroz, feijão, macarrão, carne, massas, peixe, frango'
+      'Papéis enxarcados, Papel vegetal,  Lata de desodorante, Lata de tinta, Lata de verniz',
+      'osso de frango, carne, Vidros de janela, Cristal, Espelho, Madeira',
+      'organico, orgânico comida, frutas, legumes, verduras, pizza, leite, farinha, alimentos, bebidas, arroz, feijão, macarrão, carne, massas, peixe, frango'
     ],
     ano2020: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ano2021: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ),
 ];
