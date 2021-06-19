@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:recycle_app/screens/AboutProject.dart';
 import 'package:recycle_app/controllers/collectDayNotificationController.dart';
 
-import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/screens/map_screen/map_screen.dart';
 import 'package:recycle_app/screens/QuestionAnswerScreen.dart';
 import 'package:recycle_app/screens/mainScreen.dart';
+import 'package:recycle_app/screens/map_screen/map_screen.dart';
 import 'package:recycle_app/screens/materialDescriptionScreen.dart';
 import 'package:recycle_app/screens/photoView.dart';
 import 'package:recycle_app/screens/resultsScreen.dart';
