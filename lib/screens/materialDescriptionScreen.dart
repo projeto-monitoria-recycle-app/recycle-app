@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
 import 'package:recycle_app/models/materialModel.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MaterialWasteScreen extends StatelessWidget {
   static const routeName = '/material';
@@ -174,6 +175,78 @@ class MaterialWasteScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            waste.hints.isEmpty
+                                ? SizedBox.shrink()
+                                : Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
+                                    ),
+                                    elevation: 2,
+                                    color: waste.color,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 8),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Dica:',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline1,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                              left: 20,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  waste.hints[0][0],
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .subtitle1,
+                                                  textAlign: TextAlign.justify,
+                                                ),
+                                                SizedBox(
+                                                  height: 6,
+                                                ),
+                                                Text(
+                                                  waste.hints[0][1],
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .subtitle1,
+                                                  textAlign: TextAlign.justify,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Center(
+                                            child: TextButton(
+                                              style: ButtonStyle(
+                                                backgroundColor:
+                                                    MaterialStateProperty.all<
+                                                        Color>(Colors.white),
+                                              ),
+                                              onPressed: () async {
+                                                String _url = waste.links[0][1];
+                                                await canLaunch(_url)
+                                                    ? await launch(_url)
+                                                    : throw 'Could not launch .';
+                                              },
+                                              child: Text(waste.links[0][0]),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                             Container(
                               margin: EdgeInsets.only(top: 15),
                               child: Row(
