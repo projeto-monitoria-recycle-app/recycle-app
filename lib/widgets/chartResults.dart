@@ -137,45 +137,47 @@ class BarChartSample2State extends State<BarChartSample2> {
                           return BarTooltipItem(
                             rod.y.round().toString(),
                             TextStyle(
-                              color: Colors.black,
+                              color: Color(0xFF1E1E1E),
                               fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              fontFamily: 'Poppins',
                             ),
                           );
                         },
                       ),
                     ),
-                    maxY: wasteList[selectMaterial]
-                        .ano2020
-                        .reduce(max)
-                        .toDouble(),
+                    maxY: selectPeriod == '2020-2'
+                        ? wasteList[selectMaterial]
+                            .ano2020
+                            .reduce(max)
+                            .toDouble()
+                        : wasteList[selectMaterial]
+                            .ano2021
+                            .reduce(max)
+                            .toDouble(),
                     titlesData: FlTitlesData(
                       show: true,
                       bottomTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
-                            color: Color(0xff7589a2),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                        margin: 20,
+                        getTextStyles: (value) =>
+                            Theme.of(context).textTheme.bodyText1,
+                        margin: 10,
                         getTitles: (double value) {
                           return meses[value.toInt()];
                         },
                       ),
                       leftTitles: SideTitles(
                         showTitles: false,
-                        getTextStyles: (value) => const TextStyle(
-                            color: Color(0xff7589a2),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                        margin: 32,
-                        reservedSize: 14,
                       ),
                     ),
                     borderData: FlBorderData(
                       show: false,
                     ),
-                    barGroups: makeGroupData(wasteList[selectMaterial].ano2020)
-                        .toList(),
+                    barGroups: selectPeriod == '2020-2'
+                        ? makeGroupData(wasteList[selectMaterial].ano2020)
+                            .toList()
+                        : makeGroupData(wasteList[selectMaterial].ano2021)
+                            .toList(),
                   ),
                 ),
               ),
@@ -183,6 +185,12 @@ class BarChartSample2State extends State<BarChartSample2> {
             const SizedBox(
               height: 12,
             ),
+            Text(
+              'Última atualização 06/2021.',
+              style: TextStyle(
+                  fontSize: 10, color: Colors.grey, fontFamily: 'Poppins'),
+              textAlign: TextAlign.right,
+            )
           ],
         ),
       ),
