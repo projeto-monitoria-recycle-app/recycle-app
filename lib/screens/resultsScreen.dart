@@ -182,56 +182,6 @@ class ResultsScreen extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      Text(
-                        'NÚMERO DE PARTICIPANTES',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: ImageIcon(
-                                    AssetImage(
-                                        "assets/icons/icons8-user-groups-100.png"),
-                                    size: 50,
-                                    color: Colors.grey[700],
-                                  )),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "3 Empresas Apoiando",
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "14 Colaboradores",
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "20 Catadores Registrados",
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "+200 Moradores Reciclando",
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
                     ],
                   ),
                 ),
