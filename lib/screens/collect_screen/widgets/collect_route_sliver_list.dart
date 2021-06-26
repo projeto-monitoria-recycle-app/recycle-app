@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
 import 'package:recycle_app/screens/collect_screen/widgets/collect_route_list_item.dart';
 
 class CollectRouteSliverList extends StatelessWidget {

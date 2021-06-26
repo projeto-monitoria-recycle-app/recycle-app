@@ -1,5 +1,5 @@
 import 'package:recycle_app/configs/dataBase.dart';
-import 'package:recycle_app/models/CollectDayNotification.dart';
+import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/models/notification/collect_day_notification.dart';
 
 class CollectDayNotificationDao {
   static final String _notificationIdColumn = "notification_id";

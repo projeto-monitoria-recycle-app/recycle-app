@@ -1,7 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:recycle_app/helpers/dateTimeHelper.dart';
 import 'package:recycle_app/models/notificationChannelDetails.dart';
-import 'package:recycle_app/models/weeklyNotification.dart';
+import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/models/notification/weekly_notification.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 class NotificationService {

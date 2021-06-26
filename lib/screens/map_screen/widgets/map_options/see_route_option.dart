@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maps_launcher/maps_launcher.dart';
-import 'package:recycle_app/models/collectPointModel.dart';
+import 'package:recycle_app/models/collect_point_model.dart';
 
 class SeeRouteMapOption extends StatelessWidget {
   final CollectPoint _collectPoint;

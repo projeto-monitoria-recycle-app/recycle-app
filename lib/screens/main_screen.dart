@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recycle_app/screens/AboutProject.dart';
 import 'package:recycle_app/screens/collect_screen/collect_screen.dart';
 import 'package:recycle_app/screens/materialScreen.dart';
-import 'package:recycle_app/screens/resultsScreen.dart';
+import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/screens/results_screen/resultsScreen.dart';
 
 class MainScreen extends StatefulWidget {
   static const routeName = '/mainpage';

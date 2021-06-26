@@ -1,11 +1,11 @@
 import 'package:recycle_app/configs/localNotificationPluginFactory.dart';
 import 'package:recycle_app/daos/collectDayNotificationDao.dart';
 import 'package:recycle_app/helpers/dateTimeHelper.dart';
-import 'package:recycle_app/models/CollectDayNotification.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
+import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/models/notification/collect_day_notification.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
 import 'package:recycle_app/models/notificationChannelDetails.dart';
-import 'package:recycle_app/models/weeklyNotification.dart';
-import 'package:recycle_app/services/notificationService.dart';
+import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/models/notification/weekly_notification.dart';
+import 'package:recycle_app/services/notification_service.dart';
 
 class CollectDayNotificationService {
   static final NotificationChannelDetails _channelDetails =

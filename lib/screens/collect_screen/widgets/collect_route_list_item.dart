@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recycle_app/controllers/collectDayNotificationController.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
-import 'package:recycle_app/models/daysOfWeek.dart';
-import 'package:recycle_app/widgets/toggleCollectDayNotificationButton.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
+import 'package:recycle_app/models/days_of_week.dart';
+import 'package:recycle_app/widgets/toggle_collect_day_notification_button.dart';
 
 class CollectRouteListItem extends StatelessWidget {
   final CollectRoute _collectRoute;

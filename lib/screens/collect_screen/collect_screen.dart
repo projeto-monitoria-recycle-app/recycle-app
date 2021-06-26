@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:recycle_app/models/collectPointModel.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/collect_point_model.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
 import 'package:recycle_app/screens/collect_screen/helpers/filter_helper.dart';
 import 'package:recycle_app/screens/collect_screen/widgets/collect_point_horizontal_list.dart';
 import 'package:recycle_app/screens/collect_screen/widgets/collect_route_sliver_list.dart';
 import 'package:recycle_app/screens/collect_screen/widgets/collect_router_header.dart';
-import 'package:recycle_app/services/collectDayNotificationService.dart';
+import 'package:recycle_app/services/collect_day_notification_service.dart';
 
 class RecycleScreen extends StatefulWidget {
   final CollectDayNotificationService collectDayNotificationService =

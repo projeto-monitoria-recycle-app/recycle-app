@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycle_app/models/collectPointModel.dart';
+import 'package:recycle_app/models/collect_point_model.dart';
 
 class CollectPointHorizontalList extends StatelessWidget {
   const CollectPointHorizontalList({

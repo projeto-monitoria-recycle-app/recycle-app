@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recycle_app/controllers/collectDayNotificationController.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
-import 'package:recycle_app/widgets/toggleButtonWidget.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
+import 'package:recycle_app/widgets/toggle_button_widget.dart';
 
-import 'notificationDialogWidget.dart';
+import 'notification_dialog_widget.dart';
 
 class ToggleNotificationButton extends StatelessWidget {
   final CollectRoute _collectRoute;

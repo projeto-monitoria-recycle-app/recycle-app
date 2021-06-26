@@ -1,4 +1,4 @@
-import 'package:recycle_app/models/daysOfWeek.dart';
+import 'package:recycle_app/models/days_of_week.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class DateTimeHelper {

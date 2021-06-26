@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'confirmationDialogWidget.dart';
+import 'confirmation_dialog_widget.dart';
 
 class NotificationActivationDialog extends StatelessWidget {
   final Function() onConfirm;

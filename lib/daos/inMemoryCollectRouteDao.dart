@@ -1,4 +1,4 @@
-import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
 
 class InMemoryCollectRouteDao {
   static Map<int, CollectRoute> _routes = Map();

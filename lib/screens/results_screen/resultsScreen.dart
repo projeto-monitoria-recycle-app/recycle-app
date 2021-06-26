@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 
-import 'package:recycle_app/models/collectRouteModel.dart';
-import 'package:recycle_app/models/collectPointModel.dart';
-import 'package:recycle_app/widgets/chartResults.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
+import 'package:recycle_app/models/collect_point_model.dart';
+import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/screens/results_screen/chartResults.dart';
 
 class ResultsScreen extends StatelessWidget {
   static const routeName = '/results';

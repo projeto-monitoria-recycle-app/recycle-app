@@ -1,5 +1,5 @@
-import 'package:recycle_app/models/collectPointModel.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/collect_point_model.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
 
 abstract class FilterHelper {
 

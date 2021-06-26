@@ -1,5 +1,5 @@
 import 'package:recycle_app/daos/inMemoryCollectRouteDao.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
 
 class CollectPoint {
   final String name;
@@ -29,7 +29,7 @@ List<CollectPoint> collectPointList = [
   ),
   //Estrada Tere-Fri
   CollectPoint(
-    "ENTRADA GREEN VALLEY",
+    "POSTO DE GASOLINA PODIUM",
     route: dao.getById(13),
     image: "assets/img/ecoponto-albuquerque.jpg",
     latitude: -22.37727,
@@ -100,8 +100,8 @@ List<CollectPoint> collectPointList = [
     longitude: -42.95974,
   ),
   CollectPoint(
-    "GUARITA DA POLICIA MILITAR",
-    route: dao.getById(35),
+    "SHOPPING BALUARTE",
+    route: dao.getById(14),
     image: "assets/img/ecoponto-vargem-grande.jpg",
     latitude: -22.37093,
     longitude: -42.87199,
@@ -121,7 +121,7 @@ List<CollectPoint> collectPointList = [
     longitude: -42.97430,
   ),
   CollectPoint(
-    'RUA GUANDÚ',
+    'RUA GUANDU',
     route: dao.getById(38),
     latitude: -22.41612,
     longitude: -42.98428,

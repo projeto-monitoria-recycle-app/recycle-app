@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycle_app/controllers/collectDayNotificationController.dart';
-import 'package:recycle_app/models/collectPointModel.dart';
-import 'package:recycle_app/widgets/toggleCollectDayNotificationButton.dart';
+import 'package:recycle_app/models/collect_point_model.dart';
+import 'package:recycle_app/widgets/toggle_collect_day_notification_button.dart';
 
 class CollectPointDetailsBar extends StatelessWidget {
 

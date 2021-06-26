@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:recycle_app/daos/inMemoryCollectRouteDao.dart';
-import 'package:recycle_app/models/collectRouteModel.dart';
-import 'package:recycle_app/services/collectDayNotificationService.dart';
+import 'package:recycle_app/models/collect_route_model.dart';
+import 'package:recycle_app/services/collect_day_notification_service.dart';
 
 class CollectDayNotificationController extends ChangeNotifier {
   final CollectDayNotificationService _collectDayNotificationService =
