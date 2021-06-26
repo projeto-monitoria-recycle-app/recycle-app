@@ -4,7 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:provider/provider.dart';
-import 'package:recycle_app/controllers/collectDayNotificationController.dart';
+import 'package:recycle_app/controllers/collect_day_notification_controller.dart';
 import 'package:recycle_app/models/collect_point_model.dart';
 import 'package:recycle_app/screens/map_screen/widgets/collect_point_details_bar.dart';
 import 'package:recycle_app/screens/map_screen/widgets/map_app_bar.dart';

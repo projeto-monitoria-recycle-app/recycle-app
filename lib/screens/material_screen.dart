@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycle_app/models/materialModel.dart';
+import 'package:recycle_app/models/material_model.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:recycle_app/daos/inMemoryCollectRouteDao.dart';
+import 'package:recycle_app/daos/in_memory_collect_route_dao.dart';
 import 'package:recycle_app/models/collect_route_model.dart';
 import 'package:recycle_app/services/collect_day_notification_service.dart';
 
@@ -8,10 +8,6 @@ class CollectDayNotificationController extends ChangeNotifier {
   final CollectDayNotificationService _collectDayNotificationService =
       new CollectDayNotificationService();
   Set<int> _activeCollectRouteNotificationsIdsCache;
-
-  void _clearCache() {
-    _activeCollectRouteNotificationsIdsCache = null;
-  }
 
   Future<void> scheduleNotification(CollectRoute route) async {
     await _collectDayNotificationService.scheduleNotification(route);

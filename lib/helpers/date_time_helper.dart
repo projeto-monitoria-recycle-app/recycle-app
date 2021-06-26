@@ -2,8 +2,6 @@ import 'package:recycle_app/models/days_of_week.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class DateTimeHelper {
-  static tz.Location _currentLocation;
-
   static Future<tz.TZDateTime> instanceOfNextHour(int hour) async {
     var currentLocation = await getCurrentLocation();
     print(currentLocation.toString());

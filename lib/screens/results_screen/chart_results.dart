@@ -1,8 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:recycle_app/models/CollectResult.dart';
+import 'package:recycle_app/models/collect_result.dart';
 import 'dart:math';
-import 'package:recycle_app/models/materialModel.dart';
+import 'package:recycle_app/models/material_model.dart';
 
 class BarChartSample2 extends StatefulWidget {
   @override

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:provider/provider.dart';
-import 'package:recycle_app/screens/AboutProject.dart';
-import 'package:recycle_app/controllers/collectDayNotificationController.dart';
-
-import 'package:recycle_app/screens/QuestionAnswerScreen.dart';
+import 'package:recycle_app/screens/about_project.dart';
+import 'package:recycle_app/controllers/collect_day_notification_controller.dart';
 import 'package:recycle_app/screens/main_screen.dart';
 import 'package:recycle_app/screens/map_screen/map_screen.dart';
-import 'package:recycle_app/screens/materialDescriptionScreen.dart';
+import 'package:recycle_app/screens/material_description_screen.dart';
 import 'package:recycle_app/screens/photo_view.dart';
-import 'file:///C:/Users/hudso/Documents/GitHub/recycle-app/lib/screens/results_screen/resultsScreen.dart';
+import 'package:recycle_app/screens/question_answer_screen.dart';
+import 'package:recycle_app/screens/results_screen/results_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig

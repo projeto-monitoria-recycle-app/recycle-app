@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recycle_app/controllers/collectDayNotificationController.dart';
+import 'package:recycle_app/controllers/collect_day_notification_controller.dart';
 
 class NotificationCounter extends StatelessWidget {
   final Function() onTap;

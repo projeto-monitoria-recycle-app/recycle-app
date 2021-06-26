@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recycle_app/controllers/collectDayNotificationController.dart';
+import 'package:recycle_app/controllers/collect_day_notification_controller.dart';
 import 'package:recycle_app/models/collect_route_model.dart';
 import 'package:recycle_app/models/days_of_week.dart';
-import 'package:recycle_app/widgets/toggle_collect_day_notification_button.dart';
+import 'package:recycle_app/widgets/collect_day_notification/toggle_collect_day_notification_button.dart';
 
 class CollectRouteListItem extends StatelessWidget {
   final CollectRoute _collectRoute;
@@ -16,7 +16,6 @@ class CollectRouteListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool initialButtonState = this.initialButtonState ?? false;
     var controller = Provider.of<CollectDayNotificationController>(context);
     return Card(
         child: ListTile(

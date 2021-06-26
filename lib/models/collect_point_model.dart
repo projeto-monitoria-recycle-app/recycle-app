@@ -1,4 +1,4 @@
-import 'package:recycle_app/daos/inMemoryCollectRouteDao.dart';
+import 'package:recycle_app/daos/in_memory_collect_route_dao.dart';
 import 'package:recycle_app/models/collect_route_model.dart';
 
 class CollectPoint {

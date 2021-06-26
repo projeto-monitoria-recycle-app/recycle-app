@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recycle_app/models/questionAnswerModel.dart';
-import '../models/AboutUsModel.dart';
+import 'package:recycle_app/models/question_answer_model.dart';
+import '../models/about_us_model.dart';
 
 class AboutProject extends StatelessWidget {
   static const routeName = '/aboutproject';

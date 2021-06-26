@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recycle_app/controllers/collectDayNotificationController.dart';
+import 'package:recycle_app/controllers/collect_day_notification_controller.dart';
 import 'package:recycle_app/models/collect_point_model.dart';
-import 'package:recycle_app/widgets/toggle_collect_day_notification_button.dart';
+import 'package:recycle_app/widgets/collect_day_notification/toggle_collect_day_notification_button.dart';
 
 class ToggleNotificationMapOption extends StatelessWidget {
   final CollectPoint collectPoint;

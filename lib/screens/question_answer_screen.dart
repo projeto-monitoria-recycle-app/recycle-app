@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/questionAnswerModel.dart';
+import '../models/question_answer_model.dart';
 
 class QuestionAnswerScreen extends StatelessWidget {
   static const routeName = '/question';

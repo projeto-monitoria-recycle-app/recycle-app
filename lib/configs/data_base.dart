@@ -1,5 +1,5 @@
 import 'package:path/path.dart';
-import 'package:recycle_app/daos/collectDayNotificationDao.dart';
+import 'package:recycle_app/daos/collect_day_notification_dao.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseFactory {
