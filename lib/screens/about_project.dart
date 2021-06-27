@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recycle_app/models/about_us_model.dart';
 import 'package:recycle_app/models/question_answer_model.dart';
-import '../models/about_us_model.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class AboutProject extends StatelessWidget {
   static const routeName = '/aboutproject';
@@ -35,7 +38,7 @@ class AboutProject extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline1,
                 ),
                 centerTitle: true,
-                expandedHeight: 120,
+                expandedHeight: 100,
                 backgroundColor: Theme.of(context).accentColor,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Column(
@@ -100,96 +103,118 @@ class AboutProject extends StatelessWidget {
                           style: Theme.of(context).textTheme.headline2,
                         ),
                       ),
-                      Card(
-                        child: Column(
-                          children: [
-                            ListTile(
-                              leading: ImageIcon(
-                                AssetImage('assets/icons/balao.png'),
-                                color: Colors.black,
-                              ),
-                              title: Text(
-                                'O QUE É COLETA SELETIVA?',
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
-                              onTap: () {
-                                Navigator.pushNamed(context, '/question',
-                                    arguments: questionsList[0]);
-                              },
-                            ),
-                            ListTile(
-                              leading: ImageIcon(
-                                AssetImage(
-                                  'assets/icons/balao.png',
+                      Theme(data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                        child:
+                        Card(
+                          child: Column(
+                            children: [
+                              ExpansionTile(
+                                childrenPadding: EdgeInsets.all(12),
+                                leading: ImageIcon(
+                                  AssetImage('assets/icons/balao.png'),
+                                  color: Colors.black,
                                 ),
-                                color: Colors.black,
+                                title: Text(
+                                  'O QUE É COLETA SELETIVA?',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                                children: [
+                                  Text('É um método que otimiza os processos de destinação do lixo. Dentro da Coleta'
+                                    ' Seletiva temos a reciclagem que visa separar o lixo em resíduos reutilizáveis e'
+                                    ' não reutilizáveis.',
+                                      style: Theme.of(context).textTheme.bodyText1),
+                                ],
                               ),
-                              title: Text(
-                                'QUAL É A SUA IMPORTÂNCIA?',
-                                style: Theme.of(context).textTheme.bodyText1,
+                              ExpansionTile(
+                                childrenPadding: EdgeInsets.all(12),
+                                leading: ImageIcon(
+                                  AssetImage(
+                                    'assets/icons/balao.png',
+                                  ),
+                                  color: Colors.black,
+                                ),
+                                title: Text(
+                                  'QUAL É A SUA IMPORTÂNCIA?',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),children: [
+                                Text('A importância da coleta seletiva é justamente a redução dos impactos '
+                                    'ambientais do consumo. Quando separamos os nossos resíduos, facilitamos '
+                                    'muito o seu tratamento e diminuímos as chances de impactos nocivos para o '
+                                    'ambiente e para a saúde da vida no planeta, incluindo a vida.',
+                                    style: Theme.of(context).textTheme.bodyText1),
+                                ],
                               ),
-                              onTap: () {
-                                Navigator.pushNamed(context, '/question',
-                                    arguments: questionsList[1]);
-                              },
-                            ),
-                            ListTile(
-                              leading: ImageIcon(
-                                AssetImage('assets/icons/balao.png'),
-                                color: Colors.black,
+                              ExpansionTile(
+                                childrenPadding: EdgeInsets.all(12),
+                                leading: ImageIcon(
+                                  AssetImage('assets/icons/balao.png'),
+                                  color: Colors.black,
+                                ),
+                                title: Text(
+                                  'COMO VOCÊ PODE CONTRIBUIR?',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                                children: [
+                                  Text('Separando o seu material e descartando corretamente na coleta seletiva '
+                                        'e em caso de ainda não possuir rota de coleta em sua rua, deposite o seu '
+                                        'resíduo em um dos nossos eco pontos espalhados pela cidade. '
+                                        'Outra forma de contribuição é a divulgação do nosso programa de coleta '
+                                        'seletiva, para os seus parentes, vizinhos e também em suas redes sociais, como '
+                                        'também divulgando o nosso Instragram (@associacaocatadores) e este aplicativo.',
+                                      style: Theme.of(context).textTheme.bodyText1),
+                                ],
                               ),
-                              title: Text(
-                                'COMO VOCÊ PODE CONTRIBUIR?',
-                                style: Theme.of(context).textTheme.bodyText1,
+                              ExpansionTile(
+                                childrenPadding: EdgeInsets.all(12),
+                                leading: ImageIcon(
+                                  AssetImage('assets/icons/balao.png'),
+                                  color: Colors.black,
+                                ),
+                                title: Text(
+                                  'QUEM SOMOS?',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),children: [
+                                    Text(questionsList.last.answer.first + '\n' + questionsList.last.answer.last,
+                                          style: Theme.of(context).textTheme.bodyText1),
+                                ],
                               ),
-                              onTap: () {
-                                Navigator.pushNamed(context, '/question',
-                                    arguments: questionsList[2]);
-                              },
-                            ),
-                            ListTile(
-                              leading: ImageIcon(
-                                AssetImage('assets/icons/balao.png'),
-                                color: Colors.black,
+                              const Divider(
+                                height: 30,
+                                thickness: 1,
+                                indent: 60,
+                                endIndent: 60,
+                                color: Colors.grey,
                               ),
-                              title: Text(
-                                'QUEM SOMOS?',
-                                style: Theme.of(context).textTheme.bodyText1,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 5),
+                                child: Text(
+                                  'Para mais informações a respeito da coleta seletiva ou materiais recicláveis, ligue para Secretaria Municipal de Meio Ambiente:',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                  textAlign: TextAlign.justify,
+                                ),
                               ),
-                              onTap: () {
-                                Navigator.pushNamed(context, '/question',
-                                    arguments: questionsList[3]);
-                              },
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 5),
-                              child: Text(
-                                'Para mais informações a respeito da coleta seletiva ou materiais recicláveis, ligue para Secretaria Municipal de Meio Ambiente: 2742-7763.',
-                                style: Theme.of(context).textTheme.bodyText1,
-                                textAlign: TextAlign.justify,
+                              TextButton(onPressed: () => launch("tel://2742-7763"),
+                                  child: Text("2742-7763")
                               ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              height: 120,
-                              width: 150,
-                              child:
-                                  Image.asset("assets/img/logo-associacao.png"),
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                              SizedBox(
+                                height: 15,
                               ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                          ],
+                              Container(
+                                height: 120,
+                                width: 150,
+                                child:
+                                    Image.asset("assets/img/logo-associacao.png"),
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       FittedBox(
