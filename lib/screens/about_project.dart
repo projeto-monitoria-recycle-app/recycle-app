@@ -4,7 +4,6 @@ import 'package:recycle_app/models/about_us_model.dart';
 import 'package:recycle_app/models/question_answer_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class AboutProject extends StatelessWidget {
   static const routeName = '/aboutproject';
 
@@ -67,7 +66,7 @@ class AboutProject extends StatelessWidget {
                       ),
                       Card(
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             children: [
                               Text(
@@ -103,9 +102,10 @@ class AboutProject extends StatelessWidget {
                           style: Theme.of(context).textTheme.headline2,
                         ),
                       ),
-                      Theme(data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-                        child:
-                        Card(
+                      Theme(
+                        data: Theme.of(context)
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: Card(
                           child: Column(
                             children: [
                               ExpansionTile(
@@ -119,10 +119,14 @@ class AboutProject extends StatelessWidget {
                                   style: Theme.of(context).textTheme.bodyText1,
                                 ),
                                 children: [
-                                  Text('É um método que otimiza os processos de destinação do lixo. Dentro da Coleta'
+                                  Text(
+                                    '      É um método que otimiza os processos de destinação do lixo. Dentro da Coleta'
                                     ' Seletiva temos a reciclagem que visa separar o lixo em resíduos reutilizáveis e'
                                     ' não reutilizáveis.',
-                                      style: Theme.of(context).textTheme.bodyText1),
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                    textAlign: TextAlign.justify,
+                                  ),
                                 ],
                               ),
                               ExpansionTile(
@@ -136,12 +140,17 @@ class AboutProject extends StatelessWidget {
                                 title: Text(
                                   'QUAL É A SUA IMPORTÂNCIA?',
                                   style: Theme.of(context).textTheme.bodyText1,
-                                ),children: [
-                                Text('A importância da coleta seletiva é justamente a redução dos impactos '
+                                ),
+                                children: [
+                                  Text(
+                                    '      A importância da coleta seletiva é justamente a redução dos impactos '
                                     'ambientais do consumo. Quando separamos os nossos resíduos, facilitamos '
                                     'muito o seu tratamento e diminuímos as chances de impactos nocivos para o '
                                     'ambiente e para a saúde da vida no planeta, incluindo a vida.',
-                                    style: Theme.of(context).textTheme.bodyText1),
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                    textAlign: TextAlign.justify,
+                                  ),
                                 ],
                               ),
                               ExpansionTile(
@@ -155,13 +164,17 @@ class AboutProject extends StatelessWidget {
                                   style: Theme.of(context).textTheme.bodyText1,
                                 ),
                                 children: [
-                                  Text('Separando o seu material e descartando corretamente na coleta seletiva '
-                                        'e em caso de ainda não possuir rota de coleta em sua rua, deposite o seu '
-                                        'resíduo em um dos nossos eco pontos espalhados pela cidade. '
-                                        'Outra forma de contribuição é a divulgação do nosso programa de coleta '
-                                        'seletiva, para os seus parentes, vizinhos e também em suas redes sociais, como '
-                                        'também divulgando o nosso Instragram (@associacaocatadores) e este aplicativo.',
-                                      style: Theme.of(context).textTheme.bodyText1),
+                                  Text(
+                                    '      Separando o seu material e descartando corretamente na coleta seletiva '
+                                    'e em caso de ainda não possuir rota de coleta em sua rua, deposite o seu '
+                                    'resíduo em um dos nossos eco pontos espalhados pela cidade. '
+                                    '\n      Outra forma de contribuição é a divulgação do nosso programa de coleta '
+                                    'seletiva, para os seus parentes, vizinhos e também em suas redes sociais, como '
+                                    'também divulgando o nosso Instragram (@associacaocatadores) e este aplicativo.',
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                    textAlign: TextAlign.justify,
+                                  ),
                                 ],
                               ),
                               ExpansionTile(
@@ -173,9 +186,16 @@ class AboutProject extends StatelessWidget {
                                 title: Text(
                                   'QUEM SOMOS?',
                                   style: Theme.of(context).textTheme.bodyText1,
-                                ),children: [
-                                    Text(questionsList.last.answer.first + '\n' + questionsList.last.answer.last,
-                                          style: Theme.of(context).textTheme.bodyText1),
+                                ),
+                                children: [
+                                  Text(
+                                    questionsList.last.answer.first +
+                                        '\n' +
+                                        questionsList.last.answer.last,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                    textAlign: TextAlign.justify,
+                                  ),
                                 ],
                               ),
                               const Divider(
@@ -194,17 +214,24 @@ class AboutProject extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                 ),
                               ),
-                              TextButton(onPressed: () => launch("tel://2742-7763"),
-                                  child: Text("2742-7763")
-                              ),
+                              TextButton(
+                                  onPressed: () => launch("tel://2742-7763"),
+                                  child: Text(
+                                    "2742-7763",
+                                    style: TextStyle(
+                                      color: Theme.of(context).accentColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )),
                               SizedBox(
                                 height: 15,
                               ),
                               Container(
                                 height: 120,
                                 width: 150,
-                                child:
-                                    Image.asset("assets/img/logo-associacao.png"),
+                                child: Image.asset(
+                                    "assets/img/logo-associacao.png"),
                                 decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
