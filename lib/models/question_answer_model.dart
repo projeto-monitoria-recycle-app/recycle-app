@@ -44,8 +44,8 @@ List<QuestionAnswer> questionsList = [
   QuestionAnswer(
     'Quem Somos?',
     [
-      'Nós, da Associação de Catadores de Teresópolis, somos um grupo de catadores individuais, que vimos na coletividade uma forma de melhorar não só a nossa situação financeira, como abranger uma área maior em nosso município, trazendo melhorias ao meio ambiente e aumentando a nossa geração de renda, com uma gestão mais adequada dos resíduos sólidos que podem ser reciclados.',
-      'Nos reunimos como a Associação de Catadores de Teresópolis, para trabalhar junto ao poder público, visando aumentar o emprego e renda das pessoas que tem a reciclagem como o seu único meio de sobrevivência.'
+      '      Nós, da Associação de Catadores de Teresópolis, somos um grupo de catadores individuais, que vimos na coletividade uma forma de melhorar não só a nossa situação financeira, como abranger uma área maior em nosso município, trazendo melhorias ao meio ambiente e aumentando a nossa geração de renda, com uma gestão mais adequada dos resíduos sólidos que podem ser reciclados.',
+      '      Nos reunimos como a Associação de Catadores de Teresópolis, para trabalhar junto ao poder público, visando aumentar o emprego e renda das pessoas que tem a reciclagem como o seu único meio de sobrevivência.'
     ],
     [
       "assets/img/associacao-caminhao.webp",
