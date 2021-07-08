@@ -29,7 +29,7 @@
 .pub-cache/
 .pub/
 /build/
-
+key.properties
 pubspec.lock
 
 # Web related
